@@ -1,5 +1,5 @@
 import { useCategory } from "~/context/CategoryContext";
-import { resourceBlocks } from "~/data/learning-resources";
+import { resourceBlocks } from "~/data/resources";
 
 export default function CategorySelector() {
   const { selectedCategory, setSelectedCategory } = useCategory();

@@ -1,13 +1,9 @@
-import { llmApps } from "./llm-models";
-
-const getFaviconUrl = (link: string) => {
-  const domain = new URL(link).hostname;
-  return `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-};
+import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const resourceBlocks = [
   {
     title: "Free Resources",
+    tag: "Learning Resources",
     description:
       "Essential learning materials and tutorials to get started with LLMs",
     color: "blue",
@@ -186,6 +182,7 @@ export const resourceBlocks = [
   },
   {
     title: "Video Tutorials",
+    tag: "Learning Resources",
     description:
       "High-quality video content for visual learners, ordered from basics to advanced topics",
     color: "purple",
@@ -345,6 +342,7 @@ export const resourceBlocks = [
   },
   {
     title: "Academic Courses",
+    tag: "Learning Resources",
     description:
       "University courses from top institutions covering ML, AI, and NLP",
     color: "green",
@@ -538,6 +536,7 @@ export const resourceBlocks = [
   },
   {
     title: "Research Papers",
+    tag: "Learning Resources",
     description: "Latest research papers and technical reports in LLM field",
     color: "yellow",
     resources: [
@@ -863,6 +862,7 @@ export const resourceBlocks = [
   },
   {
     title: "GitHub Repositories",
+    tag: "Learning Resources",
     description:
       "Essential GitHub repositories for LLM development, training, and deployment",
     color: "blue",
@@ -996,6 +996,8 @@ export const resourceBlocks = [
   },
   {
     title: "Data Processing Tools",
+    tag: "Learning Resources",
+
     description:
       "Tools and utilities for processing, cleaning, and preparing LLM training data",
     color: "pink",
@@ -1217,6 +1219,8 @@ export const resourceBlocks = [
   },
   {
     title: "Open Source Apps / Projects",
+    tag: "Learning Resources",
+
     description: "Ready-to-use applications and implementations",
     color: "red",
     resources: [
@@ -1446,6 +1450,8 @@ export const resourceBlocks = [
   },
   {
     title: "Datasets",
+    tag: "Learning Resources",
+
     description: "High-quality datasets and data collections for LLM training",
     color: "zinc",
     resources: [
@@ -2297,6 +2303,94 @@ export const resourceBlocks = [
         link: "https://azure.microsoft.com/en-us/services/machine-learning/",
         description:
           "Microsoft's cloud service for MLOps and model deployment.",
+      },
+    ].map((resource) => ({
+      ...resource,
+      favicon: getFaviconUrl(resource.link),
+    })),
+  },
+  {
+    title: "LLM Models",
+    description: "Popular LLM applications and models",
+    tag: "llm-models",
+    color: "blue",
+    resources: [
+      {
+        id: 1,
+        name: "ChatGPT",
+        link: "https://openai.com/chatgpt",
+        description:
+          "OpenAI's conversational AI for general-purpose question answering and tasks.",
+      },
+      {
+        id: 2,
+        name: "Jasper AI",
+        link: "https://www.jasper.ai/",
+        description:
+          "AI-powered content creation tool for marketing, copywriting, and more.",
+      },
+      {
+        id: 3,
+        name: "GitHub Copilot",
+        link: "https://github.com/features/copilot",
+        description:
+          "AI pair programmer that suggests code completions and snippets.",
+      },
+      {
+        id: 4,
+        name: "Claude",
+        link: "https://anthropic.com/claude",
+        description:
+          "Anthropic's advanced AI assistant for analysis, writing, and coding tasks.",
+      },
+      {
+        id: 5,
+        name: "Bard",
+        link: "https://bard.google.com",
+        description:
+          "Google's experimental conversational AI service powered by PaLM.",
+      },
+    ].map((resource) => ({
+      ...resource,
+      favicon: getFaviconUrl(resource.link),
+    })),
+  },
+  {
+    title: "AI Applications",
+    description:
+      "Popular applications and tools powered by artificial intelligence",
+    tag: "ai-applications",
+    color: "purple",
+    resources: [
+      {
+        id: 1,
+        name: "Midjourney",
+        link: "https://www.midjourney.com/",
+        description: "AI-powered image generation from text descriptions",
+      },
+      {
+        id: 2,
+        name: "DALL-E",
+        link: "https://openai.com/dall-e-2",
+        description: "OpenAI's text-to-image generation model",
+      },
+      {
+        id: 3,
+        name: "Stable Diffusion",
+        link: "https://stability.ai/",
+        description: "Open-source image generation model",
+      },
+      {
+        id: 4,
+        name: "Runway",
+        link: "https://runwayml.com/",
+        description: "AI-powered creative tools for video and content creation",
+      },
+      {
+        id: 5,
+        name: "Synthesia",
+        link: "https://www.synthesia.io/",
+        description: "AI video generation platform",
       },
     ].map((resource) => ({
       ...resource,

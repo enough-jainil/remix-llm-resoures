@@ -1,6 +1,6 @@
-import { resourceBlocks } from "~/data/learning-resources";
-import { llmApps } from "~/data/llm-models";
-import { aiApps } from "~/data/ai-applications";
+import { resourceBlocks } from "~/data/resources";
+// import { llmApps } from "~/data/llm-models";
+// import { aiApps } from "~/data/ai-applications";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
@@ -117,18 +117,33 @@ const LoadingGrid = () => (
 
 export default function ResourceGrid() {
   const { selectedCategory } = useCategory();
+  const { searchQuery } = useSearch();
 
   const getDisplayBlocks = () => {
-    switch (selectedCategory) {
-      case "apps":
-        return aiApps;
-      case "models":
-        return llmApps;
-      case "learning":
-        return resourceBlocks;
-      default:
-        return [...resourceBlocks, ...llmApps, ...aiApps];
+    let blocks = resourceBlocks;
+
+    // Filter by category
+    if (selectedCategory && selectedCategory !== "all") {
+      blocks = blocks.filter((block) => block.tag === selectedCategory);
     }
+
+    // Filter by search query if present
+    if (searchQuery) {
+      blocks = blocks.filter((block) => {
+        const searchLower = searchQuery.toLowerCase();
+        return (
+          block.title.toLowerCase().includes(searchLower) ||
+          block.description.toLowerCase().includes(searchLower) ||
+          block.resources.some(
+            (resource) =>
+              resource.name.toLowerCase().includes(searchLower) ||
+              resource.description?.toLowerCase().includes(searchLower)
+          )
+        );
+      });
+    }
+
+    return blocks;
   };
 
   return (
