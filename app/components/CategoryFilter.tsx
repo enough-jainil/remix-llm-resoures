@@ -4,6 +4,7 @@ const categories = [
   { id: "all", label: "View All" },
   { id: "learning", label: "Learning Resources" },
   { id: "models", label: "LLM Models" },
+  { id: "apps", label: "AI Applications" },
 ];
 
 export default function CategoryFilter() {

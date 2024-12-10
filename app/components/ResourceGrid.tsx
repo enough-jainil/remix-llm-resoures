@@ -1,5 +1,6 @@
 import { resourceBlocks } from "~/data/learning-resources";
 import { llmApps } from "~/data/llm-models";
+import { aiApps } from "~/data/ai-applications";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
@@ -119,12 +120,14 @@ export default function ResourceGrid() {
 
   const getDisplayBlocks = () => {
     switch (selectedCategory) {
+      case "apps":
+        return aiApps;
       case "models":
         return llmApps;
       case "learning":
         return resourceBlocks;
       default:
-        return [...resourceBlocks, ...llmApps];
+        return [...resourceBlocks, ...llmApps, ...aiApps];
     }
   };
 

@@ -30,6 +30,20 @@ export const llmApps = [
         description:
           "AI pair programmer that suggests code completions and snippets.",
       },
+      {
+        id: 4,
+        name: "Claude",
+        link: "https://anthropic.com/claude",
+        description:
+          "Anthropic's advanced AI assistant for analysis, writing, and coding tasks.",
+      },
+      {
+        id: 5,
+        name: "Bard",
+        link: "https://bard.google.com",
+        description:
+          "Google's experimental conversational AI service powered by PaLM.",
+      },
     ].map((resource) => ({
       ...resource,
       favicon: getFaviconUrl(resource.link),
@@ -52,6 +66,27 @@ export const llmApps = [
         name: "Zendesk AI",
         link: "https://www.zendesk.com/intelligence/",
         description: "AI-powered customer support automation for businesses.",
+      },
+      {
+        id: 3,
+        name: "Microsoft Copilot",
+        link: "https://www.microsoft.com/en-us/microsoft-365/copilot",
+        description:
+          "AI-powered assistant integrated across Microsoft 365 applications.",
+      },
+      {
+        id: 4,
+        name: "IBM watsonx",
+        link: "https://www.ibm.com/watsonx",
+        description:
+          "Enterprise AI and data platform for building custom AI solutions.",
+      },
+      {
+        id: 5,
+        name: "Oracle Cloud AI",
+        link: "https://www.oracle.com/artificial-intelligence/",
+        description:
+          "Integrated AI services for enterprise applications and workflows.",
       },
     ].map((resource) => ({
       ...resource,
