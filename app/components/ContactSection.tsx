@@ -13,7 +13,7 @@ export default function ContactSection() {
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <motion.a
-          href="mailto:harsha.gadekar@proton.me"
+          href="mailto:resources-llm@doreturn.in"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-2 px-6 py-3 bg-doreturn-gold/10 text-doreturn-gold 
@@ -28,7 +28,7 @@ export default function ContactSection() {
         </motion.a>
 
         <motion.a
-          href="https://twitter.com/HarshaGadekar"
+          href="https://twitter.com/doreturn_in"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
