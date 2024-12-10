@@ -14,12 +14,7 @@ import "./styles/custom.css";
 import "./styles/colors.css";
 
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
+  // Removed Google Fonts preconnect links
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
