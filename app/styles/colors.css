@@ -1,0 +1,34 @@
+:root {
+  /* Primary Colors */
+  --doreturn-gold: #c5b358;
+  --doreturn-grey: #808080;
+
+  /* Background Colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: rgba(128, 128, 128, 0.1); /* doreturn-grey at 10% opacity */
+
+  /* Border Colors */
+  --border-primary: rgba(197, 179, 88, 0.3); /* doreturn-gold at 30% opacity */
+  --border-primary-hover: rgba(
+    197,
+    179,
+    88,
+    0.5
+  ); /* doreturn-gold at 50% opacity */
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+
+  /* Gradient Colors */
+  --gradient-gold-start: rgba(197, 179, 88, 0.05);
+  --gradient-gold-end: rgba(197, 179, 88, 0);
+}
+
+/* Dark theme overrides if needed */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Add any dark theme specific color overrides here */
+  }
+}
