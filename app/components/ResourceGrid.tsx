@@ -45,7 +45,7 @@ const ResourceBlock = ({
 
   return (
     <>
-      <div className="group bg-doreturn-grey/10 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 transition-all duration-500">
+      <div className="group bg-doreturn-grey/10 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 transition-all duration-500 flex flex-col h-[500px]">
         <div className="mb-2 sm:mb-3">
           <h3 className="text-base sm:text-lg text-white font-medium tracking-tight">
             {title}
@@ -54,7 +54,7 @@ const ResourceBlock = ({
         <p className="text-xs sm:text-sm text-zinc-400 mb-3 sm:mb-4 leading-relaxed">
           {description}
         </p>
-        <ul className="space-y-2 sm:space-y-2.5 max-h-[240px] sm:max-h-[280px] overflow-y-auto pr-2 custom-scrollbar">
+        <ul className="space-y-2 sm:space-y-2.5 overflow-y-auto pr-2 custom-scrollbar flex-grow">
           {filteredResources.map((resource) => (
             <li
               key={resource.id}
@@ -122,9 +122,19 @@ export default function ResourceGrid() {
   const getDisplayBlocks = () => {
     let blocks = resourceBlocks;
 
-    // Filter by category
+    // Filter by category and sub-category
     if (selectedCategory && selectedCategory !== "all") {
-      blocks = blocks.filter((block) => block.tag === selectedCategory);
+      const [mainTag, subTag] = selectedCategory.split("-");
+
+      if (subTag) {
+        // Filter by both main tag and sub-tag
+        blocks = blocks.filter(
+          (block) => block.tag === mainTag && block.tag2 === subTag
+        );
+      } else {
+        // Filter by main tag only
+        blocks = blocks.filter((block) => block.tag === mainTag);
+      }
     }
 
     // Filter by search query if present
