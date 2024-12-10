@@ -4,6 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  LiveReload,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import { SearchProvider } from "./context/SearchContext";
@@ -27,11 +28,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <SearchProvider>
-          <CategoryProvider>{children}</CategoryProvider>
-        </SearchProvider>
+        <CategoryProvider>
+          <SearchProvider>
+            {children}
+          </SearchProvider>
+        </CategoryProvider>
         <ScrollRestoration />
         <Scripts />
+        <LiveReload />
       </body>
     </html>
   );

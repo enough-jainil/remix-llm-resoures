@@ -1,14 +1,16 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from "react";
 
-interface CategoryContextType {
-  selectedCategory: string | null;
-  setSelectedCategory: (category: string | null) => void;
-}
+type CategoryContextType = {
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+};
 
-const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
+const CategoryContext = createContext<CategoryContextType | undefined>(
+  undefined
+);
 
 export function CategoryProvider({ children }: { children: ReactNode }) {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   return (
     <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory }}>
@@ -20,7 +22,7 @@ export function CategoryProvider({ children }: { children: ReactNode }) {
 export function useCategory() {
   const context = useContext(CategoryContext);
   if (context === undefined) {
-    throw new Error('useCategory must be used within a CategoryProvider');
+    throw new Error("useCategory must be used within a CategoryProvider");
   }
   return context;
 }

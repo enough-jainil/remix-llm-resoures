@@ -4,6 +4,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { SearchProvider } from "~/context/SearchContext";
 import { CategoryProvider } from "~/context/CategoryContext";
 import SearchBar from "~/components/SearchBar";
+import CategoryFilter from "~/components/CategoryFilter";
 import ResourceGrid from "~/components/ResourceGrid";
 import ContactSection from "~/components/ContactSection";
 
@@ -63,6 +64,10 @@ export default function Index() {
 
             <div className="relative z-10">
               <SearchBar />
+            </div>
+
+            <div className="mt-12">
+              <CategoryFilter />
             </div>
 
             <div className="mt-12">

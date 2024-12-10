@@ -1,4 +1,5 @@
-import { resourceBlocks } from "~/data/resources";
+import { resourceBlocks } from "~/data/learning-resources";
+import { llmApps } from "~/data/llm-models";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
@@ -30,11 +31,11 @@ const ResourceBlock = ({
 
   const filteredResources = resources.filter((resource) => {
     const searchLower = searchQuery.toLowerCase();
-    const matchesSearch =
+    return (
       resource.name.toLowerCase().includes(searchLower) ||
-      title.toLowerCase().includes(searchLower);
-    const matchesCategory = !selectedCategory || title === selectedCategory;
-    return matchesSearch && matchesCategory;
+      resource.description?.toLowerCase().includes(searchLower) ||
+      title.toLowerCase().includes(searchLower)
+    );
   });
 
   if (filteredResources.length === 0) {
@@ -114,10 +115,23 @@ const LoadingGrid = () => (
 );
 
 export default function ResourceGrid() {
+  const { selectedCategory } = useCategory();
+
+  const getDisplayBlocks = () => {
+    switch (selectedCategory) {
+      case "models":
+        return llmApps;
+      case "learning":
+        return resourceBlocks;
+      default:
+        return [...resourceBlocks, ...llmApps];
+    }
+  };
+
   return (
     <Suspense fallback={<LoadingGrid />}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
-        {resourceBlocks.map((block, index) => (
+        {getDisplayBlocks().map((block, index) => (
           <ResourceBlock key={index} {...block} />
         ))}
       </div>
