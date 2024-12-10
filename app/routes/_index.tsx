@@ -32,16 +32,14 @@ export const meta: MetaFunction = () => {
     },
     {
       property: "og:url",
-      content: "https://resources.doreturn.in",
+      content: "https://memoryview.in",
     },
     {
       property: "og:image",
-      content:
-        "https://resources.doreturn.in/public/doreturn Fetured Image (1).png", // Update with the actual path to your featured image
+      content: "public/featuredimage.png", // Update with the actual path to your featured image
     },
   ];
 };
-
 export default function Index() {
   return (
     <CategoryProvider>

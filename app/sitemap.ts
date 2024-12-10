@@ -3,19 +3,19 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://resources.doreturn.in",
+      url: "https://memoryview.in",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: "https://resources.doreturn.in/courses",
+      url: "https://memoryview.in/courses",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://resources.doreturn.in/tutorials",
+      url: "https://memoryview.in/tutorials",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
