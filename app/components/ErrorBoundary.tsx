@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface State {
 
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false
+    hasError: false,
   };
 
   public static getDerivedStateFromError(_: Error): State {
@@ -18,7 +18,9 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
+    // console.error("Uncaught error:", error, errorInfo);
+    // Instead of logging to console, you can send this error to a logging service
+    // For example: logErrorToMyService(error, errorInfo);
   }
 
   public render() {
@@ -26,7 +28,9 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center p-8">
-            <h2 className="text-2xl font-bold text-white mb-4">Something went wrong</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Something went wrong
+            </h2>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={() => this.setState({ hasError: false })}
