@@ -1740,6 +1740,8 @@ export const resourceBlocks = [
   },
   {
     title: "Open Source Models",
+    tag: "Learning Resources",
+
     description:
       "Collection of open source large language models available for research and deployment",
     color: "yellow",
@@ -1911,6 +1913,8 @@ export const resourceBlocks = [
   },
   {
     title: "LLM Leaderboards",
+    tag: "Learning Resources",
+
     description:
       "Top benchmarks and leaderboards for comparing LLM performance across different tasks",
     color: "purple",
@@ -2054,6 +2058,8 @@ export const resourceBlocks = [
   },
   {
     title: "LLM Communities",
+    tag: "Learning Resources",
+
     description:
       "Active communities and forums for LLM developers, researchers, and enthusiasts",
     color: "pink",
@@ -2156,6 +2162,8 @@ export const resourceBlocks = [
   },
   {
     title: "LLM Deployment",
+    tag: "Learning Resources",
+
     description:
       "Tools, frameworks, and platforms for deploying and serving LLM applications",
     color: "green",
@@ -2311,8 +2319,9 @@ export const resourceBlocks = [
   },
   {
     title: "LLM Models",
+
     description: "Popular LLM applications and models",
-    tag: "llm-models",
+    tag: "LLM Models",
     color: "blue",
     resources: [
       {
@@ -2359,7 +2368,7 @@ export const resourceBlocks = [
     title: "AI Applications",
     description:
       "Popular applications and tools powered by artificial intelligence",
-    tag: "ai-applications",
+    tag: "AI Applications",
     color: "purple",
     resources: [
       {
