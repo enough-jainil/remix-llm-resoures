@@ -56,9 +56,9 @@ const ResourceBlock = ({
     <>
       <div className="group bg-doreturn-grey/10 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 transition-all duration-500 flex flex-col min-h-[300px]">
         <div className="mb-2 sm:mb-3">
-          <h3 className="text-base sm:text-lg text-white font-medium tracking-tight">
+          <h2 className="text-base sm:text-lg text-white font-medium tracking-tight">
             {title}
-          </h3>
+          </h2>
         </div>
         <p className="text-xs sm:text-sm text-zinc-400 mb-3 sm:mb-4 leading-relaxed">
           {description}
