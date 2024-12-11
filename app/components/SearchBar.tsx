@@ -3,12 +3,17 @@ import { useSearch } from "~/context/SearchContext";
 import { useCallback, useState, useEffect, useRef } from "react";
 import debounce from "lodash/debounce";
 import { resourceBlocks } from "~/data/resources";
+import { useNavigate } from "@remix-run/react";
 
 interface SearchSuggestion {
   type: "resource" | "category";
   name: string;
   description?: string;
   link?: string;
+  tag?: string;
+  tag2?: string;
+  id?: number;
+  favicon?: string;
 }
 
 export default function SearchBar() {
@@ -17,6 +22,9 @@ export default function SearchBar() {
   const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   // Generate search suggestions with improved logic
   const generateSuggestions = (value: string): SearchSuggestion[] => {
@@ -52,6 +60,10 @@ export default function SearchBar() {
             name: resource.name,
             description: resource.description,
             link: resource.link,
+            tag: block.tag,
+            tag2: block.tag2,
+            id: resource.id,
+            favicon: resource.favicon,
           };
           if (!seenNames.has(suggestion.name)) {
             results.push(suggestion);
@@ -72,10 +84,15 @@ export default function SearchBar() {
   };
 
   const debouncedSearch = useCallback(
-    debounce((value: string) => {
-      const newSuggestions = generateSuggestions(value);
-      setSuggestions(newSuggestions);
-      setSearchQuery(value.toLowerCase().trim());
+    debounce(async (value: string) => {
+      setIsLoading(true);
+      try {
+        const newSuggestions = generateSuggestions(value);
+        setSuggestions(newSuggestions);
+        setSearchQuery(value.toLowerCase().trim());
+      } finally {
+        setIsLoading(false);
+      }
     }, 300),
     []
   );
@@ -102,6 +119,7 @@ export default function SearchBar() {
         !searchRef.current.contains(event.target as Node)
       ) {
         setShowSuggestions(false);
+        setSelectedIndex(-1);
       }
     };
 
@@ -109,10 +127,34 @@ export default function SearchBar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prev) =>
+        prev < suggestions.length - 1 ? prev + 1 : prev
+      );
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
+    } else if (e.key === "Enter" && selectedIndex >= 0) {
+      const suggestion = suggestions[selectedIndex];
+      if (suggestion.type === "resource" && suggestion.link) {
+        const resourceId = suggestion.id || "1";
+        const tag = suggestion.tag2 || suggestion.tag || "default";
+        navigate(`/resource/${encodeURIComponent(tag)}/${resourceId}`);
+      }
+      setLocalValue(suggestion.name);
+      setSearchQuery(suggestion.name.toLowerCase());
+      setShowSuggestions(false);
+    }
+  };
+
   return (
     <div
       className="flex items-center max-w-2xl mx-auto relative"
       ref={searchRef}
+      onKeyDown={handleKeyDown} // Added keydown event listener to the main div
+      tabIndex={0} // Make the div focusable
     >
       <div className="relative w-full group">
         <input
@@ -139,12 +181,18 @@ export default function SearchBar() {
           {suggestions.map((suggestion, index) => (
             <div
               key={`${suggestion.type}-${index}`}
-              className={`p-4 transition-all duration-200 border-b border-doreturn-gold/10 last:border-none hover:bg-doreturn-gold/10 group`}
+              className={`p-4 transition-all duration-200 border-b border-doreturn-gold/10 
+                last:border-none hover:bg-doreturn-gold/10 group
+                ${selectedIndex === index ? "bg-doreturn-gold/10" : ""}`}
               role="button"
               tabIndex={0}
               onClick={() => {
                 if (suggestion.type === "resource" && suggestion.link) {
-                  window.open(suggestion.link, "_blank");
+                  const resourceId = suggestion.id || "1";
+                  const tag = suggestion.tag2 || suggestion.tag || "default";
+                  navigate(
+                    `/resource/${encodeURIComponent(tag)}/${resourceId}`
+                  );
                 }
                 setLocalValue(suggestion.name);
                 setSearchQuery(suggestion.name.toLowerCase());
@@ -153,7 +201,11 @@ export default function SearchBar() {
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   if (suggestion.type === "resource" && suggestion.link) {
-                    window.open(suggestion.link, "_blank");
+                    const resourceId = suggestion.id || "1";
+                    const tag = suggestion.tag2 || suggestion.tag || "default";
+                    navigate(
+                      `/resource/${encodeURIComponent(tag)}/${resourceId}`
+                    );
                   }
                   setLocalValue(suggestion.name);
                   setSearchQuery(suggestion.name.toLowerCase());
@@ -161,42 +213,23 @@ export default function SearchBar() {
                 }
               }}
             >
-              <div className="flex items-start gap-4">
-                <div
-                  className={`mt-1 ${
-                    suggestion.type === "category"
-                      ? "text-doreturn-gold"
-                      : "text-doreturn-gold group-hover:text-doreturn-gold"
-                  }`}
-                >
-                  {suggestion.type === "category" ? (
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  )}
-                </div>
+              <div className="flex items-center gap-3">
+                {suggestion.favicon && (
+                  <img
+                    src={suggestion.favicon}
+                    alt=""
+                    className="w-6 h-6 rounded"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                )}
                 <div className="flex-1">
-                  <h4 className="text-white font-medium text-base group-hover:text-doreturn-gold/90 transition-colors">
+                  <h4 className="text-white font-medium group-hover:text-doreturn-gold/90">
                     {suggestion.name}
                   </h4>
                   {suggestion.description && (
-                    <p className="text-zinc-300 text-sm mt-1 line-clamp-2 group-hover:text-zinc-200 transition-colors">
+                    <p className="text-zinc-400 text-sm line-clamp-1">
                       {suggestion.description}
                     </p>
                   )}
