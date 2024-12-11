@@ -141,7 +141,11 @@ export default function SearchBar() {
       if (suggestion.type === "resource" && suggestion.link) {
         const resourceId = suggestion.id || "1";
         const tag = suggestion.tag2 || suggestion.tag || "default";
-        navigate(`/resource/${encodeURIComponent(tag)}/${resourceId}`);
+        navigate(
+          `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
+            suggestion.name
+          )}`
+        );
       }
       setLocalValue(suggestion.name);
       setSearchQuery(suggestion.name.toLowerCase());
@@ -191,7 +195,9 @@ export default function SearchBar() {
                   const resourceId = suggestion.id || "1";
                   const tag = suggestion.tag2 || suggestion.tag || "default";
                   navigate(
-                    `/resource/${encodeURIComponent(tag)}/${resourceId}`
+                    `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
+                      suggestion.name
+                    )}`
                   );
                 }
                 setLocalValue(suggestion.name);
@@ -204,7 +210,9 @@ export default function SearchBar() {
                     const resourceId = suggestion.id || "1";
                     const tag = suggestion.tag2 || suggestion.tag || "default";
                     navigate(
-                      `/resource/${encodeURIComponent(tag)}/${resourceId}`
+                      `/resource/${encodeURIComponent(
+                        tag
+                      )}/${encodeURIComponent(suggestion.name)}`
                     );
                   }
                   setLocalValue(suggestion.name);

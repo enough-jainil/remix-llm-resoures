@@ -110,9 +110,9 @@ export default function ViewAll({
                     </svg>
                   </a>
                   <Link
-                    to={`/resource/${resource.tag2 || resource.tag}/${
-                      resource.id
-                    }`}
+                    to={`/resource/${encodeURIComponent(
+                      resource.tag2 || resource.tag
+                    )}/${encodeURIComponent(resource.name)}`}
                     className="inline-flex items-center gap-2 bg-zinc-800 text-white text-sm font-medium py-2 px-4 rounded-xl hover:bg-zinc-700 transition-all duration-300"
                   >
                     View Details
