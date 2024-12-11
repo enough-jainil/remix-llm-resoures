@@ -16,7 +16,7 @@ export const resourceBlocks = [
         description:
           "Comprehensive course covering transformers, NLP tasks, and practical implementation with real-world examples.",
         description2:
-          "Hugging Face's comprehensive course covering transformers, NLP tasks, and practical implementation with real-world examples. lund",
+          "Hugging Face's comprehensive course covering transformers, NLP tasks, and practical implementation with real-world examples.",
       },
       {
         id: 2,
@@ -186,14 +186,14 @@ export const resourceBlocks = [
   {
     title: "Video Tutorials",
     tag: "Learning Resources",
-    tag2: "Learning Resources",
+    tag2: "Video Tutorials",
     description:
       "High-quality video content for visual learners, ordered from basics to advanced topics",
     color: "purple",
     resources: [
       // Fundamentals & Prerequisites
       {
-        id: 100,
+        id: 1,
         name: "3Blue1Brown Neural Networks",
         link: "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
         description:
