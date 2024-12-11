@@ -17,7 +17,7 @@ interface ResourceBlockProps {
   title: string;
   description: string;
   resources: Resource[];
-  color: string;
+  color?: string;
   tag: string;
   tag2?: string;
   tag3?: string;
@@ -27,12 +27,10 @@ const ResourceBlock = ({
   title,
   description,
   resources,
-  color,
   tag,
   tag2,
 }: ResourceBlockProps) => {
   const { searchQuery } = useSearch();
-  const { selectedCategory } = useCategory();
   const [isViewAllOpen, setIsViewAllOpen] = useState(false);
 
   const filteredResources = resources.filter((resource) => {
