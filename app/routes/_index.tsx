@@ -5,7 +5,6 @@ import SearchBar from "~/components/SearchBar";
 import CategoryFilter from "~/components/CategoryFilter";
 import ResourceGrid from "~/components/ResourceGrid";
 import ContactSection from "~/components/ContactSection";
-import Skeleton from "react-loading-skeleton";
 
 export const meta: MetaFunction = () => {
   return [
@@ -43,13 +42,11 @@ export default function Index() {
   return (
     <CategoryProvider>
       <SearchProvider>
-        {" "}
-        <Skeleton />
         <div className="min-h-screen bg-[#1A1A1A] relative overflow-hidden">
-          {" "}
-          <Skeleton /> {/* Background Effects */}
+          {/* Background Effects */}
           <div className="absolute inset-0 bg-gradient-to-b from-doreturn-gold/5 via-transparent to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-doreturn-gold/10 via-transparent to-transparent opacity-50 pointer-events-none" />
+
           <main className="container mx-auto px-4 py-8 relative">
             <section className="text-center mt-8 sm:mt-12 md:mt-16 lg:mt-24 mb-8 sm:mb-12 md:mb-16 space-y-4 sm:space-y-6 md:space-y-8">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/20">
@@ -62,13 +59,10 @@ export default function Index() {
             </section>
 
             <div className="relative z-10">
-              <Skeleton />
               <SearchBar />
             </div>
 
             <div className="mt-12">
-              <Skeleton />
-
               <CategoryFilter />
             </div>
 
@@ -78,7 +72,6 @@ export default function Index() {
 
             <div className="mt-16">
               <ContactSection />
-              <Skeleton />
             </div>
           </main>
         </div>
