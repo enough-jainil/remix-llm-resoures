@@ -44,7 +44,7 @@ const getCategories = () => {
     })
   );
 
-  return [{ id: "all", label: "View All" }, ...categoryArray];
+  return [{ id: "all", label: "All" }, ...categoryArray];
 };
 
 export default function CategoryFilter() {
@@ -63,8 +63,8 @@ export default function CategoryFilter() {
     <div className="flex flex-col space-y-4">
       {/* Main categories - Scrollable */}
       <div className="relative">
-        <div className="overflow-x-auto pb-2 -mx-4 px-4">
-          <div className="flex gap-2 min-w-max justify-start md:justify-center">
+        <div className="overflow-x-auto pb-2 -mx-4 px-4 md:overflow-x-visible">
+          <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -85,8 +85,8 @@ export default function CategoryFilter() {
       {/* Sub-categories - Scrollable */}
       {currentMainCategory?.subCategories?.length > 0 && (
         <div className="relative">
-          <div className="overflow-x-auto pb-2 -mx-4 px-4">
-            <div className="flex gap-2 min-w-max justify-start md:justify-center">
+          <div className="overflow-x-auto pb-2 -mx-4 px-4 md:overflow-x-visible">
+            <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center">
               {currentMainCategory.subCategories.map((subCat) => (
                 <button
                   key={subCat.id}
@@ -108,8 +108,8 @@ export default function CategoryFilter() {
       {/* Sub-sub-categories - Scrollable */}
       {currentSubCategory?.subSubCategories?.length > 0 && (
         <div className="relative">
-          <div className="overflow-x-auto pb-2 -mx-4 px-4">
-            <div className="flex gap-2 min-w-max justify-start md:justify-center">
+          <div className="overflow-x-auto pb-2 -mx-4 px-4 md:overflow-x-visible">
+            <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center">
               {currentSubCategory.subSubCategories.map((subSubCat) => (
                 <button
                   key={subSubCat.id}
