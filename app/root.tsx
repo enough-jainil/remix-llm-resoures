@@ -6,21 +6,12 @@ import {
   ScrollRestoration,
   LiveReload,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
 import { SearchProvider } from "./context/SearchContext";
 import { CategoryProvider } from "./context/CategoryContext";
 
 import "./tailwind.css";
 import "./styles/custom.css";
 import "./styles/colors.css";
-
-export const links: LinksFunction = () => [
-  {
-    rel: "preload",
-    href: "/tailwind.css",
-    as: "style",
-  },
-];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

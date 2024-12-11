@@ -15,6 +15,8 @@ export const resourceBlocks = [
         link: "https://huggingface.co/learn/nlp-course/chapter1/1",
         description:
           "Comprehensive course covering transformers, NLP tasks, and practical implementation with real-world examples.",
+        description2:
+          "Hugging Face's comprehensive course covering transformers, NLP tasks, and practical implementation with real-world examples. lund",
       },
       {
         id: 2,
@@ -191,7 +193,7 @@ export const resourceBlocks = [
     resources: [
       // Fundamentals & Prerequisites
       {
-        id: 1,
+        id: 100,
         name: "3Blue1Brown Neural Networks",
         link: "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
         description:
@@ -2332,10 +2334,7 @@ export const resourceBlocks = [
   {
     title: "LLM Models",
     tag: "LLM Models",
-    // tag2: "Models",
-
     description: "Popular LLM applications and models",
-    tag: "LLM Models",
     color: "blue",
     resources: [
       {

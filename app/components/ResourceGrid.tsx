@@ -10,6 +10,7 @@ interface Resource {
   link: string;
   favicon: string;
   description?: string;
+  description2?: string;
 }
 
 interface ResourceBlockProps {
@@ -27,6 +28,8 @@ const ResourceBlock = ({
   description,
   resources,
   color,
+  tag,
+  tag2,
 }: ResourceBlockProps) => {
   const { searchQuery } = useSearch();
   const { selectedCategory } = useCategory();
@@ -44,6 +47,12 @@ const ResourceBlock = ({
   if (filteredResources.length === 0) {
     return null;
   }
+
+  const resourcesWithTag = filteredResources.map((resource) => ({
+    ...resource,
+    tag2: tag2 || tag,
+    tag: tag,
+  }));
 
   return (
     <>
@@ -98,7 +107,7 @@ const ResourceBlock = ({
         isOpen={isViewAllOpen}
         onClose={() => setIsViewAllOpen(false)}
         title={title}
-        resources={filteredResources}
+        resources={resourcesWithTag}
       />
     </>
   );

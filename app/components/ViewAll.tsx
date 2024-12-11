@@ -1,9 +1,13 @@
+import { Link } from "@remix-run/react";
+
 interface Resource {
   id: number;
   name: string;
   link: string;
   favicon: string;
   description?: string;
+  description2?: string;
+  tag2: string;
 }
 
 interface ViewAllProps {
@@ -83,27 +87,50 @@ export default function ViewAll({
                   {resource.description ||
                     "Explore this valuable resource for LLM development and research."}
                 </p>
-                <a
-                  href={resource.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white text-sm font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
-                >
-                  Visit Resource
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="flex gap-2">
+                  <a
+                    href={resource.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white text-sm font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
+                    Visit Resource
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </a>
+                  <Link
+                    to={`/resource/${resource.tag2 || resource.tag}/${
+                      resource.id
+                    }`}
+                    className="inline-flex items-center gap-2 bg-zinc-800 text-white text-sm font-medium py-2 px-4 rounded-xl hover:bg-zinc-700 transition-all duration-300"
+                  >
+                    View Details
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
