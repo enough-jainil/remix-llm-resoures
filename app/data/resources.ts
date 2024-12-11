@@ -5,7 +5,6 @@ export const resourceBlocks = [
     title: "Free Resources",
     tag: "Learning Resources",
     tag2: "Free Resources",
-    tag3: "Video",
     description:
       "Essential learning materials and tutorials to get started with LLMs",
     color: "blue",
@@ -185,8 +184,7 @@ export const resourceBlocks = [
   {
     title: "Video Tutorials",
     tag: "Learning Resources",
-    tag2: "Free Resources",
-    tag3: "Reels",
+    tag2: "Learning Resources",
     description:
       "High-quality video content for visual learners, ordered from basics to advanced topics",
     color: "purple",
@@ -542,6 +540,7 @@ export const resourceBlocks = [
   {
     title: "Research Papers",
     tag: "Learning Resources",
+    tag2: "Research Papers",
     description: "Latest research papers and technical reports in LLM field",
     color: "yellow",
     resources: [
@@ -868,6 +867,7 @@ export const resourceBlocks = [
   {
     title: "GitHub Repositories",
     tag: "Learning Resources",
+    tag2: "GitHub Repositories",
     description:
       "Essential GitHub repositories for LLM development, training, and deployment",
     color: "blue",
@@ -1002,6 +1002,7 @@ export const resourceBlocks = [
   {
     title: "Data Processing Tools",
     tag: "Learning Resources",
+    tag2: "Data Processing Tools",
 
     description:
       "Tools and utilities for processing, cleaning, and preparing LLM training data",
@@ -1225,6 +1226,7 @@ export const resourceBlocks = [
   {
     title: "Open Source Apps / Projects",
     tag: "Learning Resources",
+    tag2: "Open Source Apps / Projects",
 
     description: "Ready-to-use applications and implementations",
     color: "red",
@@ -1456,6 +1458,7 @@ export const resourceBlocks = [
   {
     title: "Datasets",
     tag: "Learning Resources",
+    tag2: "Datasets",
 
     description: "High-quality datasets and data collections for LLM training",
     color: "zinc",
@@ -1746,6 +1749,7 @@ export const resourceBlocks = [
   {
     title: "Open Source Models",
     tag: "Learning Resources",
+    tag2: "Models",
 
     description:
       "Collection of open source large language models available for research and deployment",
@@ -1919,6 +1923,7 @@ export const resourceBlocks = [
   {
     title: "LLM Leaderboards",
     tag: "Learning Resources",
+    tag2: "Benchmarks",
 
     description:
       "Top benchmarks and leaderboards for comparing LLM performance across different tasks",
@@ -2064,6 +2069,7 @@ export const resourceBlocks = [
   {
     title: "LLM Communities",
     tag: "Learning Resources",
+    tag2: "Communities",
 
     description:
       "Active communities and forums for LLM developers, researchers, and enthusiasts",
@@ -2168,6 +2174,7 @@ export const resourceBlocks = [
   {
     title: "LLM Deployment",
     tag: "Learning Resources",
+    tag2: "Deployment",
 
     description:
       "Tools, frameworks, and platforms for deploying and serving LLM applications",
@@ -2324,6 +2331,8 @@ export const resourceBlocks = [
   },
   {
     title: "LLM Models",
+    tag: "LLM Models",
+    // tag2: "Models",
 
     description: "Popular LLM applications and models",
     tag: "LLM Models",

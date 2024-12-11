@@ -50,44 +50,43 @@ const getCategories = () => {
 export default function CategoryFilter() {
   const { selectedCategory, setSelectedCategory } = useCategory();
   const categories = getCategories();
-
-  // Parse the current selection
   const [mainCategory, subCategory, subSubCategory] = (
     selectedCategory || ""
   ).split("-");
 
-  // Find current main category object
   const currentMainCategory = categories.find((c) => c.id === mainCategory);
-
-  // Find current sub-category object
   const currentSubCategory = currentMainCategory?.subCategories?.find(
     (sc) => sc.id === `${mainCategory}-${subCategory}`
   );
 
   return (
     <div className="flex flex-col space-y-4">
-      {/* Main categories */}
-      <div className="flex flex-wrap justify-center gap-2">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => setSelectedCategory(category.id)}
-            className={`px-4 py-2 rounded-full transition-all duration-300 text-sm ${
-              category.id === mainCategory
-                ? "bg-doreturn-gold text-black"
-                : "bg-zinc-800/50 text-zinc-400 hover:bg-zinc-700/50 hover:text-zinc-200"
-            }`}
-          >
-            {category.label}
-          </button>
-        ))}
+      {/* Main categories - Scrollable */}
+      <div className="relative">
+        <div className="overflow-x-auto pb-2 -mx-4 px-4">
+          <div className="flex gap-2 min-w-max justify-start md:justify-center">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-4 py-2 rounded-full transition-all duration-300 text-sm whitespace-nowrap ${
+                  category.id === mainCategory
+                    ? "bg-doreturn-gold text-black"
+                    : "bg-zinc-800/50 text-zinc-400 hover:bg-zinc-700/50 hover:text-zinc-200"
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Sub-categories */}
+      {/* Sub-categories - Scrollable */}
       {currentMainCategory?.subCategories?.length > 0 && (
-        <div className="flex justify-center">
-          <div className="overflow-x-auto max-w-full pb-2">
-            <div className="flex gap-2 px-4 mx-auto justify-center min-w-max">
+        <div className="relative">
+          <div className="overflow-x-auto pb-2 -mx-4 px-4">
+            <div className="flex gap-2 min-w-max justify-start md:justify-center">
               {currentMainCategory.subCategories.map((subCat) => (
                 <button
                   key={subCat.id}
@@ -106,11 +105,11 @@ export default function CategoryFilter() {
         </div>
       )}
 
-      {/* Sub-sub-categories */}
+      {/* Sub-sub-categories - Scrollable */}
       {currentSubCategory?.subSubCategories?.length > 0 && (
-        <div className="flex justify-center">
-          <div className="overflow-x-auto max-w-full pb-2">
-            <div className="flex gap-2 px-4 mx-auto justify-center min-w-max">
+        <div className="relative">
+          <div className="overflow-x-auto pb-2 -mx-4 px-4">
+            <div className="flex gap-2 min-w-max justify-start md:justify-center">
               {currentSubCategory.subSubCategories.map((subSubCat) => (
                 <button
                   key={subSubCat.id}
