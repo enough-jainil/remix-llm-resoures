@@ -5,6 +5,7 @@ export const resourceBlocks = [
     title: "Free Resources",
     tag: "Learning Resources",
     tag2: "Free Resources",
+    tag3: "Video",
     description:
       "Essential learning materials and tutorials to get started with LLMs",
     color: "blue",
@@ -184,7 +185,8 @@ export const resourceBlocks = [
   {
     title: "Video Tutorials",
     tag: "Learning Resources",
-    tag2: "Video Tutorials",
+    tag2: "Free Resources",
+    tag3: "Reels",
     description:
       "High-quality video content for visual learners, ordered from basics to advanced topics",
     color: "purple",

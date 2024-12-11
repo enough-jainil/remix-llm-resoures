@@ -1,6 +1,4 @@
 import { resourceBlocks } from "~/data/resources";
-// import { llmApps } from "~/data/llm-models";
-// import { aiApps } from "~/data/ai-applications";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
@@ -11,6 +9,7 @@ interface Resource {
   name: string;
   link: string;
   favicon: string;
+  description?: string;
 }
 
 interface ResourceBlockProps {
@@ -18,6 +17,9 @@ interface ResourceBlockProps {
   description: string;
   resources: Resource[];
   color: string;
+  tag: string;
+  tag2?: string;
+  tag3?: string;
 }
 
 const ResourceBlock = ({
@@ -45,7 +47,7 @@ const ResourceBlock = ({
 
   return (
     <>
-      <div className="group bg-doreturn-grey/10 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 transition-all duration-500 flex flex-col h-[500px]">
+      <div className="group bg-doreturn-grey/10 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 transition-all duration-500 flex flex-col min-h-[300px]">
         <div className="mb-2 sm:mb-3">
           <h3 className="text-base sm:text-lg text-white font-medium tracking-tight">
             {title}
@@ -54,7 +56,7 @@ const ResourceBlock = ({
         <p className="text-xs sm:text-sm text-zinc-400 mb-3 sm:mb-4 leading-relaxed">
           {description}
         </p>
-        <ul className="space-y-2 sm:space-y-2.5 overflow-y-auto pr-2 custom-scrollbar flex-grow">
+        <ul className="space-y-2 sm:space-y-2.5 overflow-y-auto pr-2 custom-scrollbar flex-grow max-h-[350px]">
           {filteredResources.map((resource) => (
             <li
               key={resource.id}
@@ -122,26 +124,30 @@ export default function ResourceGrid() {
   const getDisplayBlocks = () => {
     let blocks = resourceBlocks;
 
-    // Filter by category and sub-category
+    // Filter by category, sub-category, and sub-sub-category
     if (selectedCategory && selectedCategory !== "all") {
-      const [mainTag, subTag] = selectedCategory.split("-");
+      const [mainTag, subTag, subSubTag] = selectedCategory.split("-");
 
-      if (subTag) {
-        // Filter by both main tag and sub-tag
-        blocks = blocks.filter(
-          (block) => block.tag === mainTag && block.tag2 === subTag
-        );
-      } else {
-        // Filter by main tag only
-        blocks = blocks.filter((block) => block.tag === mainTag);
-      }
+      blocks = blocks.filter((block) => {
+        if (subSubTag) {
+          return (
+            block.tag === mainTag &&
+            block.tag2 === subTag &&
+            block.tag3 === subSubTag
+          );
+        }
+        if (subTag) {
+          return block.tag === mainTag && block.tag2 === subTag;
+        }
+        return block.tag === mainTag;
+      });
     }
 
     // Filter by search query if present
     if (searchQuery) {
-      blocks = blocks.filter((block) => {
-        const searchLower = searchQuery.toLowerCase();
-        return (
+      const searchLower = searchQuery.toLowerCase();
+      blocks = blocks.filter(
+        (block) =>
           block.title.toLowerCase().includes(searchLower) ||
           block.description.toLowerCase().includes(searchLower) ||
           block.resources.some(
@@ -149,8 +155,7 @@ export default function ResourceGrid() {
               resource.name.toLowerCase().includes(searchLower) ||
               resource.description?.toLowerCase().includes(searchLower)
           )
-        );
-      });
+      );
     }
 
     return blocks;
