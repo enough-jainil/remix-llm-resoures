@@ -55,7 +55,7 @@ export default function ResourceDetail() {
               d="M15 19l-7-7 7-7"
             />
           </svg>
-          Back to Resources
+          Back to All Resources
         </Link>
 
         {/* Category Tag */}
