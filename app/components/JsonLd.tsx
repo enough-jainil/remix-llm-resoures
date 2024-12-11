@@ -6,22 +6,22 @@ export default function JsonLd() {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "LLM Resources Hub",
+          name: "MemoryView AI Resources Hub",
           description:
-            "Comprehensive collection of Large Language Model (LLM) resources, tutorials, and tools",
-          url: "https://resources.doreturn.in",
+            "MemoryView AI Resources Hub: Your go-to platform for cutting-edge Large Language Model (LLM) resources, in-depth tutorials, and powerful AI tools to accelerate your learning and projects.",
+          url: "https://memoryview.in",
           potentialAction: {
             "@type": "SearchAction",
             target: {
               "@type": "EntryPoint",
               urlTemplate:
-                "https://resources.doreturn.in/search?q={search_term_string}",
+                "https://memoryview.in/search?q={search_term_string}",
             },
             "query-input": "required name=search_term_string",
           },
           sameAs: [
-            "https://twitter.com/languagemodels",
-            "https://github.com/languagemodels",
+            "https://twitter.com/doreturn_in",
+            "https://github.com/enough-jainil",
           ],
           keywords: [
             "LLM",
@@ -36,6 +36,16 @@ export default function JsonLd() {
             "LLM Development",
             "LLM Applications",
           ],
+          author: {
+            "@type": "Person",
+            name: "Jainil Prajapati",
+          },
+          copyrightYear: new Date().getFullYear(),
+          inLanguage: "en",
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": "https://memoryview.in",
+          },
         }),
       }}
     />
