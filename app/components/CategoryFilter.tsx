@@ -60,7 +60,7 @@ export default function CategoryFilter() {
   );
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 max-w-6xl mx-auto">
       {/* Main categories - Scrollable */}
       <div className="relative">
         <div className="overflow-x-auto pb-2 -mx-4 px-4 md:overflow-x-visible">

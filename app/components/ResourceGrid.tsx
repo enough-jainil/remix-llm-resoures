@@ -84,12 +84,14 @@ const ResourceBlock = ({
             </li>
           ))}
         </ul>
-        <button
-          onClick={() => setIsViewAllOpen(true)}
-          className="w-full mt-4 py-2.5 px-4 bg-[#c5b358]/80 hover:bg-zinc-700/80 text-zinc-100 text-sm rounded-full transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600/50 hover:shadow-lg hover:shadow-zinc-900/20"
-        >
-          View All →
-        </button>
+        <div className="mt-auto pt-4">
+          <button
+            onClick={() => setIsViewAllOpen(true)}
+            className="w-full py-2.5 px-4 bg-[#c5b358]/80 hover:bg-zinc-700/80 text-zinc-100 text-sm rounded-full transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600/50 hover:shadow-lg hover:shadow-zinc-900/20"
+          >
+            View All →
+          </button>
+        </div>
       </div>
 
       <ViewAll
