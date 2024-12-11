@@ -15,7 +15,11 @@ import "./styles/custom.css";
 import "./styles/colors.css";
 
 export const links: LinksFunction = () => [
-  // Removed Google Fonts preconnect links
+  {
+    rel: "preload",
+    href: "/tailwind.css",
+    as: "style",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -29,9 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <CategoryProvider>
-          <SearchProvider>
-            {children}
-          </SearchProvider>
+          <SearchProvider>{children}</SearchProvider>
         </CategoryProvider>
         <ScrollRestoration />
         <Scripts />
