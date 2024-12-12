@@ -3,7 +3,7 @@ import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
 import { useState, Suspense, useMemo } from "react";
-import SkeletonLoader from "./SkeletonLoader";
+// import SkeletonLoader from "./SkeletonLoader";
 
 interface Resource {
   id: number;
@@ -125,7 +125,7 @@ const ResourceBlock = ({
 //     ))}
 //   </div>
 // );
-const LoadingGrid = () => <SkeletonLoader />;
+// const LoadingGrid = () => <SkeletonLoader />;
 
 const useFilteredResources = (
   selectedCategory: string,
@@ -217,18 +217,18 @@ export default function ResourceGrid() {
 
   return (
     <>
-      <Suspense fallback={<LoadingGrid />}>
+      {/* <Suspense fallback={<LoadingGrid />}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
           {getDisplayBlocks().map((block, index) => (
             <ResourceBlock key={index} {...block} />
           ))}
         </div>
-      </Suspense>
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
+      </Suspense> */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
         {getDisplayBlocks().map((block, index) => (
           <ResourceBlock key={index} {...block} />
         ))}
-      </div> */}
+      </div>
     </>
   );
 }

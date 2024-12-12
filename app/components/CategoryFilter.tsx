@@ -64,7 +64,7 @@ export default function CategoryFilter() {
       {/* Main categories - Scrollable */}
       <div className="relative">
         <div className="overflow-x-auto pb-2 -mx-4 px-4 md:overflow-x-visible">
-          <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center">
+          <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center custom-scrollbar">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -86,7 +86,7 @@ export default function CategoryFilter() {
       {currentMainCategory?.subCategories?.length > 0 && (
         <div className="relative">
           <div className="overflow-x-auto pb-2 -mx-4 px-4 md:overflow-x-visible">
-            <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center">
+            <div className="flex flex-wrap gap-2 min-w-max md:min-w-0 justify-start md:justify-center custom-scrollbar">
               {currentMainCategory.subCategories.map((subCat) => (
                 <button
                   key={subCat.id}
