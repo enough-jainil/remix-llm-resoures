@@ -8,25 +8,27 @@ import ContactSection from "~/components/ContactSection";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "MemoryView AI Resources Hub" },
+    {
+      title: "MemoryView AI Resources Hub - Your Ultimate LLM Resource Center",
+    },
     {
       name: "description",
       content:
-        "MemoryView AI Resources Hub: Your go-to platform for cutting-edge Large Language Model (LLM) resources, in-depth tutorials, and powerful AI tools to accelerate your learning and projects.",
+        "Discover the MemoryView AI Resources Hub, your premier destination for comprehensive Large Language Model (LLM) resources, expert tutorials, and innovative AI tools designed to enhance your learning and projects.",
     },
     {
       name: "keywords",
       content:
-        "LLM, Large Language Models, AI resources, Machine Learning tutorials, ChatGPT tutorials, AI courses, LLM Resources Hub, LLM Tools, LLM Tutorials, LLM Development, LLM Applications",
+        "LLM, Large Language Models, AI resources, Machine Learning tutorials, ChatGPT tutorials, AI courses, LLM Resources Hub, LLM Tools, LLM Tutorials, LLM Development, LLM Applications, AI learning, AI tools, educational resources",
     },
     {
       property: "og:title",
-      content: "MemoryView AI Resources Hub",
+      content: "MemoryView AI Resources Hub - Explore LLM Resources",
     },
     {
       property: "og:description",
       content:
-        "MemoryView AI Resources Hub: Your go-to platform for cutting-edge Large Language Model (LLM) resources, in-depth tutorials, and powerful AI tools to accelerate your learning and projects.",
+        "Join the MemoryView AI Resources Hub for unparalleled access to cutting-edge LLM resources, in-depth tutorials, and powerful AI tools to accelerate your learning journey.",
     },
     {
       property: "og:url",
@@ -34,10 +36,19 @@ export const meta: MetaFunction = () => {
     },
     {
       property: "og:image",
-      content: "public/featuredimage.png", // Update with the actual path to your featured image
+      content: "public/featuredimage.png", // Ensure this path is correct for your featured image
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    {
+      property: "og:site_name",
+      content: "MemoryView AI Resources Hub",
     },
   ];
 };
+
 export default function Index() {
   return (
     <CategoryProvider>
