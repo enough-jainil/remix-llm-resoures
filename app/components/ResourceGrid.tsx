@@ -2,7 +2,7 @@ import { resourceBlocks } from "~/data/resources";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
-import { useState, Suspense } from "react";
+import { useState, Suspense, useMemo } from "react";
 
 interface Resource {
   id: number;
@@ -125,6 +125,50 @@ const LoadingGrid = () => (
     ))}
   </div>
 );
+
+const useFilteredResources = (
+  selectedCategory: string,
+  searchQuery: string
+) => {
+  return useMemo(() => {
+    let blocks = resourceBlocks;
+
+    if (selectedCategory && selectedCategory !== "all") {
+      const [mainTag, subTag, subSubTag] = selectedCategory.split("-");
+
+      blocks = blocks.filter((block) => {
+        if (subSubTag) {
+          return (
+            block.tag === mainTag &&
+            block.tag2 === subTag &&
+            block.tag3 === subSubTag
+          );
+        }
+        if (subTag) {
+          return block.tag === mainTag && block.tag2 === subTag;
+        }
+        return block.tag === mainTag;
+      });
+    }
+
+    // Filter by search query if present
+    if (searchQuery) {
+      const searchLower = searchQuery.toLowerCase();
+      blocks = blocks.filter(
+        (block) =>
+          block.title.toLowerCase().includes(searchLower) ||
+          block.description.toLowerCase().includes(searchLower) ||
+          block.resources.some(
+            (resource) =>
+              resource.name.toLowerCase().includes(searchLower) ||
+              resource.description?.toLowerCase().includes(searchLower)
+          )
+      );
+    }
+
+    return blocks;
+  }, [selectedCategory, searchQuery]);
+};
 
 export default function ResourceGrid() {
   const { selectedCategory } = useCategory();
