@@ -1,27 +1,52 @@
 import type { LoaderFunction } from "@remix-run/node";
+import { resourceBlocks } from "~/data/resources";
 
 export const loader: LoaderFunction = () => {
+  const baseUrl = "https://memoryview.in";
+
+  // Generate dynamic resource URLs
+  const resourceUrls = resourceBlocks.flatMap((block) =>
+    block.resources.map((resource) => ({
+      loc: `${baseUrl}/resource/${encodeURIComponent(
+        block.tag2
+      )}/${encodeURIComponent(resource.name)}`,
+      lastmod: new Date().toISOString(),
+      changefreq: "weekly",
+      priority: 0.5,
+    }))
+  );
+
   const content = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
-        <loc>https://memoryview.in</loc>
+        <loc>${baseUrl}</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
       </url>
       <url>
-        <loc>https://memoryview.in/courses</loc>
+        <loc>${baseUrl}/courses</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
       </url>
       <url>
-        <loc>https://memoryview.in/tutorials</loc>
+        <loc>${baseUrl}/tutorials</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
       </url>
-      // Add more URLs as needed
+      ${resourceUrls
+        .map(
+          (url) => `
+      <url>
+        <loc>${url.loc}</loc>
+        <lastmod>${url.lastmod}</lastmod>
+        <changefreq>${url.changefreq}</changefreq>
+        <priority>${url.priority}</priority>
+      </url>`
+        )
+        .join("")}
     </urlset>`;
 
   return new Response(content, {
