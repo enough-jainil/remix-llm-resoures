@@ -18,9 +18,9 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // console.error("Uncaught error:", error, errorInfo);
-    // Instead of logging to console, you can send this error to a logging service
-    // For example: logErrorToMyService(error, errorInfo);
+    // Log the error to an error reporting service
+    console.error("Uncaught error:", error, errorInfo);
+    // Example: logErrorToMyService(error, errorInfo);
   }
 
   public render() {
@@ -31,6 +31,9 @@ class ErrorBoundary extends Component<Props, State> {
             <h2 className="text-2xl font-bold text-white mb-4">
               Something went wrong
             </h2>
+            <p className="text-gray-400 mb-4">
+              We encountered an unexpected error. Please try again later.
+            </p>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={() => this.setState({ hasError: false })}
