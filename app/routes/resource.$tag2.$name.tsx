@@ -5,9 +5,11 @@ export default function ResourceDetail() {
   const { tag2, name } = useParams();
   console.log("Params:", { tag2, name }); // Debug log
 
-  // Find the block with matching tag2
+  // Find the block with matching tag2 or fall back to tag
   const block = resourceBlocks.find(
-    (block) => block.tag2 === decodeURIComponent(tag2)
+    (block) =>
+      block.tag2 === decodeURIComponent(tag2) ||
+      block.tag === decodeURIComponent(tag2)
   );
   console.log("Found block:", block?.title); // Debug log
 
