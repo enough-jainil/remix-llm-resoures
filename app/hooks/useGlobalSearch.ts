@@ -5,6 +5,7 @@ export interface GlobalSearchResult {
   type: "resource" | "category";
   name: string;
   description?: string;
+  description2?: string; // Added description2
   link?: string;
   tag?: string;
   tag2?: string;
@@ -45,12 +46,13 @@ export function useGlobalSearch() {
           if (
             resource.name.toLowerCase().includes(term) ||
             resource.description?.toLowerCase().includes(term) ||
-            resource.description2?.toLowerCase().includes(term)
+            resource.description2?.toLowerCase().includes(term) // Ensure description2 is included in the search
           ) {
             const result = {
               type: "resource" as const,
               name: resource.name,
               description: resource.description,
+              description2: resource.description2, // Added description2 to the result
               link: resource.link,
               tag: block.tag,
               tag2: block.tag2,

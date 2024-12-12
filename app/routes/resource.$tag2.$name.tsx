@@ -78,7 +78,7 @@ export default function ResourceDetail() {
                 {resource.name}
               </h1>
               <p className="text-zinc-400 text-base sm:text-lg mb-4">
-                {resource.description}
+                {resource.description2 || resource.description}
               </p>
               <a
                 href={resource.link}
