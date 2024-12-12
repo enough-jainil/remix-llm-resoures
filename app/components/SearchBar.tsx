@@ -2,99 +2,32 @@ import { Search, X } from "lucide-react";
 import { useSearch } from "~/context/SearchContext";
 import { useCallback, useState, useEffect, useRef } from "react";
 import debounce from "lodash/debounce";
-import { resourceBlocks } from "~/data/resources";
 import { useNavigate } from "@remix-run/react";
-
-interface SearchSuggestion {
-  type: "resource" | "category";
-  name: string;
-  description?: string;
-  link?: string;
-  tag?: string;
-  tag2?: string;
-  id?: number;
-  favicon?: string;
-}
+import { useGlobalSearch, GlobalSearchResult } from "~/hooks/useGlobalSearch";
 
 export default function SearchBar() {
   const { setSearchQuery } = useSearch();
+  const { searchAllResources } = useGlobalSearch();
   const [localValue, setLocalValue] = useState("");
-  const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
+  const [suggestions, setSuggestions] = useState<GlobalSearchResult[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  // Generate search suggestions with improved logic
-  const generateSuggestions = (value: string): SearchSuggestion[] => {
-    if (!value.trim()) return [];
-
-    const searchTerm = value.toLowerCase();
-    const results: SearchSuggestion[] = [];
-    const seenNames = new Set(); // To prevent duplicate suggestions
-
-    // Search through resource blocks
-    resourceBlocks.forEach((block) => {
-      // Add matching categories
-      if (block.title.toLowerCase().includes(searchTerm)) {
-        const suggestion = {
-          type: "category" as const,
-          name: block.title,
-          description: block.description,
-        };
-        if (!seenNames.has(suggestion.name)) {
-          results.push(suggestion);
-          seenNames.add(suggestion.name);
-        }
-      }
-
-      // Add matching resources
-      block.resources.forEach((resource) => {
-        const resourceMatch =
-          resource.name.toLowerCase().includes(searchTerm) ||
-          resource.description?.toLowerCase().includes(searchTerm);
-        if (resourceMatch) {
-          const suggestion = {
-            type: "resource" as const,
-            name: resource.name,
-            description: resource.description,
-            link: resource.link,
-            tag: block.tag,
-            tag2: block.tag2,
-            id: resource.id,
-            favicon: resource.favicon,
-          };
-          if (!seenNames.has(suggestion.name)) {
-            results.push(suggestion);
-            seenNames.add(suggestion.name);
-          }
-        }
-      });
-    });
-
-    // Sort results by relevance (length of match) and return top 5
-    results.sort((a, b) => {
-      const aMatchIndex = a.name.toLowerCase().indexOf(searchTerm);
-      const bMatchIndex = b.name.toLowerCase().indexOf(searchTerm);
-      return aMatchIndex - bMatchIndex;
-    });
-
-    return results.slice(0, 5);
-  };
-
   const debouncedSearch = useCallback(
     debounce(async (value: string) => {
       setIsLoading(true);
       try {
-        const newSuggestions = generateSuggestions(value);
-        setSuggestions(newSuggestions);
+        const results = searchAllResources(value);
+        setSuggestions(results);
         setSearchQuery(value.toLowerCase().trim());
       } finally {
         setIsLoading(false);
       }
     }, 300),
-    []
+    [searchAllResources, setSearchQuery]
   );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -153,12 +86,27 @@ export default function SearchBar() {
     }
   };
 
+  const handleSuggestionClick = (suggestion: GlobalSearchResult) => {
+    if (suggestion.type === "resource" && suggestion.link) {
+      const resourceId = suggestion.id || "1";
+      const tag = suggestion.tag2 || suggestion.tag || "default";
+      navigate(
+        `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
+          suggestion.name
+        )}`
+      );
+    }
+    setLocalValue(suggestion.name);
+    setSearchQuery(suggestion.name.toLowerCase());
+    setShowSuggestions(false);
+  };
+
   return (
     <div
       className="flex items-center max-w-2xl mx-auto relative"
       ref={searchRef}
-      onKeyDown={handleKeyDown} // Added keydown event listener to the main div
-      tabIndex={0} // Make the div focusable
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
     >
       <div className="relative w-full group">
         <input
@@ -190,54 +138,34 @@ export default function SearchBar() {
                 ${selectedIndex === index ? "bg-doreturn-gold/10" : ""}`}
               role="button"
               tabIndex={0}
-              onClick={() => {
-                if (suggestion.type === "resource" && suggestion.link) {
-                  const resourceId = suggestion.id || "1";
-                  const tag = suggestion.tag2 || suggestion.tag || "default";
-                  navigate(
-                    `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
-                      suggestion.name
-                    )}`
-                  );
-                }
-                setLocalValue(suggestion.name);
-                setSearchQuery(suggestion.name.toLowerCase());
-                setShowSuggestions(false);
-              }}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  if (suggestion.type === "resource" && suggestion.link) {
-                    const resourceId = suggestion.id || "1";
-                    const tag = suggestion.tag2 || suggestion.tag || "default";
-                    navigate(
-                      `/resource/${encodeURIComponent(
-                        tag
-                      )}/${encodeURIComponent(suggestion.name)}`
-                    );
-                  }
-                  setLocalValue(suggestion.name);
-                  setSearchQuery(suggestion.name.toLowerCase());
-                  setShowSuggestions(false);
-                }
-              }}
+              onClick={() => handleSuggestionClick(suggestion)}
             >
               <div className="flex items-center gap-3">
                 {suggestion.favicon && (
-                  <img
-                    src={suggestion.favicon}
-                    alt=""
-                    className="w-6 h-6 rounded"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
+                  <div className="bg-zinc-800/50 p-1.5 rounded-lg">
+                    <img
+                      src={suggestion.favicon}
+                      alt=""
+                      className="w-5 h-5 rounded"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  </div>
                 )}
-                <div className="flex-1">
-                  <h4 className="text-white font-medium group-hover:text-doreturn-gold/90">
-                    {suggestion.name}
-                  </h4>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h4 className="text-white font-medium truncate group-hover:text-doreturn-gold/90">
+                      {suggestion.name}
+                    </h4>
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-800/50 text-zinc-400 whitespace-nowrap">
+                      {suggestion.type === "resource"
+                        ? suggestion.category
+                        : "Category"}
+                    </span>
+                  </div>
                   {suggestion.description && (
-                    <p className="text-zinc-400 text-sm line-clamp-1">
+                    <p className="text-zinc-400 text-sm line-clamp-1 mt-0.5">
                       {suggestion.description}
                     </p>
                   )}
