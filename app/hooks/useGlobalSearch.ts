@@ -5,10 +5,11 @@ export interface GlobalSearchResult {
   type: "resource" | "category";
   name: string;
   description?: string;
-  description2?: string; // Added description2
+  description2?: string;
   link?: string;
   tag?: string;
   tag2?: string;
+  tag3?: string;
   id?: number;
   favicon?: string;
   category?: string;
