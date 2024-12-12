@@ -111,20 +111,20 @@ const ResourceBlock = ({
   );
 };
 
-// const LoadingGrid = () => (
-//   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12">
-//     {[...Array(8)].map((_, i) => (
-//       <div
-//         key={i}
-//         className="animate-pulse bg-zinc-900/50 p-5 rounded-xl h-[400px]"
-//       >
-//         <div className="h-4 bg-zinc-800 rounded w-3/4 mb-4"></div>
-//         <div className="h-3 bg-zinc-800 rounded w-full mb-2"></div>
-//         <div className="h-3 bg-zinc-800 rounded w-5/6"></div>
-//       </div>
-//     ))}
-//   </div>
-// );
+const LoadingGrid = () => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12">
+    {[...Array(8)].map((_, i) => (
+      <div
+        key={i}
+        className="animate-pulse bg-zinc-900/50 p-5 rounded-xl h-[400px]"
+      >
+        <div className="h-4 bg-zinc-800 rounded w-3/4 mb-4"></div>
+        <div className="h-3 bg-zinc-800 rounded w-full mb-2"></div>
+        <div className="h-3 bg-zinc-800 rounded w-5/6"></div>
+      </div>
+    ))}
+  </div>
+);
 
 const useFilteredResources = (
   selectedCategory: string,
@@ -216,18 +216,18 @@ export default function ResourceGrid() {
 
   return (
     <>
-      {/* <Suspense fallback={<LoadingGrid />}>
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
+      <Suspense fallback={<LoadingGrid />}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
+          {getDisplayBlocks().map((block, index) => (
+            <ResourceBlock key={index} {...block} />
+          ))}
+        </div>
+      </Suspense>
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
         {getDisplayBlocks().map((block, index) => (
           <ResourceBlock key={index} {...block} />
         ))}
-      </div>
-      </Suspense> */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
-        {getDisplayBlocks().map((block, index) => (
-          <ResourceBlock key={index} {...block} />
-        ))}
-      </div>
+      </div> */}
     </>
   );
 }
