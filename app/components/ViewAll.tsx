@@ -9,6 +9,7 @@ interface Resource {
   description?: string;
   description2?: string;
   tag2: string;
+  tag: string;
 }
 
 interface ViewAllProps {

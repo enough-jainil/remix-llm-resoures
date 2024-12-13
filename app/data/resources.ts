@@ -2335,7 +2335,7 @@ export const resourceBlocks = [
   {
     title: "Proprietary Models",
     tag: "LLM Models",
-    tag2: "Proprietary Models",
+    // tag2: "Proprietary Models",
     description: "Popular LLM applications and models",
     color: "blue",
     resources: [
