@@ -61,7 +61,7 @@ export default function Index() {
           <main className="container mx-auto px-4 py-8 relative">
             <section className="text-center mt-8 sm:mt-12 md:mt-16 lg:mt-24 mb-8 sm:mb-12 md:mb-16 space-y-4 sm:space-y-6 md:space-y-8">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/20">
-                Welcome to the AI Insights Hub
+                Welcome to the MemoryView AI Resources Hub
               </h1>
               <p className="text-gray-300 max-w-2xl mx-auto">
                 Your one-stop destination for all the resources you need to
