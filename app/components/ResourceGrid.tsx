@@ -3,6 +3,7 @@ import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
 import { useState, Suspense, useMemo } from "react";
+import { Link } from "@remix-run/react";
 // import SkeletonLoader from "./SkeletonLoader";
 
 interface Resource {
@@ -81,14 +82,14 @@ const ResourceBlock = ({
                   e.currentTarget.style.display = "none";
                 }}
               />
-              <a
-                href={resource.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/resource/${encodeURIComponent(
+                  tag2 || tag
+                )}/${encodeURIComponent(resource.name)}`}
                 className="hover:text-white transition-all duration-500 text-sm"
               >
                 {resource.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
