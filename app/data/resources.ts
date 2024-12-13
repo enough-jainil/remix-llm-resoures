@@ -1,3 +1,4 @@
+import { describe } from "node:test";
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const resourceBlocks = [
@@ -24,6 +25,8 @@ export const resourceBlocks = [
         link: "https://course.fast.ai/",
         description:
           "Top-down approach to deep learning, teaching practical applications before diving into theory.",
+        description2:
+          "Fast.ai's course that emphasizes practical applications of deep learning, making it accessible for beginners while providing a solid foundation in theory.",
       },
       {
         id: 3,
@@ -1890,6 +1893,15 @@ export const resourceBlocks = [
         description:
           "Evaluation of models' resistance to security exploits and jailbreaks.",
       },
+      {
+        id: 21,
+        name: "Hallucination Leaderboard",
+        link: "https://github.com/vectara/hallucination-leaderboard/tree/main",
+        description:
+          "Public LLM leaderboard computed using Vectara's Hughes Hallucination Evaluation Model.",
+        description2:
+          "Public LLM leaderboard computed using Vectara's Hughes Hallucination Evaluation Model. This evaluates how often an LLM introduces hallucinations when summarizing a document. We plan to update this regularly as our model and the LLMs get updated over time. Also, feel free to check out our hallucination leaderboard on Hugging Face. The rankings in this leaderboard are computed using the HHEM-2.1 hallucination evaluation model. If you are interested in the previous leaderboard, which was based on HHEM-1.0, it is available here for more details.",
+      },
     ].map((resource) => ({
       ...resource,
       favicon: getFaviconUrl(resource.link),
@@ -1899,7 +1911,6 @@ export const resourceBlocks = [
     title: "LLM Communities",
     tag: "Learning Resources",
     tag2: "Communities",
-
     description:
       "Active communities and forums for LLM developers, researchers, and enthusiasts",
     color: "pink",
@@ -1994,6 +2005,13 @@ export const resourceBlocks = [
         link: "https://discord.gg/together",
         description:
           "Community focused on deploying and fine-tuning open source LLMs.",
+      },
+      {
+        id: 14,
+        name: "r/ClaudeAI",
+        link: "https://www.reddit.com/r/ClaudeAI/",
+        description:
+          "Community focused on discussions and developments related to Claude AI.",
       },
     ].map((resource) => ({
       ...resource,
