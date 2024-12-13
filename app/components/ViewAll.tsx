@@ -48,7 +48,7 @@ export default function ViewAll({
             className="text-gray-400 hover:text-white transition-colors p-2"
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 hover:rotate-90 duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

@@ -11,6 +11,9 @@ const categories = [
   "GitHub",
   "Datasets",
   "Apps",
+  "AI",
+  "AI Agents",
+  "AI Agents",
 ];
 
 export default function SearchSection() {
