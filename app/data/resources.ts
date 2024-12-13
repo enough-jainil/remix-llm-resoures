@@ -1,4 +1,3 @@
-import { describe } from "node:test";
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const resourceBlocks = [

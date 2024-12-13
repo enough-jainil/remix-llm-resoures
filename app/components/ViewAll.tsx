@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import BookmarkButton from "~/components/BookmarkButton";
+import { routes } from "~/utils/routes";
 
 interface Resource {
   id: number;
@@ -114,9 +115,11 @@ export default function ViewAll({
                     </svg>
                   </a>
                   <Link
-                    to={`/resource/${encodeURIComponent(
-                      resource.tag2 || resource.tag
-                    )}/${encodeURIComponent(resource.name)}`}
+                    to={routes.resourceDetail(
+                      resource.tag,
+                      resource.tag2,
+                      resource.name
+                    )}
                     className="inline-flex items-center gap-2 bg-zinc-800 text-white text-sm font-medium py-2 px-4 rounded-xl hover:bg-zinc-700 transition-all duration-300"
                   >
                     View Details

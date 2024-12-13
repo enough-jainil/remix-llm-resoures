@@ -4,6 +4,7 @@ import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
 import { useState, Suspense, useMemo } from "react";
 import { Link } from "@remix-run/react";
+import { routes } from "~/utils/routes";
 // import SkeletonLoader from "./SkeletonLoader";
 
 interface Resource {
@@ -83,9 +84,7 @@ const ResourceBlock = ({
                 }}
               />
               <Link
-                to={`/resource/${encodeURIComponent(
-                  tag2 || tag
-                )}/${encodeURIComponent(resource.name)}`}
+                to={routes.resourceDetail(tag, tag2, resource.name)}
                 className="hover:text-white transition-all duration-500 text-sm"
               >
                 {resource.name}
