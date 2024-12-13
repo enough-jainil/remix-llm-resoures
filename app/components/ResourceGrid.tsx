@@ -2,10 +2,9 @@ import { resourceBlocks } from "~/data/resources";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
-import { useState, Suspense, useMemo } from "react";
+import { useState } from "react";
 import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
-// import SkeletonLoader from "./SkeletonLoader";
 
 interface Resource {
   id: number;
@@ -46,7 +45,7 @@ const ResourceBlock = ({
   });
 
   if (filteredResources.length === 0) {
-    return null;
+    return <div>Loda nahi mila</div>;
   }
 
   const resourcesWithTag = filteredResources.map((resource) => ({
@@ -111,65 +110,6 @@ const ResourceBlock = ({
     </>
   );
 };
-// const LoadingGrid = () => (
-//   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12">
-//     {[...Array(8)].map((_, i) => (
-//       <div
-//         key={i}
-//         className="animate-pulse bg-zinc-900/50 p-5 rounded-xl h-[400px]"
-//       >
-//         <div className="h-4 bg-zinc-800 rounded w-3/4 mb-4"></div>
-//         <div className="h-3 bg-zinc-800 rounded w-full mb-2"></div>
-//         <div className="h-3 bg-zinc-800 rounded w-5/6"></div>
-//       </div>
-//     ))}
-//   </div>
-// );
-// const LoadingGrid = () => <SkeletonLoader />;
-
-const useFilteredResources = (
-  selectedCategory: string,
-  searchQuery: string
-) => {
-  return useMemo(() => {
-    let blocks = resourceBlocks;
-
-    if (selectedCategory && selectedCategory !== "all") {
-      const [mainTag, subTag, subSubTag] = selectedCategory.split("-");
-
-      blocks = blocks.filter((block) => {
-        if (subSubTag) {
-          return (
-            block.tag === mainTag &&
-            block.tag2 === subTag &&
-            block.tag3 === subSubTag
-          );
-        }
-        if (subTag) {
-          return block.tag === mainTag && block.tag2 === subTag;
-        }
-        return block.tag === mainTag;
-      });
-    }
-
-    // Filter by search query if present
-    if (searchQuery) {
-      const searchLower = searchQuery.toLowerCase();
-      blocks = blocks.filter(
-        (block) =>
-          block.title.toLowerCase().includes(searchLower) ||
-          block.description.toLowerCase().includes(searchLower) ||
-          block.resources.some(
-            (resource) =>
-              resource.name.toLowerCase().includes(searchLower) ||
-              resource.description?.toLowerCase().includes(searchLower)
-          )
-      );
-    }
-
-    return blocks;
-  }, [selectedCategory, searchQuery]);
-};
 
 export default function ResourceGrid() {
   const { selectedCategory } = useCategory();
@@ -217,13 +157,6 @@ export default function ResourceGrid() {
 
   return (
     <>
-      {/* <Suspense fallback={<LoadingGrid />}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
-          {getDisplayBlocks().map((block, index) => (
-            <ResourceBlock key={index} {...block} />
-          ))}
-        </div>
-      </Suspense> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
         {getDisplayBlocks().map((block, index) => (
           <ResourceBlock key={index} {...block} />
