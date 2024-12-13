@@ -8,7 +8,7 @@ export const loader: LoaderFunction = () => {
   const resourceUrls = resourceBlocks.flatMap((block) =>
     block.resources.map((resource) => ({
       loc: `${baseUrl}/resource/${encodeURIComponent(
-        block.tag2
+        block.tag2 || block.tag
       )}/${encodeURIComponent(resource.name)}`,
       lastmod: new Date().toISOString(),
       changefreq: "weekly",
@@ -42,9 +42,10 @@ export const loader: LoaderFunction = () => {
       <url>
         <loc>${url.loc}</loc>
         <lastmod>${url.lastmod}</lastmod>
-        <changefreq>${url.changefreq}</changefreq>
-        <priority>${url.priority}</priority>
-      </url>`
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+      </url>
+      `
         )
         .join("")}
     </urlset>`;
