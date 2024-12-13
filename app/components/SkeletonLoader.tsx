@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const SkeletonCard = () => (
   <div className="bg-zinc-900/50 p-6 rounded-xl border border-zinc-800/50 animate-pulse">
     {/* Header */}
