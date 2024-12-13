@@ -1,5 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { resourceBlocks } from "~/data/resources";
+import { routes } from "~/utils/routes";
 
 export const loader: LoaderFunction = () => {
   const baseUrl = "https://memoryview.in";
@@ -7,9 +8,11 @@ export const loader: LoaderFunction = () => {
   // Generate dynamic resource URLs
   const resourceUrls = resourceBlocks.flatMap((block) =>
     block.resources.map((resource) => ({
-      loc: `${baseUrl}/resource/${encodeURIComponent(
-        block.tag2 || block.tag
-      )}/${encodeURIComponent(resource.name)}`,
+      loc: `${baseUrl}${routes.resourceDetail(
+        block.tag,
+        block.tag2,
+        resource.name
+      )}`,
       lastmod: new Date().toISOString(),
       changefreq: "weekly",
       priority: 0.5,
