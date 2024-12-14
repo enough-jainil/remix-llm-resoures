@@ -159,4 +159,11 @@ export const openSourceModels = [
     link: "https://huggingface.co/stabilityai/stablelm-3b-4e1t",
     description: "Stability AI's efficient base model for fine-tuning.",
   },
+  {
+    id: 24,
+    name: "LLama",
+    link: "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
+    description:
+      "LLama is a groundbreaking large language model with 65 billion parameters, designed to tackle a wide range of natural language processing tasks. Trained on extensive datasets, LLama possesses a deep understanding of linguistic patterns and semantics, enabling it to generate coherent and contextually relevant text. With its vast parameter count, LLama excels in tasks such as text generation, sentiment analysis, language translation, and more. Its robust architecture and extensive pre-training make it a versatile tool for researchers, developers, and businesses seeking to leverage state-of-the-art language processing capabilities.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
