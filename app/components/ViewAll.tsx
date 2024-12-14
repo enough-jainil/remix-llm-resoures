@@ -1,17 +1,7 @@
 import { Link } from "@remix-run/react";
 import BookmarkButton from "~/components/BookmarkButton";
 import { routes } from "~/utils/routes";
-
-interface Resource {
-  id: number;
-  name: string;
-  link: string;
-  favicon: string;
-  description?: string;
-  description2?: string;
-  tag2: string;
-  tag: string;
-}
+import { Resource } from "~/types/resource";
 
 interface ViewAllProps {
   isOpen: boolean;

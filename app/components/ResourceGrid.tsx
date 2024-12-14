@@ -1,29 +1,11 @@
-import { resourceBlocks } from "~/data/resources";
+import { ResourceBlockProps } from "~/types/resource";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
 import { useState } from "react";
 import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
-
-interface Resource {
-  id: number;
-  name: string;
-  link: string;
-  favicon: string;
-  description?: string;
-  description2?: string;
-}
-
-interface ResourceBlockProps {
-  title: string;
-  description: string;
-  resources: Resource[];
-  color?: string;
-  tag: string;
-  tag2?: string;
-  tag3?: string;
-}
+import { resourceBlocks } from "~/data/resources";
 
 const ResourceBlock = ({
   title,
