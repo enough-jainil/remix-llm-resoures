@@ -27,7 +27,7 @@ const ResourceBlock = ({
   });
 
   if (filteredResources.length === 0) {
-    return <div>Loda nahi mila</div>;
+    return <div>No resources found</div>;
   }
 
   const resourcesWithTag = filteredResources.map((resource) => ({
