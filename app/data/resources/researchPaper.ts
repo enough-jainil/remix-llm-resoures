@@ -312,5 +312,16 @@ export const researchPapers = [
     name: "Quantifying Complexity in Closed Systems",
     link: "https://arxiv.org/abs/2201.09152",
     description: "Analysis of complexity measures in closed dynamical systems.",
+    description2:
+      "Generative Adversarial Networks (GANs) are machine learning methods that are used in many important and novel applications. For example, in imaging science, GANs are effectively utilized in generating image datasets, photographs of human faces, image and video captioning, image-to-image translation, text-to-image translation, video prediction, and 3D object generation to name a few. In this paper, we discuss how GANs can be used to create an artificial world. More specifically, we discuss how GANs help to describe an image utilizing image/video captioning methods and how to translate the image to a new image using image-to-image translation frameworks in a theme we desire. We articulate how GANs impact creating a customized world. Comments: Computational Science and Computational Intelligence; 2021 International Conference on IEEE CPS (IEEE XPLORE, Scopus), IEEE, 2021. Subjects: Computer Vision and Pattern Recognition (cs.CV); Machine Learning (cs.LG); Image and Video Processing (eess.IV). Cite as: arXiv:2201.09152 [cs.CV] (or arXiv:2201.09152v1 [cs.CV] for this version) https://doi.org/10.48550/arXiv.2201.09152 Focus to learn more Submission history From: Soheyla Amirian [view email] [v1] Sun, 23 Jan 2022 00:57:02 UTC (5,065 KB)",
+  },
+  {
+    id: 46,
+    name: "Byte Latent Transformer: Patches Scale Better Than Tokens",
+    link: "https://ai.meta.com/research/publications/byte-latent-transformer-patches-scale-better-than-tokens/",
+    description:
+      "New byte-level LLM architecture that matches tokenization-based performance with improved efficiency and robustness.",
+    description2:
+      "We introduce the Byte Latent Transformer (BLT), a new byte-level LLM architecture that, for the first time, matches tokenization-based LLM performance at scale with significant improvements in inference efficiency and robustness. BLT encodes bytes into dynamically sized patches, which serve as the primary units of computation. Patches are segmented dynamically based on the entropy of the next byte, allocating more compute and model capacity where increased data complexity demands it. We present the first flop controlled scaling study of byte-level models up to 8B parameters with 4T training bytes. Our results demonstrate the feasibility of scaling models trained on raw bytes without a fixed-vocabulary. Both training and inference efficiency improve due to dynamically selecting long patches when data is predictable, along with qualitative improvements on reasoning and long tail generalization. Overall, for fixed inference costs, BLT",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
