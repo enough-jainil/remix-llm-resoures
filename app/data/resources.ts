@@ -11,6 +11,7 @@ import { llmCommunities } from "./resources/llmCommunities";
 import { llmDeployment } from "./resources/llmDeployment";
 import { openSourceModels } from "./resources/openSourceModels";
 import { proprietaryModels } from "./resources/proprietaryModels";
+import { proprietaryApps } from "./resources/proprietaryApps";
 // Import other resource blocks as needed
 
 export const resourceBlocks = [
@@ -62,13 +63,6 @@ export const resourceBlocks = [
     resources: dataProcessingTools,
   },
   {
-    title: "Open Source Apps / Projects",
-    tag: "Learning Resources",
-    tag2: "Open Source Apps / Projects",
-    description: "Ready-to-use applications and implementations",
-    resources: openSourceApps,
-  },
-  {
     title: "Datasets",
     tag: "Learning Resources",
     tag2: "Datasets",
@@ -113,5 +107,19 @@ export const resourceBlocks = [
     tag2: "Proprietary Models",
     description: "Popular LLM applications and models",
     resources: proprietaryModels,
+  },
+  {
+    title: "Open Source Apps / Projects",
+    tag: "Apps",
+    tag2: "Open Source Apps / Projects",
+    description: "Ready-to-use applications and implementations",
+    resources: openSourceApps,
+  },
+  {
+    title: "Proprietary Apps / Projects",
+    tag: "Apps",
+    tag2: "Proprietary Apps / Projects",
+    description: "Ready-to-use applications and implementations",
+    resources: proprietaryApps,
   },
 ];

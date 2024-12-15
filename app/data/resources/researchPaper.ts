@@ -324,4 +324,21 @@ export const researchPapers = [
     description2:
       "We introduce the Byte Latent Transformer (BLT), a new byte-level LLM architecture that, for the first time, matches tokenization-based LLM performance at scale with significant improvements in inference efficiency and robustness. BLT encodes bytes into dynamically sized patches, which serve as the primary units of computation. Patches are segmented dynamically based on the entropy of the next byte, allocating more compute and model capacity where increased data complexity demands it. We present the first flop controlled scaling study of byte-level models up to 8B parameters with 4T training bytes. Our results demonstrate the feasibility of scaling models trained on raw bytes without a fixed-vocabulary. Both training and inference efficiency improve due to dynamically selecting long patches when data is predictable, along with qualitative improvements on reasoning and long tail generalization. Overall, for fixed inference costs, BLT",
   },
+  {
+    id: 47,
+    name: "Leffa: Open-Source Virtual Try-On",
+    link: "https://github.com/franciszzj/Leffa",
+    description:
+      "Leffa is a unified framework introduced by Meta that generates new images based on reference images, allowing users to switch between different clothing and poses. It preserves fine-grained details and reduces distortion compared to previous methods.",
+  },
+  {
+    id: 48,
+    name: "Meta Video Seal",
+    link: "https://aidemos.meta.com/videoseal",
+    description:
+      "Meta Video Seal is an open-source model for video watermarking that adds invisible watermarks to videos, which are imperceptible to the naked eye. It can include hidden messages and is designed to be tamper-resistant.",
+    description2:
+      "The implanted watermarks can withstand distortion attempts such as flipping and blurring, preventing video theft or tampering. The watermark and hidden message can be revealed to verify the source of the video.",
+    github: "https://github.com/facebookresearch/videoseal",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
