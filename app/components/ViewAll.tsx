@@ -22,6 +22,9 @@ export default function ViewAll({
     <div
       className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      role="dialog"
     >
       <div
         className="bg-[#1A1A1A] rounded-2xl p-8 w-full max-w-6xl max-h-[85vh] overflow-hidden flex flex-col border border-doreturn-gold/30"
@@ -37,6 +40,12 @@ export default function ViewAll({
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors p-2"
+            aria-label="Close modal"
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                onClose();
+              }
+            }}
           >
             <svg
               className="w-6 h-6 hover:rotate-90 duration-300"
