@@ -8,7 +8,6 @@ import {
 } from "@remix-run/react";
 import { SearchProvider } from "./context/SearchContext";
 import { CategoryProvider } from "./context/CategoryContext";
-import { BookmarkProvider } from "~/context/BookmarkContext";
 
 import "./tailwind.css";
 import "./styles/custom.css";
@@ -24,11 +23,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <BookmarkProvider>
-          <CategoryProvider>
-            <SearchProvider>{children}</SearchProvider>
-          </CategoryProvider>
-        </BookmarkProvider>
+        <CategoryProvider>
+          <SearchProvider>{children}</SearchProvider>
+        </CategoryProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

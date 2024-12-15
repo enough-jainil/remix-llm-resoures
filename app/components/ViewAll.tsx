@@ -1,5 +1,4 @@
 import { Link } from "@remix-run/react";
-import BookmarkButton from "~/components/BookmarkButton";
 import { routes } from "~/utils/routes";
 import { Resource } from "~/types/resource";
 
@@ -90,8 +89,6 @@ export default function ViewAll({
                       {resource.name}
                     </h3>
                   </div>
-                  <BookmarkButton resource={resource} />
-                  {/* Button to bookmark the resource */}
                 </div>
                 <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
                   {resource.description ||
