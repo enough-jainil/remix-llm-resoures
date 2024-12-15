@@ -55,4 +55,13 @@ export const proprietaryModels = [
     description2:
       "Phi-3 models, including Phi-3-mini, Phi-3-small, and Phi-3-medium, are designed for cost-effective performance in language, reasoning, coding, and math tasks. Phi-3-mini supports context lengths of up to 128K tokens and is instruction-tuned for immediate usability. These models are ideal for resource-constrained environments and latency-sensitive applications, making them accessible for a wide range of generative AI applications.",
   },
+  {
+    id: 7,
+    name: "Pixtral Large",
+    link: "https://huggingface.co/mistralai/Pixtral-Large-Instruct-2411",
+    description:
+      "A 124B open-weights multimodal model built on top of Mistral Large 2.",
+    description2:
+      "Pixtral Large demonstrates frontier-class multimodal performance, excelling on benchmarks like MathVista, DocVQA, and VQAv2. It features a 123B multimodal decoder and a 1B parameter vision encoder, with a 128K context window that can fit a minimum of 30 high-resolution images. Available under the Mistral Research License for research and educational use, and the Mistral Commercial License for commercial purposes.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
