@@ -179,15 +179,4 @@ export const openSourceModels = [
     description2:
       "DeepSeek-V2.5 is an open-source model designed for general-purpose tasks and coding, highly competitive with leading models like GPT-4 and LLaMA3. It features innovative technologies such as Multi-head Latent Attention (MLA) for improved efficiency and is available for both academic and commercial use.",
   },
-
-  // New Qwen model entry
-  {
-    id: 26,
-    name: "Qwen",
-    link: "https://github.com/QwenLM/Qwen",
-    description:
-      "A family of large language models (LLMs) and multimodal models developed by Alibaba Cloud.",
-    description2:
-      "Qwen is designed for various tasks, including text generation, image understanding, and conversational AI. Built on a transformer architecture, it has been pre-trained on over 2.2 trillion text tokens, enabling it to excel in natural language understanding and generation. The Qwen series aims to democratize AI technology by making these models publicly available, fostering innovation and collaboration in the AI community.",
-  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
