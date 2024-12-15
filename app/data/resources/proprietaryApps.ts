@@ -17,4 +17,13 @@ export const proprietaryApps = [
     description2:
       "Meshtron enables the generation of complex 3D object meshes with unprecedented resolution and fidelity, making it suitable for animation, gaming, and virtual environments.",
   },
+  {
+    id: 3,
+    name: "NotebookLM",
+    link: "https://notebooklm.google.com/", // Placeholder link, update with the actual link if available
+    description:
+      "NotebookLM Updates｜Audio Interactivity and more. Join the conversation with the podcast you're listening to! NotebookLM Update Brings New User Interface, Audio Interactivity, and a Premium Version NotebookLM Plus!🧵1/4",
+    description2:
+      "NotebookLM has introduced a new interface that optimizes the management and generation of new content based on your sources. The interface is redesigned into three areas: the 'Sources' panel manages the core information of your project, the 'Chat' panel discusses your sources through a conversational AI interface with citations, and the 'Studio' panel allows you to create new content from your sources with a single click, such as study guides, briefing documents, and audio overviews. NotebookLM is beginning to roll out the ability to 'join' conversations in audio overviews. Users can ask questions or request explanations of concepts in different ways using voice, as if they have a personal tutor or guide who listens attentively and responds directly, drawing from the knowledge in your sources. NotebookLM Plus: This is the premium subscription version of NotebookLM, offering new features and higher usage limits for heavy users, teams, and enterprises. Subscribers will receive benefits including more than five times the number of audio overviews, notebooks, and sources per notebook; the ability to customize the style and length of notebook responses; shared team notebooks with usage analytics; and additional privacy and security protections.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

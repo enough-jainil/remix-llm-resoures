@@ -5,16 +5,33 @@ export default function ContactSection() {
   return (
     <section className="mt-16 max-w-3xl mx-auto p-6 bg-bg-secondary rounded-3xl border border-border-primary">
       <h2 className="text-3xl font-semibold text-text-primary text-center mb-6">
-        Want to list your open-source project or app? <br />
-        Or add or update your resource?
+        Want to showcase your open-source project or app? <br />
+        Or would you like to add or update a resource?
       </h2>
       <p className="text-text-secondary text-center text-lg mb-4">
-        Make an issue on GitHub or send a DM on Twitter/X or Email us, we will
-        review and list your project here. (also if there is any issue with your
-        resource or bug, we will fix it)
+        For project submissions or issues, please create a GitHub issue or DM us
+        on Twitter/X. <br /> Join our Discord for details and feedback.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://discord.gg/your-discord-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 bg-doreturn-gold/10 text-doreturn-gold 
+            rounded-3xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 
+            transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path d="M104,140a12,12,0,1,1-12-12A12,12,0,0,1,104,140Zm60-12a12,12,0,1,0,12,12A12,12,0,0,0,164,128Zm74.45,64.9-67,29.71a16.17,16.17,0,0,1-21.71-9.1l-8.11-22q-6.72.45-13.63.46t-13.63-.46l-8.11,22a16.18,16.18,0,0,1-21.71,9.1l-67-29.71a15.93,15.93,0,0,1-9.06-18.51L38,58A16.07,16.07,0,0,1,51,46.14l36.06-5.93a16.22,16.22,0,0,1,18.26,11.88l3.26,12.84Q118.11,64,128,64t19.4.93l3.26-12.84a16.21,16.21,0,0,1,18.26-11.88L205,46.14A16.07,16.07,0,0,1,218,58l29.53,116.38A15.93,15.93,0,0,1,238.45,192.9ZM232,178.28,202.47,62s0,0-.08,0L166.33,56a.17.17,0,0,0-.17,0l-2.83,11.14c5,.94,10,2.06,14.83,3.42A8,8,0,0,1,176,86.31a8.09,8.09,0,0,1-2.16-.3A172.25,172.25,0,0,0,128,80a172.25,172.25,0,0,0-45.84,6,8,8,0,1,1-4.32-15.4c4.82-1.36,9.78-2.48,14.82-3.42L89.83,56s0,0-.12,0h0L53.61,61.93a.17.17,0,0,0-.09,0L24,178.33,91,208a.23.23,0,0,0,.22,0L98,189.72a173.2,173.2,0,0,1-20.14-4.32A8,8,0,0,1,82.16,170,171.85,171.85,0,0,0,128,176a171.85,171.85,0,0,0,45.84-6,8,8,0,0,1,4.32,15.41A173.2,173.2,0,0,1,158,189.72L164.75,208a.22.22,0,0,0,.21,0Z"></path>
+          </svg>
+          <span>Discord</span>
+        </a>
         <a
           href="https://github.com/enough-jainil/remix-llm-resoures/issues/new"
           className="flex items-center gap-2 px-6 py-3 bg-doreturn-gold/10 text-doreturn-gold 
@@ -49,22 +66,6 @@ export default function ContactSection() {
             <path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L143.24,99.34,102.75,35.71A8,8,0,0,0,96,32H48a8,8,0,0,0-6.75,12.3l62.6,98.37-61.77,68a8,8,0,1,0,11.84,10.76l58.84-64.72,40.49,63.63A8,8,0,0,0,160,224h48a8,8,0,0,0,6.75-12.29ZM164.39,208,62.57,48h29L193.43,208Z"></path>
           </svg>
           <span>Twitter/X</span>
-        </a>
-        <a
-          href="mailto:resources-llm@doreturn.in"
-          className="flex items-center gap-2 px-6 py-3 bg-doreturn-gold/10 text-doreturn-gold 
-            rounded-3xl border border-doreturn-gold/30 hover:border-doreturn-gold/50 
-            transition-all duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 256 256"
-          >
-            <path d="M231.87,114l-168-95.89A16,16,0,0,0,40.92,37.34L71.55,128,40.92,218.67A16,16,0,0,0,56,240a16.15,16.15,0,0,0,7.93-2.1l167.92-96.05a16,16,0,0,0,.05-27.89ZM56,224a.56.56,0,0,0,0-.12L85.74,136H144a8,8,0,0,0,0-16H85.74L56.06,32.16A.46.46,0,0,0,56,32l168,95.83Z"></path>
-          </svg>
-          <span>Email Us</span>
         </a>
       </div>
     </section>

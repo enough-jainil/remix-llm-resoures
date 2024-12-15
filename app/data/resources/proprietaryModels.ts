@@ -20,6 +20,12 @@ export const proprietaryModels = [
       "Gemini is Google's latest AI model, designed to leverage advanced machine learning techniques for accurate and context-aware responses. It excels in various applications, including natural language understanding, image processing, and real-time data analysis. Gemini's architecture allows it to handle complex queries and provide insightful answers, making it suitable for both casual users and professionals seeking reliable AI assistance.",
   },
   {
+    id: 2.1,
+    name: "Gemini 2.0",
+    link: "https://deepmind.google/technologies/gemini/",
+    description: "Google DeepMind has released the Gemini 2.0 AI model.",
+  },
+  {
     id: 3,
     name: "Claude",
     link: "https://anthropic.com/claude",
