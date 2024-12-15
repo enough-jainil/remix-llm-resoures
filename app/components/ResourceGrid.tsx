@@ -1,3 +1,4 @@
+// Import necessary types and hooks
 import { ResourceBlockProps } from "~/types/resource";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
@@ -7,6 +8,7 @@ import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
 import { resourceBlocks } from "~/data/resources";
 
+// ResourceBlock component for displaying a block of resources
 const ResourceBlock = ({
   title,
   description,
@@ -14,9 +16,12 @@ const ResourceBlock = ({
   tag,
   tag2,
 }: ResourceBlockProps) => {
+  // Get the current search query from context
   const { searchQuery } = useSearch();
+  // State to manage the visibility of the "View All" modal
   const [isViewAllOpen, setIsViewAllOpen] = useState(false);
 
+  // Filter resources based on the search query
   const filteredResources = resources.filter((resource) => {
     const searchLower = searchQuery.toLowerCase();
     return (
@@ -26,10 +31,12 @@ const ResourceBlock = ({
     );
   });
 
+  // If no resources are found, display a message
   if (filteredResources.length === 0) {
     return <div>No resources found</div>;
   }
 
+  // Add tags to the filtered resources
   const resourcesWithTag = filteredResources.map((resource) => ({
     ...resource,
     tag2: tag2 || tag,
@@ -93,10 +100,13 @@ const ResourceBlock = ({
   );
 };
 
+// ResourceGrid component for displaying a grid of resource blocks
 export default function ResourceGrid() {
+  // Get the selected category and search query from context
   const { selectedCategory } = useCategory();
   const { searchQuery } = useSearch();
 
+  // Function to get the display blocks based on filters
   const getDisplayBlocks = () => {
     let blocks = resourceBlocks;
 

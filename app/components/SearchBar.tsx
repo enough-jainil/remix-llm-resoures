@@ -3,102 +3,141 @@ import { useSearch } from "~/context/SearchContext";
 import { useCallback, useState, useEffect, useRef } from "react";
 import debounce from "lodash/debounce";
 import { useNavigate } from "@remix-run/react";
-import { useGlobalSearch, GlobalSearchResult } from "~/hooks/useGlobalSearch";
+import { useGlobalSearch } from "~/hooks/useGlobalSearch";
+import { Resource, ResourceBlockProps } from "~/types/resource";
 
+// Define the structure of a global search result, extending Resource and ResourceBlockProps
+type GlobalSearchResult = Resource &
+  ResourceBlockProps & {
+    type: "resource";
+    category?: string;
+    tag?: string;
+    tag2?: string;
+    name: string;
+    link: string;
+    favicon: string;
+    description?: string;
+    description2?: string;
+  };
+
+// Main SearchBar component for searching resources
 export default function SearchBar() {
-  const { setSearchQuery } = useSearch();
-  const { searchAllResources } = useGlobalSearch();
-  const [localValue, setLocalValue] = useState("");
-  const [suggestions, setSuggestions] = useState<GlobalSearchResult[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const searchRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-  const [setIsLoading] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const { setSearchQuery } = useSearch(); // Hook to manage search query state
+  const { searchAllResources } = useGlobalSearch(); // Hook to perform global search
+  const [localValue, setLocalValue] = useState(""); // Local state for input value
+  const [suggestions, setSuggestions] = useState<GlobalSearchResult[]>([]); // State for search suggestions
+  const [showSuggestions, setShowSuggestions] = useState(false); // State to control visibility of suggestions
+  const searchRef = useRef<HTMLDivElement>(null); // Ref for the search input container
+  const navigate = useNavigate(); // Hook for navigation
+  const [isLoading, setIsLoading] = useState(false); // State to manage loading state
+  const [selectedIndex, setSelectedIndex] = useState(-1); // State to track selected suggestion index
 
+  // Debounced search function to limit the number of search calls
   const debouncedSearch = useCallback(
     debounce(async (value: string) => {
-      setIsLoading(true);
+      setIsLoading(true); // Set loading state
       try {
-        const results = searchAllResources(value);
-        setSuggestions(results);
-        setSearchQuery(value.toLowerCase().trim());
+        const results = searchAllResources(value); // Perform search
+        setSuggestions(results); // Update suggestions
+        setSearchQuery(value.toLowerCase().trim()); // Update global search query
       } finally {
-        setIsLoading(false);
+        setIsLoading(false); // Reset loading state
       }
     }, 300),
     [searchAllResources, setSearchQuery]
   );
 
+  // Cleanup function to cancel debounced search on unmount
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+
+  // Handle input change and trigger search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setLocalValue(value);
-    debouncedSearch(value);
-    setShowSuggestions(true);
+    setLocalValue(value); // Update local input value
+    debouncedSearch(value); // Trigger debounced search
+    setShowSuggestions(true); // Show suggestions
   };
 
+  // Clear the search input and suggestions
   const clearSearch = () => {
-    setLocalValue("");
-    setSearchQuery("");
-    setSuggestions([]);
-    setShowSuggestions(false);
+    setLocalValue(""); // Reset local value
+    setSearchQuery(""); // Clear global search query
+    setSuggestions([]); // Clear suggestions
+    setShowSuggestions(false); // Hide suggestions
   };
 
-  // Close suggestions when clicking outside
+  // Close suggestions when clicking outside the search bar
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         searchRef.current &&
         !searchRef.current.contains(event.target as Node)
       ) {
-        setShowSuggestions(false);
-        setSelectedIndex(-1);
+        setShowSuggestions(false); // Hide suggestions
+        setSelectedIndex(-1); // Reset selected index
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside); // Add event listener
+    return () => document.removeEventListener("mousedown", handleClickOutside); // Cleanup listener
   }, []);
 
+  // Handle keyboard navigation for suggestions
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedIndex((prev) =>
-        prev < suggestions.length - 1 ? prev + 1 : prev
-      );
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
-    } else if (e.key === "Enter" && selectedIndex >= 0) {
-      const suggestion = suggestions[selectedIndex];
-      if (suggestion.type === "resource" && suggestion.link) {
-        const resourceId = suggestion.id || "1";
-        const tag = suggestion.tag2 || suggestion.tag || "default";
-        navigate(
-          `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
-            suggestion.name
-          )}`
-        );
-      }
-      setLocalValue(suggestion.name);
-      setSearchQuery(suggestion.name.toLowerCase());
-      setShowSuggestions(false);
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setSelectedIndex((prev) =>
+          prev < suggestions.length - 1 ? prev + 1 : 0
+        ); // Move down in suggestions
+        break;
+
+      case "ArrowUp":
+        e.preventDefault();
+        setSelectedIndex((prev) =>
+          prev > 0 ? prev - 1 : suggestions.length - 1
+        ); // Move up in suggestions
+        break;
+
+      case "Enter":
+        if (selectedIndex >= 0) {
+          e.preventDefault();
+          const suggestion = suggestions[selectedIndex];
+          handleSuggestionSelect(suggestion); // Select suggestion
+        }
+        break;
+
+      case "Escape":
+        e.preventDefault();
+        clearSearch(); // Clear search on escape
+        break;
     }
+
+    // Scroll selected item into view
+    const selectedElement = document.querySelector(
+      `[data-index="${selectedIndex}"]`
+    );
+    selectedElement?.scrollIntoView({ block: "nearest" });
   };
 
+  // Handle click on a suggestion
   const handleSuggestionClick = (suggestion: GlobalSearchResult) => {
     if (suggestion.type === "resource" && suggestion.link) {
-      const resourceId = suggestion.id || "1";
-      const tag = suggestion.tag2 || suggestion.tag || "default";
+      const resourceId = suggestion.id || "1"; // Get resource ID
+      const tag = suggestion.tag2 || suggestion.tag || "default"; // Determine tag
       navigate(
         `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
           suggestion.name
         )}`
-      );
+      ); // Navigate to resource detail
     }
-    setLocalValue(suggestion.name);
-    setSearchQuery(suggestion.name.toLowerCase());
-    setShowSuggestions(false);
+    setLocalValue(suggestion.name); // Update input value
+    setSearchQuery(suggestion.name.toLowerCase()); // Update global search query
+    setShowSuggestions(false); // Hide suggestions
   };
 
   return (
@@ -115,7 +154,7 @@ export default function SearchBar() {
           onChange={handleSearch}
           onFocus={() => setShowSuggestions(true)}
           placeholder="Search resources..."
-          className="w-full px-6 py-3.5 pl-12 text-white bg-[#1A1A1A]/90 backdrop-blur-xl rounded-full border border-doreturn-gold/30 focus:border-doreturn-gold/50 focus:outline-none transition-all duration-300 text-base hover:border-doreturn-gold/40"
+          className="w-full px-6 py-3.5 pl-12 text-text-primary bg-bg-primary backdrop-blur-xl rounded-full border border-doreturn-gold/30 focus:border-doreturn-gold/50 focus:outline-none transition-all duration-300 text-base hover:border-doreturn-gold/40"
         />
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-doreturn-gold/60 h-5 w-5 group-hover:text-doreturn-gold/80 transition-colors duration-300" />
         {localValue && (
@@ -129,7 +168,7 @@ export default function SearchBar() {
       </div>
 
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-[#1A1A1A]/95 backdrop-blur-xl rounded-xl border border-doreturn-gold/20 shadow-2xl z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-bg-primary backdrop-blur-xl rounded-xl border border-border-primary shadow-2xl z-50 overflow-hidden">
           {suggestions.map((suggestion, index) => (
             <div
               key={`${suggestion.type}-${index}`}
@@ -148,7 +187,7 @@ export default function SearchBar() {
                       alt=""
                       className="w-5 h-5 rounded"
                       onError={(e) => {
-                        e.currentTarget.style.display = "none";
+                        e.currentTarget.style.display = "none"; // Hide image on error
                       }}
                     />
                   </div>

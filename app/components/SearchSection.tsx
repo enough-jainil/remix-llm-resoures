@@ -1,7 +1,9 @@
+// Import necessary hooks and context
 import { useState, useContext } from "react";
 import { SearchContext } from "~/context/SearchContext";
 import SearchBar from "./SearchBar";
 
+// Define the available categories for filtering resources
 const categories = [
   "All",
   "Free Resources",
@@ -16,12 +18,16 @@ const categories = [
   "AI Agents",
 ];
 
+// Main SearchSection component for managing search and category selection
 export default function SearchSection() {
+  // Access the search context to manage the search query
   const { setSearchQuery } = useContext(SearchContext);
+  // State to track the currently active category
   const [activeCategory, setActiveCategory] = useState("All");
 
+  // Function to handle category changes
   const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
+    setActiveCategory(category); // Update the active category
     // Optionally filter results based on category
     setSearchQuery(""); // Reset search when changing category
   };
@@ -29,7 +35,7 @@ export default function SearchSection() {
   return (
     <div className="space-y-8">
       <div className="min-h-[48px]">
-        <SearchBar />
+        <SearchBar /> {/* Render the search bar component */}
       </div>
 
       <div className="flex justify-center">
@@ -37,7 +43,7 @@ export default function SearchSection() {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => handleCategoryChange(category)}
+              onClick={() => handleCategoryChange(category)} // Handle category selection
               className={`
                 px-4 py-2 rounded-xl whitespace-nowrap transition-all duration-200
                 ${
@@ -48,7 +54,7 @@ export default function SearchSection() {
                 border hover:border-zinc-600/50
               `}
             >
-              {category}
+              {category} {/* Display the category name */}
             </button>
           ))}
         </div>

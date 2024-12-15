@@ -3,32 +3,35 @@ import BookmarkButton from "~/components/BookmarkButton";
 import { routes } from "~/utils/routes";
 import { Resource } from "~/types/resource";
 
+// Define the props for the ViewAll component
 interface ViewAllProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  resources: Resource[];
+  isOpen: boolean; // Indicates if the modal is open
+  onClose: () => void; // Function to close the modal
+  title: string; // Title of the modal
+  resources: Resource[]; // Array of resources to display
 }
 
+// Main ViewAll component for displaying a modal with a list of resources
 export default function ViewAll({
   isOpen,
   onClose,
   title,
   resources,
 }: ViewAllProps) {
+  // If the modal is not open, return null to prevent rendering
   if (!isOpen) return null;
 
   return (
     <div
       className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-      onClick={onClose}
+      onClick={onClose} // Close modal when clicking outside
       aria-modal="true"
       aria-labelledby="modal-title"
       role="dialog"
     >
       <div
         className="bg-[#1A1A1A] rounded-2xl p-8 w-full max-w-6xl max-h-[85vh] overflow-hidden flex flex-col border border-doreturn-gold/30"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
       >
         <div className="flex justify-between items-center mb-8">
           <div>
@@ -38,10 +41,11 @@ export default function ViewAll({
             </p>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} // Close modal on button click
             className="text-gray-400 hover:text-white transition-colors p-2"
             aria-label="Close modal"
             onKeyDown={(e) => {
+              // Close modal on Escape key press
               if (e.key === "Escape") {
                 onClose();
               }
@@ -77,6 +81,7 @@ export default function ViewAll({
                         alt=""
                         className="w-6 h-6 object-contain"
                         onError={(e) => {
+                          // Hide image if there's an error loading the favicon
                           e.currentTarget.style.display = "none";
                         }}
                       />
@@ -86,6 +91,7 @@ export default function ViewAll({
                     </h3>
                   </div>
                   <BookmarkButton resource={resource} />
+                  {/* Button to bookmark the resource */}
                 </div>
                 <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
                   {resource.description ||

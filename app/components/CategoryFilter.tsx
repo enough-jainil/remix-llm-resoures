@@ -1,9 +1,11 @@
 import { useCategory } from "~/context/CategoryContext";
 import { resourceBlocks } from "~/data/resources";
 
+// Function to get categories and their sub-categories from resource blocks
 const getCategories = () => {
   // Get unique main tags and their sub-tags and sub-sub-tags
   const categories = resourceBlocks.reduce((acc, block) => {
+    // Initialize the main tag if it doesn't exist
     if (!acc[block.tag]) {
       acc[block.tag] = {
         subTags: new Set(),
@@ -11,6 +13,7 @@ const getCategories = () => {
       };
     }
 
+    // Add sub-tag if it exists
     if (block.tag2) {
       acc[block.tag].subTags.add(block.tag2);
 
@@ -47,14 +50,17 @@ const getCategories = () => {
   return [{ id: "all", label: "All" }, ...categoryArray];
 };
 
+// Main component for rendering category filter
 export default function CategoryFilter() {
-  const { selectedCategory, setSelectedCategory } = useCategory();
-  const categories = getCategories();
+  const { selectedCategory, setSelectedCategory } = useCategory(); // Get selected category and setter from context
+  const categories = getCategories(); // Retrieve categories
   const [mainCategory, subCategory, subSubCategory] = (
     selectedCategory || ""
-  ).split("-");
+  ).split("-"); // Split selected category into parts
 
+  // Find the current main category based on selection
   const currentMainCategory = categories.find((c) => c.id === mainCategory);
+  // Find the current sub-category based on selection
   const currentSubCategory = currentMainCategory?.subCategories?.find(
     (sc) => sc.id === `${mainCategory}-${subCategory}`
   );

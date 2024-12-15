@@ -1,3 +1,6 @@
+// JsonLd component for embedding structured data in JSON-LD format.
+// This structured data helps search engines understand the content of the page better.
+// It includes information about the website, its author, potential actions, and keywords for SEO.
 export default function JsonLd() {
   return (
     <script
