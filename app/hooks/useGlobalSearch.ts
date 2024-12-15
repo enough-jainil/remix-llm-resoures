@@ -47,7 +47,8 @@ export function useGlobalSearch() {
           if (
             resource.name.toLowerCase().includes(term) ||
             resource.description?.toLowerCase().includes(term) ||
-            resource.description2?.toLowerCase().includes(term) // Ensure description2 is included in the search
+            resource.description2?.toLowerCase().includes(term) || // Ensure description2 is included in the search
+            resource.link.toLowerCase().includes(term) // Added link search
           ) {
             const result = {
               type: "resource" as const,

@@ -164,6 +164,19 @@ export const openSourceModels = [
     name: "LLama",
     link: "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
     description:
-      "LLama is a groundbreaking large language model with 65 billion parameters, designed to tackle a wide range of natural language processing tasks. Trained on extensive datasets, LLama possesses a deep understanding of linguistic patterns and semantics, enabling it to generate coherent and contextually relevant text. With its vast parameter count, LLama excels in tasks such as text generation, sentiment analysis, language translation, and more. Its robust architecture and extensive pre-training make it a versatile tool for researchers, developers, and businesses seeking to leverage state-of-the-art language processing capabilities.",
+      "LLama is a groundbreaking large language model with 65 billion parameters, designed to tackle a wide range of natural language processing tasks.",
+    description2:
+      "Trained on extensive datasets, LLama possesses a deep understanding of linguistic patterns and semantics, enabling it to generate coherent and contextually relevant text. With its vast parameter count, LLama excels in tasks such as text generation, sentiment analysis, language translation, and more. Its robust architecture and extensive pre-training make it a versatile tool for researchers, developers, and businesses seeking to leverage state-of-the-art language processing capabilities",
+  },
+
+  // New DeepSeek model entry
+  {
+    id: 25,
+    name: "DeepSeek-V2.5",
+    link: "https://www.deepseek.com/",
+    description:
+      "DeepSeek's flagship model, excelling in reasoning, math, and coding tasks.",
+    description2:
+      "DeepSeek-V2.5 is an open-source model designed for general-purpose tasks and coding, highly competitive with leading models like GPT-4 and LLaMA3. It features innovative technologies such as Multi-head Latent Attention (MLA) for improved efficiency and is available for both academic and commercial use.",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
