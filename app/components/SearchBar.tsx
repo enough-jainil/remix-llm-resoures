@@ -13,7 +13,7 @@ export default function SearchBar() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  const [setIsLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const debouncedSearch = useCallback(
