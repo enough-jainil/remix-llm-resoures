@@ -110,14 +110,14 @@ export const resourceBlocks = [
   },
   {
     title: "Open Source Apps / Projects",
-    tag: "Apps",
+    tag: "Apps / Projects",
     tag2: "Open Source Apps / Projects",
     description: "Ready-to-use applications and implementations",
     resources: openSourceApps,
   },
   {
     title: "Proprietary Apps / Projects",
-    tag: "Apps",
+    tag: "Apps / Projects",
     tag2: "Proprietary Apps / Projects",
     description: "Ready-to-use applications and implementations",
     resources: proprietaryApps,
