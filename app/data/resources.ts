@@ -12,6 +12,8 @@ import { llmDeployment } from "./resources/llmDeployment";
 import { openSourceModels } from "./resources/openSourceModels";
 import { proprietaryModels } from "./resources/proprietaryModels";
 import { proprietaryApps } from "./resources/proprietaryApps";
+import { openSourceGenerativeAI } from "./resources/openSourceGenerativeAI";
+import { proprietaryGenerativeAI } from "./resources/proprietaryGenerativeAI";
 // Import other resource blocks as needed
 
 export const resourceBlocks = [
@@ -107,6 +109,20 @@ export const resourceBlocks = [
     tag2: "Proprietary Models",
     description: "Popular LLM applications and models",
     resources: proprietaryModels,
+  },
+  {
+    title: "Open Source Generative AI",
+    tag: "Image Generation",
+    tag2: "Open Source Gen AI",
+    description: "Ready-to-use applications and implementations",
+    resources: openSourceGenerativeAI,
+  },
+  {
+    title: "Proprietary Generative AI",
+    tag: "Image Generation",
+    tag2: "Proprietary Gen AI",
+    description: "Ready-to-use applications and implementations",
+    resources: proprietaryGenerativeAI,
   },
   {
     title: "Open Source Apps / Projects",
