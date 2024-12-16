@@ -36,7 +36,7 @@ export const meta: MetaFunction = () => {
     },
     {
       property: "og:image",
-      content: "public/featuredimage.png", // Ensure this path is correct for your featured image
+      content: "/featuredimage.png",
     },
     {
       property: "og:type",
@@ -45,6 +45,14 @@ export const meta: MetaFunction = () => {
     {
       property: "og:site_name",
       content: "MemoryView AI Resources Hub",
+    },
+    {
+      property: "og:image:width",
+      content: "1200",
+    },
+    {
+      property: "og:image:height",
+      content: "630",
     },
   ];
 };
