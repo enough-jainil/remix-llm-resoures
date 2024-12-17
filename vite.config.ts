@@ -16,4 +16,21 @@ export default defineConfig({
   css: {
     postcss: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          resources: ["~/data/resources"],
+        },
+      },
+    },
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
 });
