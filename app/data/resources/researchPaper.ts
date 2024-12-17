@@ -362,4 +362,13 @@ export const researchPapers = [
     description2:
       "This paper presents the first diffusion-based method capable of performing text-based motion and appearance editing of general videos. By combining low-resolution spatio-temporal information from the original video with synthesized high-resolution information, the method significantly boosts fidelity. The authors introduce a new framework for image animation and demonstrate extensive qualitative and numerical experiments showcasing the remarkable editing ability of their method.",
   },
+  {
+    id: 51,
+    name: "MAV3D by Meta AI",
+    link: "https://arxiv.org/abs/2301.11280",
+    description:
+      "A method for generating 3D dynamic scenes from text descriptions using a 4D dynamic Neural Radiance Field.",
+    description2:
+      "Developed by Meta AI, MAV3D (Make-A-Video3D) is a pioneering method that generates three-dimensional dynamic scenes from textual descriptions. It employs a 4D dynamic Neural Radiance Field (NeRF) optimized for scene appearance, density, and motion consistency by querying a text-to-video diffusion-based model. The resulting dynamic video outputs can be viewed from any camera location and angle, and integrated into various 3D environments. Notably, MAV3D does not require any 3D or 4D data for training; the text-to-video model is trained solely on text-image pairs and unlabeled videos. This approach represents a significant advancement in AI-driven content creation, enabling the seamless generation of dynamic 3D scenes from simple text inputs.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
