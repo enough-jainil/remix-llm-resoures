@@ -64,4 +64,13 @@ export const proprietaryVideoGeneration = [
     description2:
       "Luma Labs' Dream Machine is an AI model designed to create high-quality, realistic, and imaginative videos based on user-provided text prompts or images. Utilizing a scalable and efficient transformer architecture trained directly on videos, Dream Machine excels at producing physically accurate, consistent, and dynamic scenes. It offers features such as keyframe editing, video extensions, and prompt enhancement, enabling users to craft complex narratives with ease. Accessible through a user-friendly web interface, Dream Machine provides both free and subscription-based plans to accommodate varying user needs.",
   },
+  {
+    id: 8,
+    name: "Dreamix",
+    link: "https://dreamix-video-editing.github.io/",
+    description:
+      "An AI model for text-guided motion and appearance editing of general videos.",
+    description2:
+      "Dreamix is a video diffusion model that enables text-based motion and appearance editing of real-world videos. By combining low-resolution spatio-temporal information from the original video with newly synthesized high-resolution content, Dreamix aligns the output with guiding text prompts. It employs a novel mixed finetuning approach to enhance motion editability and supports applications such as image animation and subject-driven video generation. Extensive experiments have demonstrated Dreamix's superior performance in producing temporally consistent and high-fidelity edited videos.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

@@ -353,4 +353,13 @@ export const researchPapers = [
     description2:
       "AI-generated content has attracted lots of attention recently, but photo-realistic video synthesis is still challenging. Although many attempts using GANs and autoregressive models have been made in this area, the visual quality and length of generated videos are far from satisfactory. Diffusion models have shown remarkable results recently but require significant computational resources. To address this, we introduce lightweight video diffusion models by leveraging a low-dimensional 3D latent space, significantly outperforming previous pixel-space video diffusion models under a limited computational budget. In addition, we propose hierarchical diffusion in the latent space such that longer videos with more than one thousand frames can be produced. To further overcome the performance degradation issue for long video generation, we propose conditional latent perturbation and unconditional guidance that effectively mitigate the accumulated errors during the extension of video length. Extensive experiments on small domain datasets of different categories suggest that our framework generates more realistic and longer videos than previous strong baselines. We additionally provide an extension to large-scale text-to-video generation to demonstrate the superiority of our work. Our code and models will be made publicly available. Comments: Computer Vision and Pattern Recognition (cs.CV); Artificial Intelligence (cs.AI). Cite as: arXiv:2211.13221 [cs.CV] (or arXiv:2211.13221v2 [cs.CV] for this version) https://doi.org/10.48550/arXiv.2211.13221",
   },
+  {
+    id: 50,
+    name: "Dreamix: Video Diffusion Models are General Video Editors",
+    link: "https://arxiv.org/abs/2302.01329",
+    description:
+      "A novel method for text-driven video editing using diffusion models.",
+    description2:
+      "This paper presents the first diffusion-based method capable of performing text-based motion and appearance editing of general videos. By combining low-resolution spatio-temporal information from the original video with synthesized high-resolution information, the method significantly boosts fidelity. The authors introduce a new framework for image animation and demonstrate extensive qualitative and numerical experiments showcasing the remarkable editing ability of their method.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

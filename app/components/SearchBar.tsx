@@ -5,6 +5,7 @@ import debounce from "lodash/debounce";
 import { useNavigate } from "@remix-run/react";
 import { useGlobalSearch } from "~/hooks/useGlobalSearch";
 import { Resource, ResourceBlockProps } from "~/types/resource";
+import { routes } from "~/utils/routes";
 
 // Define the structure of a global search result, extending Resource and ResourceBlockProps
 type GlobalSearchResult = Resource &
@@ -127,17 +128,13 @@ export default function SearchBar() {
   // Handle click on a suggestion
   const handleSuggestionClick = (suggestion: GlobalSearchResult) => {
     if (suggestion.type === "resource" && suggestion.link) {
-      const resourceId = suggestion.id || "1"; // Get resource ID
-      const tag = suggestion.tag2 || suggestion.tag || "default"; // Determine tag
-      navigate(
-        `/resource/${encodeURIComponent(tag)}/${encodeURIComponent(
-          suggestion.name
-        )}`
-      ); // Navigate to resource detail
+      const tag = suggestion.tag || "default";
+      const tag2 = suggestion.tag2;
+      navigate(routes.resourceDetail(tag, tag2, suggestion.name));
     }
-    setLocalValue(suggestion.name); // Update input value
-    setSearchQuery(suggestion.name.toLowerCase()); // Update global search query
-    setShowSuggestions(false); // Hide suggestions
+    setLocalValue(suggestion.name);
+    setSearchQuery(suggestion.name.toLowerCase());
+    setShowSuggestions(false);
   };
 
   return (
