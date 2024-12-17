@@ -102,9 +102,11 @@ export const researchPapers = [
   {
     id: 15,
     name: "Gemini",
-    link: "https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf",
+    link: "https://arxiv.org/abs/2312.11805",
     description:
       "Google's multimodal AI model (Dec 2023) trained across text, code, audio, image, and video.",
+    description2:
+      "The Gemini family consists of Ultra, Pro, and Nano sizes, suitable for applications ranging from complex reasoning tasks to on-device memory-constrained use-cases. Evaluation on a broad range of benchmarks shows that the Gemini Ultra model advances the state of the art in 30 of 32 benchmarks, achieving human-expert performance on the MMLU exam benchmark and improving the state of the art in all 20 multimodal benchmarks examined. This model's capabilities in cross-modal reasoning and language understanding enable a wide variety of use cases. For more details.",
   },
   {
     id: 16,
@@ -318,27 +320,37 @@ export const researchPapers = [
   {
     id: 46,
     name: "Byte Latent Transformer: Patches Scale Better Than Tokens",
-    link: "https://ai.meta.com/research/publications/byte-latent-transformer-patches-scale-better-than-tokens/",
+    link: "https://arxiv.org/abs/2412.09871",
     description:
       "New byte-level LLM architecture that matches tokenization-based performance with improved efficiency and robustness.",
     description2:
-      "We introduce the Byte Latent Transformer (BLT), a new byte-level LLM architecture that, for the first time, matches tokenization-based LLM performance at scale with significant improvements in inference efficiency and robustness. BLT encodes bytes into dynamically sized patches, which serve as the primary units of computation. Patches are segmented dynamically based on the entropy of the next byte, allocating more compute and model capacity where increased data complexity demands it. We present the first flop controlled scaling study of byte-level models up to 8B parameters with 4T training bytes. Our results demonstrate the feasibility of scaling models trained on raw bytes without a fixed-vocabulary. Both training and inference efficiency improve due to dynamically selecting long patches when data is predictable, along with qualitative improvements on reasoning and long tail generalization. Overall, for fixed inference costs, BLT",
+      "We introduce the Byte Latent Transformer (BLT), a new byte-level LLM architecture that, for the first time, matches tokenization-based LLM performance at scale with significant improvements in inference efficiency and robustness. BLT encodes bytes into dynamically sized patches, which serve as the primary units of computation. Patches are segmented based on the entropy of the next byte, allocating more compute and model capacity where increased data complexity demands it. We present the first FLOP controlled scaling study of byte-level models up to 8B parameters and 4T training bytes. Our results demonstrate the feasibility of scaling models trained on raw bytes without a fixed vocabulary. Both training and inference efficiency improve due to dynamically selecting long patches when data is predictable, along with qualitative improvements on reasoning and long tail generalization. Overall, for fixed inference costs, BLT shows significantly better scaling than tokenization-based models, by simultaneously growing both patch and model size.",
   },
   {
     id: 47,
-    name: "Leffa: Open-Source Virtual Try-On",
-    link: "https://github.com/franciszzj/Leffa",
+    name: "Learning Flow Fields in Attention for Controllable Person Image Generation",
+    link: "https://arxiv.org/abs/2412.08486",
     description:
-      "Leffa is a unified framework introduced by Meta that generates new images based on reference images, allowing users to switch between different clothing and poses. It preserves fine-grained details and reduces distortion compared to previous methods.",
+      "Leffa is a state-of-the-art framework developed by Zijian Zhou et al. that enables controllable person image generation based on reference images, allowing precise adjustments in appearance and pose while maintaining high image quality.",
+    description2:
+      "This framework addresses the common issue of distortion in fine-grained details by learning flow fields in attention, which guides the model to focus on the correct regions of the reference image during training. Extensive experiments demonstrate that Leffa significantly reduces detail distortion and enhances the quality of generated images.",
   },
   {
     id: 48,
-    name: "Meta Video Seal",
-    link: "https://aidemos.meta.com/videoseal",
+    name: "Meta Video Seal: Open and Efficient Video Watermarking",
+    link: "https://arxiv.org/abs/2412.09492",
     description:
-      "Meta Video Seal is an open-source model for video watermarking that adds invisible watermarks to videos, which are imperceptible to the naked eye. It can include hidden messages and is designed to be tamper-resistant.",
+      "Video Seal is an open-source model for video watermarking that embeds imperceptible signals into videos, allowing for identification and protection against tampering.",
     description2:
-      "The implanted watermarks can withstand distortion attempts such as flipping and blurring, preventing video theft or tampering. The watermark and hidden message can be revealed to verify the source of the video.",
-    github: "https://github.com/facebookresearch/videoseal",
+      "Video Seal introduces a comprehensive framework for neural video watermarking, jointly training an embedder and an extractor to ensure watermark robustness. The model applies transformations such as video codecs during training to enhance robustness against distortions like flipping and blurring. The approach includes temporal watermark propagation, converting image watermarking models to efficient video watermarking models without watermarking every high-resolution frame. Experimental results demonstrate the model's effectiveness in terms of speed, imperceptibility, and robustness, outperforming strong baselines under challenging distortions. The codebase, models, and a public demo are open-sourced under permissive licenses to foster further research and development.",
+  },
+  {
+    id: 49,
+    name: "Latent Video Diffusion Models for High-Fidelity Long Video Generation",
+    link: "https://arxiv.org/abs/2211.13221",
+    description:
+      "Lightweight video diffusion models leveraging a low-dimensional 3D latent space for high-fidelity long video generation.",
+    description2:
+      "AI-generated content has attracted lots of attention recently, but photo-realistic video synthesis is still challenging. Although many attempts using GANs and autoregressive models have been made in this area, the visual quality and length of generated videos are far from satisfactory. Diffusion models have shown remarkable results recently but require significant computational resources. To address this, we introduce lightweight video diffusion models by leveraging a low-dimensional 3D latent space, significantly outperforming previous pixel-space video diffusion models under a limited computational budget. In addition, we propose hierarchical diffusion in the latent space such that longer videos with more than one thousand frames can be produced. To further overcome the performance degradation issue for long video generation, we propose conditional latent perturbation and unconditional guidance that effectively mitigate the accumulated errors during the extension of video length. Extensive experiments on small domain datasets of different categories suggest that our framework generates more realistic and longer videos than previous strong baselines. We additionally provide an extension to large-scale text-to-video generation to demonstrate the superiority of our work. Our code and models will be made publicly available. Comments: Computer Vision and Pattern Recognition (cs.CV); Artificial Intelligence (cs.AI). Cite as: arXiv:2211.13221 [cs.CV] (or arXiv:2211.13221v2 [cs.CV] for this version) https://doi.org/10.48550/arXiv.2211.13221",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

@@ -14,6 +14,8 @@ import { proprietaryModels } from "./resources/proprietaryModels";
 import { proprietaryApps } from "./resources/proprietaryApps";
 import { openSourceGenerativeAI } from "./resources/openSourceGenerativeAI";
 import { proprietaryGenerativeAI } from "./resources/proprietaryGenerativeAI";
+import { openSourceVideoGeneration } from "./resources/openSourceVideoGeneration";
+import { proprietaryVideoGeneration } from "./resources/proprietaryVideoGeneration";
 // Import other resource blocks as needed
 
 export const resourceBlocks = [
@@ -113,16 +115,30 @@ export const resourceBlocks = [
   {
     title: "Open Source Generative AI",
     tag: "Image Generation",
-    tag2: "Open Source Gen AI",
+    tag2: "Open Source",
     description: "Ready-to-use applications and implementations",
     resources: openSourceGenerativeAI,
   },
   {
     title: "Proprietary Generative AI",
     tag: "Image Generation",
-    tag2: "Proprietary Gen AI",
+    tag2: "Proprietary",
     description: "Ready-to-use applications and implementations",
     resources: proprietaryGenerativeAI,
+  },
+  {
+    title: "Open Source Video Generation",
+    tag: "Video Generation",
+    tag2: "Open Source",
+    description: "Ready-to-use applications and implementations",
+    resources: openSourceVideoGeneration,
+  },
+  {
+    title: "Proprietary Video Generation",
+    tag: "Video Generation",
+    tag2: "Proprietary",
+    description: "Ready-to-use applications and implementations",
+    resources: proprietaryVideoGeneration,
   },
   {
     title: "Open Source Apps | Projects",
