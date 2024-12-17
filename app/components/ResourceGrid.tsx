@@ -113,7 +113,7 @@ export default function ResourceGrid() {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 50);
 
     return () => clearTimeout(timer);
   }, [selectedCategory, searchQuery]);
