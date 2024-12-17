@@ -1,4 +1,5 @@
 export interface Resource {
+  title: string;
   id: number;
   name: string;
   link: string;

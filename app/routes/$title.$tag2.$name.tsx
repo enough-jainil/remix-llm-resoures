@@ -2,22 +2,26 @@ import { useParams, Link } from "@remix-run/react";
 import { resourceBlocks } from "~/data/resources";
 
 export default function ResourceDetail() {
-  const { tag2, name } = useParams();
-  console.log("Params:", { tag2, name }); // Debug log
+  const { title, tag2, name } = useParams();
 
-  // Find the block with matching tag2 or fall back to tag
-  const block = resourceBlocks.find(
-    (block) =>
-      block.tag2 === decodeURIComponent(tag2) ||
-      block.tag === decodeURIComponent(tag2)
-  );
-  console.log("Found block:", block?.title); // Debug log
+  // Decode and slugify params
+  const decodedTitle = decodeURIComponent(title || "").toLowerCase();
+  const decodedTag2 = decodeURIComponent(tag2 || "").toLowerCase();
+  const decodedName = decodeURIComponent(name || "").toLowerCase();
 
-  // Find the resource in that block by name
+  // First find the block by matching slugified title and tag2
+  const block = resourceBlocks.find((block) => {
+    const slugifiedTitle = block.title.toLowerCase().replace(/\s+/g, "-");
+    const slugifiedTag2 = (block.tag2 || block.tag)
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+    return slugifiedTitle === decodedTitle && slugifiedTag2 === decodedTag2;
+  });
+
+  // Then find the resource by matching slugified name
   const resource = block?.resources.find(
-    (r) => r.name === decodeURIComponent(name)
+    (r) => r.name.toLowerCase().replace(/\s+/g, "-") === decodedName
   );
-  console.log("Found resource:", resource?.name); // Debug log
 
   if (!resource || !block) {
     return (
