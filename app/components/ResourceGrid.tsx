@@ -3,10 +3,11 @@ import { ResourceBlockProps } from "~/types/resource";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
 import ViewAll from "./ViewAll";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
 import { resourceBlocks } from "~/data/resources";
+import { Loader2 } from "lucide-react";
 
 // ResourceBlock component for displaying a block of resources
 const ResourceBlock = ({
@@ -105,6 +106,25 @@ export default function ResourceGrid() {
   // Get the selected category and search query from context
   const { selectedCategory } = useCategory();
   const { searchQuery } = useSearch();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time when category or search changes
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [selectedCategory, searchQuery]);
+
+  if (loading) {
+    return (
+      <div className="min-h-[400px] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-doreturn-gold" />
+      </div>
+    );
+  }
 
   // Function to get the display blocks based on filters
   const getDisplayBlocks = () => {
