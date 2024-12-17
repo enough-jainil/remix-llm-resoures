@@ -14,6 +14,7 @@ export default function ContactSection() {
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* Discord link */}
         <a
           href="https://discord.gg/your-discord-link"
           target="_blank"
@@ -32,6 +33,8 @@ export default function ContactSection() {
           </svg>
           <span>Discord</span>
         </a>
+
+        {/* GitHub link */}
         <a
           href="https://github.com/enough-jainil/remix-llm-resoures/issues/new"
           className="flex items-center gap-2 px-6 py-3 bg-doreturn-gold/10 text-doreturn-gold 
@@ -49,6 +52,7 @@ export default function ContactSection() {
           <span>GitHub</span>
         </a>
 
+        {/* Twitter/X link */}
         <a
           href="https://twitter.com/doreturn_in"
           target="_blank"

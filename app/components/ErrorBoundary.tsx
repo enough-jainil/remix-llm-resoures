@@ -1,4 +1,3 @@
-// Import necessary modules from React
 import { Component, ErrorInfo, ReactNode } from "react";
 
 // Define the props for the ErrorBoundary component
@@ -18,23 +17,22 @@ class ErrorBoundary extends Component<Props, State> {
     hasError: false,
   };
 
-  // Lifecycle method to update state when an error is caught
+  // This lifecycle method is called when an error is thrown in a child component.
+  // It updates the state to indicate that an error has occurred.
   public static getDerivedStateFromError(_: Error): State {
-    return { hasError: true }; // Set hasError to true when an error occurs
+    return { hasError: true };
   }
 
-  // Lifecycle method to log error information
+  // This lifecycle method is called after an error has been thrown.
+  // It can be used to log error information to an error reporting service.
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Log the error to an error reporting service
     console.error("Uncaught error:", error, errorInfo);
-    // Example: logErrorToMyService(error, errorInfo);
   }
 
   // Render method to display fallback UI or children components
   public render() {
-    // Check if an error has occurred
+    // If an error has occurred, display fallback UI
     if (this.state.hasError) {
-      // Display fallback UI when an error is caught
       return (
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center p-8">
@@ -55,7 +53,7 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    // Render the children components if no error has occurred
+    // If no error has occurred, render the children components
     return this.props.children;
   }
 }

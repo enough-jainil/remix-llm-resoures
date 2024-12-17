@@ -1,7 +1,3 @@
-// This hook provides a global search functionality for resources and categories.
-// It defines the structure of search results and implements a search algorithm
-// that filters resources based on a search term.
-
 import { useCallback } from "react";
 import { resourceBlocks } from "~/data/resources";
 
@@ -54,6 +50,7 @@ export function useGlobalSearch() {
 
         // Search in resources within the block
         block.resources.forEach((resource) => {
+          // Check if the resource matches the search term in various fields
           if (
             resource.name.toLowerCase().includes(term) ||
             resource.description?.toLowerCase().includes(term) ||

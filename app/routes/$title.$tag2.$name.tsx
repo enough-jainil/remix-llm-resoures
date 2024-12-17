@@ -2,27 +2,31 @@ import { useParams, Link } from "@remix-run/react";
 import { resourceBlocks } from "~/data/resources";
 
 export default function ResourceDetail() {
+  // Extract parameters from the URL
   const { title, tag2, name } = useParams();
 
-  // Decode and slugify params
+  // Decode parameters to make them URL-friendly
   const decodedTitle = decodeURIComponent(title || "").toLowerCase();
   const decodedTag2 = decodeURIComponent(tag2 || "").toLowerCase();
   const decodedName = decodeURIComponent(name || "").toLowerCase();
 
-  // First find the block by matching slugified title and tag2
+  // Find the resource block by matching slugified title and tag2
   const block = resourceBlocks.find((block) => {
+    // Create slugified versions of the block's title and tag2
     const slugifiedTitle = block.title.toLowerCase().replace(/\s+/g, "-");
     const slugifiedTag2 = (block.tag2 || block.tag)
       .toLowerCase()
       .replace(/\s+/g, "-");
+    // Return true if both slugified values match the decoded parameters
     return slugifiedTitle === decodedTitle && slugifiedTag2 === decodedTag2;
   });
 
-  // Then find the resource by matching slugified name
+  // Find the specific resource within the block by matching slugified name
   const resource = block?.resources.find(
     (r) => r.name.toLowerCase().replace(/\s+/g, "-") === decodedName
   );
 
+  // If the resource or block is not found, display a "not found" message
   if (!resource || !block) {
     return (
       <div className="min-h-screen bg-[#1A1A1A] flex items-center justify-center">
@@ -42,6 +46,7 @@ export default function ResourceDetail() {
     );
   }
 
+  // Render the resource details if found
   return (
     <div className="min-h-screen bg-[#1A1A1A]">
       <div className="lg:max-w-4xl sm:max-w-full mx-auto px-4 py-4 sm:py-8">
@@ -73,6 +78,7 @@ export default function ResourceDetail() {
                 alt=""
                 className="w-10 h-10 object-contain"
                 onError={(e) => {
+                  // Hide the image if it fails to load
                   e.currentTarget.style.display = "none";
                 }}
               />

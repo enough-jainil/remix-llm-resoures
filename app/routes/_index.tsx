@@ -6,6 +6,7 @@ import CategoryFilter from "~/components/CategoryFilter";
 import ResourceGrid from "~/components/ResourceGrid";
 import ContactSection from "~/components/ContactSection";
 
+// Meta function to define the metadata for the page, including SEO properties
 export const meta: MetaFunction = () => {
   return [
     {
@@ -57,12 +58,13 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+// Main component for the index route
 export default function Index() {
   return (
     <CategoryProvider>
       <SearchProvider>
         <div className="min-h-screen bg-[#1A1A1A] relative overflow-hidden">
-          {/* Background Effects */}
+          {/* Background effects for visual enhancement */}
           <div className="absolute inset-0 bg-gradient-to-b from-doreturn-gold/5 via-transparent to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-doreturn-gold/10 via-transparent to-transparent opacity-50 pointer-events-none" />
 
@@ -78,19 +80,21 @@ export default function Index() {
             </section>
 
             <div className="relative z-10">
-              <SearchBar />
+              <SearchBar /> {/* Search bar for querying resources */}
             </div>
 
             <div className="mt-12">
-              <CategoryFilter />
+              <CategoryFilter />{" "}
+              {/* Filter component for selecting categories */}
             </div>
 
             <div className="mt-12">
-              <ResourceGrid />
+              <ResourceGrid />{" "}
+              {/* Grid displaying resources based on selected filters */}
             </div>
 
             <div className="mt-16">
-              <ContactSection />
+              <ContactSection /> {/* Section for user contact information */}
             </div>
           </main>
         </div>

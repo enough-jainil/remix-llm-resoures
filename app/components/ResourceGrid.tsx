@@ -68,7 +68,7 @@ const ResourceBlock = ({
                 alt=""
                 className="w-4 h-4 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500"
                 onError={(e) => {
-                  e.currentTarget.style.display = "none";
+                  e.currentTarget.style.display = "none"; // Hide image if it fails to load
                 }}
               />
               <Link
@@ -82,7 +82,7 @@ const ResourceBlock = ({
         </ul>
         <div className="mt-auto pt-4">
           <button
-            onClick={() => setIsViewAllOpen(true)}
+            onClick={() => setIsViewAllOpen(true)} // Open the "View All" modal
             className="w-full py-2.5 px-4 bg-[#c5b358]/80 hover:bg-zinc-700/80 text-zinc-100 text-sm rounded-full transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600/50 hover:shadow-lg hover:shadow-zinc-900/20"
           >
             View All →
@@ -91,10 +91,10 @@ const ResourceBlock = ({
       </div>
 
       <ViewAll
-        isOpen={isViewAllOpen}
-        onClose={() => setIsViewAllOpen(false)}
+        isOpen={isViewAllOpen} // Pass the modal state to ViewAll component
+        onClose={() => setIsViewAllOpen(false)} // Close the modal
         title={title}
-        resources={resourcesWithTag}
+        resources={resourcesWithTag} // Pass filtered resources with tags
       />
     </>
   );
@@ -125,7 +125,7 @@ export default function ResourceGrid() {
         if (subTag) {
           return block.tag === mainTag && block.tag2 === subTag;
         }
-        return block.tag === mainTag;
+        return block.tag === mainTag; // Return blocks matching the main tag
       });
     }
 
@@ -134,24 +134,24 @@ export default function ResourceGrid() {
       const searchLower = searchQuery.toLowerCase();
       blocks = blocks.filter(
         (block) =>
-          block.title.toLowerCase().includes(searchLower) ||
-          block.description.toLowerCase().includes(searchLower) ||
+          block.title.toLowerCase().includes(searchLower) || // Match block title
+          block.description.toLowerCase().includes(searchLower) || // Match block description
           block.resources.some(
             (resource) =>
-              resource.name.toLowerCase().includes(searchLower) ||
-              resource.description?.toLowerCase().includes(searchLower)
+              resource.name.toLowerCase().includes(searchLower) || // Match resource name
+              resource.description?.toLowerCase().includes(searchLower) // Match resource description
           )
       );
     }
 
-    return blocks;
+    return blocks; // Return the filtered blocks
   };
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
         {getDisplayBlocks().map((block, index) => (
-          <ResourceBlock key={index} {...block} />
+          <ResourceBlock key={index} {...block} /> // Render each ResourceBlock
         ))}
       </div>
     </>

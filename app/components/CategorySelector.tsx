@@ -3,14 +3,12 @@ import { useCategory } from "~/context/CategoryContext";
 import { resourceBlocks } from "~/data/resources";
 
 // CategorySelector component for rendering category buttons
-// This component allows users to select a category from the available resource blocks.
-// It displays a button for "All" categories and buttons for each specific category.
 export default function CategorySelector() {
-  const { selectedCategory, setSelectedCategory } = useCategory(); // Get the currently selected category and the function to update it
+  // Get the currently selected category and the function to update it
+  const { selectedCategory, setSelectedCategory } = useCategory();
 
   return (
     <div className="flex flex-wrap gap-2 justify-center max-w-2xl mx-auto mt-8">
-      {/* Button to select all categories */}
       <button
         onClick={() => setSelectedCategory(null)} // Set selected category to null when "All" is clicked
         className={`px-4 py-2 rounded-full text-sm transition-all duration-300 ${
@@ -21,7 +19,6 @@ export default function CategorySelector() {
       >
         All
       </button>
-      {/* Render buttons for each resource block category */}
       {resourceBlocks.map((block) => (
         <button
           key={block.title} // Unique key for each button based on block title

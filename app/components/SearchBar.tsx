@@ -51,7 +51,7 @@ export default function SearchBar() {
   // Cleanup function to cancel debounced search on unmount
   useEffect(() => {
     return () => {
-      debouncedSearch.cancel();
+      debouncedSearch.cancel(); // Cancel the debounced search on component unmount
     };
   }, [debouncedSearch]);
 
@@ -83,8 +83,8 @@ export default function SearchBar() {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside); // Add event listener
-    return () => document.removeEventListener("mousedown", handleClickOutside); // Cleanup listener
+    document.addEventListener("mousedown", handleClickOutside); // Add event listener for clicks
+    return () => document.removeEventListener("mousedown", handleClickOutside); // Cleanup listener on unmount
   }, []);
 
   // Handle keyboard navigation for suggestions
@@ -92,16 +92,16 @@ export default function SearchBar() {
     switch (e.key) {
       case "ArrowDown":
         e.preventDefault();
-        setSelectedIndex((prev) =>
-          prev < suggestions.length - 1 ? prev + 1 : 0
-        ); // Move down in suggestions
+        setSelectedIndex(
+          (prev) => (prev < suggestions.length - 1 ? prev + 1 : 0) // Move down in suggestions
+        );
         break;
 
       case "ArrowUp":
         e.preventDefault();
-        setSelectedIndex((prev) =>
-          prev > 0 ? prev - 1 : suggestions.length - 1
-        ); // Move up in suggestions
+        setSelectedIndex(
+          (prev) => (prev > 0 ? prev - 1 : suggestions.length - 1) // Move up in suggestions
+        );
         break;
 
       case "Enter":
@@ -130,33 +130,33 @@ export default function SearchBar() {
     if (suggestion.type === "resource" && suggestion.link) {
       const tag = suggestion.tag || "default";
       const tag2 = suggestion.tag2;
-      navigate(routes.resourceDetail(tag, tag2, suggestion.name));
+      navigate(routes.resourceDetail(tag, tag2, suggestion.name)); // Navigate to resource detail
     }
-    setLocalValue(suggestion.name);
-    setSearchQuery(suggestion.name.toLowerCase());
-    setShowSuggestions(false);
+    setLocalValue(suggestion.name); // Set local input value to suggestion name
+    setSearchQuery(suggestion.name.toLowerCase()); // Update global search query
+    setShowSuggestions(false); // Hide suggestions
   };
 
   return (
     <div
       className="flex items-center max-w-2xl mx-auto relative"
       ref={searchRef}
-      onKeyDown={handleKeyDown}
+      onKeyDown={handleKeyDown} // Handle keyboard navigation
       tabIndex={0}
     >
       <div className="relative w-full group">
         <input
           type="text"
           value={localValue}
-          onChange={handleSearch}
-          onFocus={() => setShowSuggestions(true)}
+          onChange={handleSearch} // Trigger search on input change
+          onFocus={() => setShowSuggestions(true)} // Show suggestions on focus
           placeholder="Search resources..."
           className="w-full px-6 py-3.5 pl-12 text-text-primary bg-bg-primary backdrop-blur-xl rounded-full border border-doreturn-gold/30 focus:border-doreturn-gold/50 focus:outline-none transition-all duration-300 text-base hover:border-doreturn-gold/40"
         />
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-doreturn-gold/60 h-5 w-5 group-hover:text-doreturn-gold/80 transition-colors duration-300" />
         {localValue && (
           <button
-            onClick={clearSearch}
+            onClick={clearSearch} // Clear search on button click
             className="absolute right-4 top-1/2 transform -translate-y-1/2 text-doreturn-gold/60 hover:text-doreturn-gold/80 transition-colors duration-300"
           >
             <X className="h-5 w-5" />
@@ -174,7 +174,7 @@ export default function SearchBar() {
                 ${selectedIndex === index ? "bg-doreturn-gold/10" : ""}`}
               role="button"
               tabIndex={0}
-              onClick={() => handleSuggestionClick(suggestion)}
+              onClick={() => handleSuggestionClick(suggestion)} // Handle suggestion click
             >
               <div className="flex items-center gap-3">
                 {suggestion.favicon && (
