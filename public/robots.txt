@@ -1,6 +1,7 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Disallow:
 
 # Sitemap location (if you have one)
 Sitemap: https://memoryview.in/sitemap.xml 
