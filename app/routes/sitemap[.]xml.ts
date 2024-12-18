@@ -6,19 +6,44 @@ import { routes } from "~/utils/routes";
 export const loader: LoaderFunction = () => {
   const baseUrl = "https://memoryview.in";
 
-  // Generate dynamic resource URLs from resource blocks
+  // Generate URLs for all resources
   const resourceUrls = resourceBlocks.flatMap((block) =>
     block.resources.map((resource) => ({
       loc: `${baseUrl}${routes.resourceDetail(
         block.tag,
         block.tag2,
         resource.name
-      )}`, // Construct the resource URL
-      lastmod: new Date().toISOString(), // Set last modified date
-      changefreq: "weekly", // Frequency of changes
-      priority: 0.5, // Priority of the resource
+      )}`,
+      lastmod: new Date().toISOString(),
+      changefreq: "weekly",
+      priority: 0.5,
     }))
   );
+
+  // Add static URLs
+  // const staticUrls = [
+  //   {
+  //     loc: baseUrl,
+  //     lastmod: new Date().toISOString(),
+  //     changefreq: "daily",
+  //     priority: 1.0,
+  //   },
+  //   {
+  //     loc: `${baseUrl}/courses`,
+  //     lastmod: new Date().toISOString(),
+  //     changefreq: "weekly",
+  //     priority: 0.8,
+  //   },
+  //   {
+  //     loc: `${baseUrl}/tutorials`,
+  //     lastmod: new Date().toISOString(),
+  //     changefreq: "weekly",
+  //     priority: 0.8,
+  //   },
+  // ];
+
+  // Combine static and dynamic URLs
+  const allUrls = [...staticUrls, ...resourceUrls];
 
   // Function to escape XML special characters
   const escapeXml = (unsafe: string) =>
@@ -39,35 +64,17 @@ export const loader: LoaderFunction = () => {
       }
     });
 
-  // Construct the XML content for the sitemap
+  // Generate XML with all URLs
   const content = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      <url>
-        <loc>${escapeXml(baseUrl)}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-      </url>
-      <url>
-        <loc>${escapeXml(baseUrl)}/courses</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
-      <url>
-        <loc>${escapeXml(baseUrl)}/tutorials</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
-      ${resourceUrls
+      ${allUrls
         .map(
           (url) => `
       <url>
         <loc>${escapeXml(url.loc)}</loc>
         <lastmod>${url.lastmod}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
+        <changefreq>${url.changefreq}</changefreq>
+        <priority>${url.priority}</priority>
       </url>
       `
         )
@@ -77,8 +84,8 @@ export const loader: LoaderFunction = () => {
   // Return the generated XML response
   return new Response(content, {
     headers: {
-      "Content-Type": "application/xml", // Set content type to XML
-      "Content-Length": String(Buffer.from(content).length), // Set content length
+      "Content-Type": "application/xml",
+      "Content-Length": String(Buffer.from(content).length),
     },
   });
 };
