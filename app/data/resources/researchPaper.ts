@@ -389,4 +389,18 @@ export const researchPapers = [
     description2:
       "This paper introduces LiveBench, a benchmark that mitigates test set contamination and biases from human evaluations. It includes a variety of challenging tasks across math, coding, reasoning, and more, with questions sourced from recent competitions and articles. LiveBench aims to provide a fair evaluation of LLM capabilities, with ongoing updates to maintain its relevance. The authors evaluate numerous models, revealing that even top models struggle to achieve high accuracy, thus highlighting the benchmark's difficulty.",
   },
+  {
+    id: 54,
+    name: "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
+    link: "https://arxiv.org/abs/2412.10117",
+    description:
+      "An advanced model for multilingual speech synthesis, achieving high naturalness and minimal latency in streaming applications.",
+  },
+  {
+    id: 55,
+    name: "The Open Source Advantage in Large Language Models (LLMs)",
+    link: "https://arxiv.org/abs/2412.12004",
+    description:
+      "Explores the benefits of open-source models in LLMs, emphasizing democratization and community-driven development.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

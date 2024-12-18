@@ -148,4 +148,25 @@ export const videoTutorials = [
     description:
       "Research directions and challenges in language model development.",
   },
+  {
+    id: 21,
+    name: "Neural Networks: Zero to Hero - YouTube Playlist",
+    link: "https://youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ&si=XunGj0-KizQAZHET",
+    description:
+      "A comprehensive YouTube playlist covering neural networks from basics to advanced topics.",
+  },
+  {
+    id: 22,
+    name: "MIT Deep Learning Lectures",
+    link: "https://youtube.com/playlist?list=PLNONVE5W8PCTKHkDbnKIjakw_xVpI4DjT",
+    description:
+      "Comprehensive lecture series on deep learning fundamentals and applications.",
+  },
+  {
+    id: 23,
+    name: "Stanford AI Alignment Lecture",
+    link: "https://www.youtube.com/live/dO4TPJkeaaU",
+    description:
+      "In-depth discussion of AI alignment challenges and approaches.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

@@ -148,6 +148,6 @@ export const llmLeaderboards = [
     description:
       "A benchmark for LLMs designed to limit contamination and provide objective evaluation.",
     description2:
-      "LiveBench is a challenging benchmark that releases new questions monthly, ensuring a contamination-free evaluation of LLMs. It features verifiable, objective ground-truth answers for accurate scoring without LLM judges. The benchmark includes diverse tasks across multiple categories and is updated regularly to maintain its relevance. For more details, visit the [LiveBench website](https://livebench.ai/#/).",
+      "LiveBench is a challenging benchmark that releases new questions monthly, ensuring a contamination-free evaluation of LLMs. It features verifiable, objective ground-truth answers for accurate scoring without LLM judges. The benchmark includes diverse tasks across multiple categories and is updated regularly to maintain its relevance.",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

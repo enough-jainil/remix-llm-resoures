@@ -174,16 +174,58 @@ export const freeResources = [
   },
   {
     id: 25,
-    name: "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
-    link: "https://arxiv.org/abs/2412.10117",
+    name: "Neural Networks by 3Blue1Brown",
+    link: "https://www.3blue1brown.com/topics/neural-networks",
     description:
-      "An advanced model for multilingual speech synthesis, achieving high naturalness and minimal latency in streaming applications.",
+      "An engaging series of lessons covering the basics of neural networks and the math behind how they learn.",
   },
   {
     id: 26,
-    name: "The Open Source Advantage in Large Language Models (LLMs)",
-    link: "https://arxiv.org/abs/2412.12004",
+    name: "Transformer Explainer",
+    link: "https://poloclub.github.io/transformer-explainer/",
     description:
-      "Explores the benefits of open-source models in LLMs, emphasizing democratization and community-driven development.",
+      "Interactive visualization explaining transformer architecture and attention mechanisms.",
+  },
+  {
+    id: 27,
+    name: "CNN Explainer",
+    link: "https://poloclub.github.io/cnn-explainer/",
+    description:
+      "Visual and interactive explanation of Convolutional Neural Networks.",
+  },
+  {
+    id: 28,
+    name: "LLM Visualization",
+    link: "https://bbycroft.net/llm",
+    description:
+      "Interactive visualization of how large language models work internally.",
+  },
+  {
+    id: 29,
+    name: "Visual Analytics in Deep Learning",
+    link: "https://fredhohman.com/visual-analytics-in-deep-learning/",
+    description:
+      "Comprehensive resource on visualizing and understanding deep learning systems.",
+  },
+  {
+    id: 30,
+    name: "What is ChatGPT Doing?",
+    link: "https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/",
+    description:
+      "Stephen Wolfram's detailed explanation of ChatGPT's inner workings.",
+  },
+  {
+    id: 31,
+    name: "FT Guide to Generative AI",
+    link: "https://ig.ft.com/generative-ai/",
+    description:
+      "Financial Times' comprehensive visual guide to generative AI technology.",
+  },
+  {
+    id: 32,
+    name: "Knowing Machines",
+    link: "https://knowingmachines.org/models-all-the-way",
+    description:
+      "Interactive exploration of AI models and their societal implications.",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
