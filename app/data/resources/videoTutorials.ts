@@ -169,4 +169,11 @@ export const videoTutorials = [
     description:
       "In-depth discussion of AI alignment challenges and approaches.",
   },
+  {
+    id: 24,
+    name: "AI prompt engineering: A deep dive",
+    link: "https://youtu.be/T9aRN5JkmL8",
+    description:
+      "Some of Anthropic's prompt engineering experts—Amanda Askell (Alignment Finetuning), Alex Albert (Developer Relations), David Hershey (Applied AI), and Zack Witten (Prompt Engineering)—reflect on how prompt engineering has evolved, practical tips, and thoughts on how prompting might change as AI capabilities grow.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

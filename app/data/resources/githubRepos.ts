@@ -122,4 +122,47 @@ export const githubRepos = [
     link: "https://github.com/hiyouga/LLaMA-Factory",
     description: "Fine-tuning framework for LLaMA models",
   },
+  {
+    id: 21,
+    name: "Language Modeling is Compression",
+    link: "https://github.com/google-deepmind/language_modeling_is_compression?tab=readme-ov-file",
+    description:
+      "Implementation of the ICLR 2024 paper on language modeling as compression.",
+  },
+  {
+    id: 22,
+    name: "ML For Beginners",
+    link: "https://github.com/microsoft/ML-For-Beginners?WT.mc_id=academic-113596-abartolo",
+    description: "A comprehensive introduction to machine learning concepts.",
+  },
+  {
+    id: 23,
+    name: "Generative AI for Beginners",
+    link: "https://github.com/microsoft/generative-ai-for-beginners",
+    description: "Learn the basics of generative AI and its applications.",
+  },
+  {
+    id: 24,
+    name: "AI For Beginners",
+    link: "https://github.com/microsoft/AI-For-Beginners/",
+    description: "An introductory guide to AI concepts and technologies.",
+  },
+  {
+    id: 25,
+    name: "LLM Discussions",
+    link: "https://github.com/karpathy/llm.c/discussions/481",
+    description: "Community discussions on large language models.",
+  },
+  {
+    id: 26,
+    name: "Spreadsheets Are All You Need",
+    link: "https://github.com/ianand/spreadsheets-are-all-you-need?tab=readme-ov-file",
+    description: "Exploring the power of spreadsheets in data analysis.",
+  },
+  {
+    id: 27,
+    name: "Deep Dive Into AI With MLX PyTorch",
+    link: "https://github.com/neobundy/Deep-Dive-Into-AI-With-MLX-PyTorch",
+    description: "In-depth exploration of AI concepts using PyTorch.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

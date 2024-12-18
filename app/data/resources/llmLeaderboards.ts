@@ -150,4 +150,12 @@ export const llmLeaderboards = [
     description2:
       "LiveBench is a challenging benchmark that releases new questions monthly, ensuring a contamination-free evaluation of LLMs. It features verifiable, objective ground-truth answers for accurate scoring without LLM judges. The benchmark includes diverse tasks across multiple categories and is updated regularly to maintain its relevance.",
   },
+  {
+    id: 23,
+    name: "The Fastest AI Benchmark",
+    link: "https://thefastest.ai/",
+    description: "Reliable measurements for the performance of popular LLMs.",
+    description2:
+      "This site provides insights into the speed and efficiency of various language models, including metrics like Time To First Token (TTFT) and Tokens Per Second (TPS). It allows users to filter models based on different criteria and is updated daily to reflect the latest performance data.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

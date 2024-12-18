@@ -228,4 +228,18 @@ export const freeResources = [
     description:
       "Interactive exploration of AI models and their societal implications.",
   },
+  {
+    id: 33,
+    name: "Prompt Engineering Guide",
+    link: "https://www.promptingguide.ai/",
+    description:
+      "Comprehensive resource on prompt engineering techniques for optimizing interactions with large language models.",
+  },
+  {
+    id: 34,
+    name: "AI Timeline",
+    link: "https://www.fabianmosele.com/ai-timeline",
+    description:
+      "A comprehensive timeline detailing the history and evolution of AI projects and milestones.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
