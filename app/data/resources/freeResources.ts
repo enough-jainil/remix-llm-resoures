@@ -7,6 +7,8 @@ export const freeResources = [
     link: "https://huggingface.co/learn/nlp-course/chapter1/1",
     description:
       "Comprehensive course covering transformers, NLP tasks, and practical implementation with real-world examples.",
+    description2:
+      "This course provides a comprehensive introduction to natural language processing (NLP) using Hugging Face's libraries, including Transformers, Datasets, and Tokenizers. It covers key concepts and practical implementations, making it suitable for learners with a good knowledge of Python. The course is structured into chapters that guide you through the fundamentals of NLP, enabling you to tackle common problems and apply Transformer models to various tasks, including speech processing and computer vision.",
   },
   {
     id: 2,
@@ -14,6 +16,8 @@ export const freeResources = [
     link: "https://course.fast.ai/",
     description:
       "Top-down approach to deep learning, teaching practical applications before diving into theory.",
+    description2:
+      "This free course is designed for people with some coding experience who want to learn how to apply deep learning and machine learning to practical problems. It covers building and training deep learning models for various applications, including computer vision and natural language processing, using PyTorch and fastai. The course is structured into lessons that guide you through the fundamentals, enabling you to deploy models without needing special hardware or extensive math knowledge.",
   },
   {
     id: 3,
@@ -174,5 +178,12 @@ export const freeResources = [
     link: "https://arxiv.org/abs/2412.10117",
     description:
       "An advanced model for multilingual speech synthesis, achieving high naturalness and minimal latency in streaming applications.",
+  },
+  {
+    id: 26,
+    name: "The Open Source Advantage in Large Language Models (LLMs)",
+    link: "https://arxiv.org/abs/2412.12004",
+    description:
+      "Explores the benefits of open-source models in LLMs, emphasizing democratization and community-driven development.",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
