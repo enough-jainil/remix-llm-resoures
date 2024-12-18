@@ -168,4 +168,11 @@ export const freeResources = [
     description:
       "Comprehensive course on LLMs covering theory, prompting, fine-tuning, and real-world applications by Cohere.",
   },
+  {
+    id: 25,
+    name: "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
+    link: "https://arxiv.org/abs/2412.10117",
+    description:
+      "An advanced model for multilingual speech synthesis, achieving high naturalness and minimal latency in streaming applications.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
