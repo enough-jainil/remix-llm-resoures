@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
 import { Resource } from "~/types/resource";
+import { X, ArrowRight } from "lucide-react"; // Importing icons from lucide-react
 
 // Define the props for the ViewAll component
 interface ViewAllProps {
@@ -50,19 +51,8 @@ export default function ViewAll({
               }
             }}
           >
-            <svg
-              className="w-6 h-6 hover:rotate-90 duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <X className="w-6 h-6 hover:rotate-90 duration-300" />{" "}
+            {/* Using the X icon from lucide */}
           </button>
         </div>
         <div className="overflow-y-auto pr-4 custom-scrollbar flex-grow">
@@ -102,19 +92,8 @@ export default function ViewAll({
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white text-sm font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
                   >
                     Visit Resource
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
+                    <ArrowRight className="w-4 h-4" />{" "}
+                    {/* Using the ArrowRight icon from lucide */}
                   </a>
                   <Link
                     to={routes.resourceDetail(
@@ -125,19 +104,8 @@ export default function ViewAll({
                     className="inline-flex items-center gap-2 bg-zinc-800 text-white text-sm font-medium py-2 px-4 rounded-xl hover:bg-zinc-700 transition-all duration-300"
                   >
                     View Details
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                    <ArrowRight className="w-4 h-4" />{" "}
+                    {/* Using the ArrowRight icon from lucide */}
                   </Link>
                 </div>
               </div>
