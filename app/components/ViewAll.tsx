@@ -51,7 +51,7 @@ export default function ViewAll({
               }
             }}
           >
-            <X className="w-6 h-6 hover:rotate-90 duration-300" />{" "}
+            <X className="w-6 h-6 hover:rotate-90 duration-300" />
             {/* Using the X icon from lucide */}
           </button>
         </div>
@@ -92,7 +92,7 @@ export default function ViewAll({
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white text-sm font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
                   >
                     Visit Resource
-                    <ArrowRight className="w-4 h-4" />{" "}
+                    <ArrowRight className="w-4 h-4" />
                     {/* Using the ArrowRight icon from lucide */}
                   </a>
                   <Link
@@ -104,7 +104,7 @@ export default function ViewAll({
                     className="inline-flex items-center gap-2 bg-zinc-800 text-white text-sm font-medium py-2 px-4 rounded-xl hover:bg-zinc-700 transition-all duration-300"
                   >
                     View Details
-                    <ArrowRight className="w-4 h-4" />{" "}
+                    <ArrowRight className="w-4 h-4" />
                     {/* Using the ArrowRight icon from lucide */}
                   </Link>
                 </div>

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
 import { resourceBlocks } from "~/data/resources";
-import { Loader2 } from "lucide-react";
+import { FiLoader } from "react-icons/fi"; // Changed Loader2 to FiLoader
 
 // ResourceBlock component for displaying a block of resources
 const ResourceBlock = ({
@@ -113,7 +113,7 @@ export default function ResourceGrid() {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 50);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [selectedCategory, searchQuery]);
@@ -121,7 +121,8 @@ export default function ResourceGrid() {
   if (loading) {
     return (
       <div className="min-h-[400px] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-doreturn-gold" />
+        <FiLoader className="w-8 h-8 animate-spin text-doreturn-gold" />
+        {/* Changed Loader2 to FiLoader */}
       </div>
     );
   }

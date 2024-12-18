@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 import { Resource } from "~/types/resource";
-import { ChevronLeft, MoveRight } from "lucide-react"; // Importing the ChevronLeft and MoveRight icons from lucide-react
+import { FaArrowRight, FaAngleLeft } from "react-icons/fa"; // Importing the FaArrowLeft, FaArrowRight, and FaAngleLeft icons from react-icons
 
 interface ResourceCardProps {
   resource: Resource;
@@ -13,7 +13,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         to="/"
         className="inline-flex items-center gap-2 text-zinc-400 hover:text-white mb-4 transition-colors"
       >
-        <ChevronLeft className="w-5 h-5" /> {/* Using the ChevronLeft icon */}
+        <FaAngleLeft className="w-5 h-5" /> {/* Using the FaAngleLeft icon */}
         Back to All Resources
       </Link>
 
@@ -43,7 +43,8 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
             >
               Visit Resource
-              <MoveRight className="w-5 h-5" /> {/* Using the MoveRight icon */}
+              <FaArrowRight className="w-5 h-5" />
+              {/* Using the FaArrowRight icon */}
             </a>
           </div>
         </div>
