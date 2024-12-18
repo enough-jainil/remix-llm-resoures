@@ -380,4 +380,13 @@ export const researchPapers = [
     description2:
       "We introduce Best-of-N (BoN) Jailbreaking, a simple black-box algorithm that jailbreaks frontier AI systems across modalities. BoN Jailbreaking works by repeatedly sampling variations of a prompt with a combination of augmentations - such as random shuffling or capitalization for textual prompts - until a harmful response is elicited. We find that BoN Jailbreaking achieves high attack success rates (ASRs) on closed-source language models, such as 89% on GPT-4o and 78% on Claude 3.5 Sonnet when sampling 10,000 augmented prompts. Further, it is similarly effective at circumventing state-of-the-art open-source defenses like circuit breakers. BoN also seamlessly extends to other modalities: it jailbreaks vision language models (VLMs) such as GPT-4o and audio language models (ALMs) like Gemini 1.5 Pro, using modality-specific augmentations. BoN reliably improves when we sample more augmented prompts. Across all modalities, ASR, as a function of the number of samples (N), empirically follows power-law-like behavior for many orders of magnitude. BoN Jailbreaking can also be composed with other black-box algorithms for even more effective attacks - combining BoN with an optimized prefix attack achieves up to a 35% increase in ASR. Overall, our work indicates that, despite their capability, language models are sensitive to seemingly innocuous changes to inputs, which attackers can exploit across modalities.",
   },
+  {
+    id: 53,
+    name: "LiveBench: A Challenging, Contamination-Free LLM Benchmark",
+    link: "https://arxiv.org/abs/2406.19314",
+    description:
+      "LiveBench is a new benchmark designed to evaluate LLMs without the risk of test set contamination, featuring frequently-updated questions and automatic scoring.",
+    description2:
+      "This paper introduces LiveBench, a benchmark that mitigates test set contamination and biases from human evaluations. It includes a variety of challenging tasks across math, coding, reasoning, and more, with questions sourced from recent competitions and articles. LiveBench aims to provide a fair evaluation of LLM capabilities, with ongoing updates to maintain its relevance. The authors evaluate numerous models, revealing that even top models struggle to achieve high accuracy, thus highlighting the benchmark's difficulty.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

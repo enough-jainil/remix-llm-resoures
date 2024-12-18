@@ -141,4 +141,13 @@ export const llmLeaderboards = [
     description2:
       "Public LLM leaderboard computed using Vectara's Hughes Hallucination Evaluation Model. This evaluates how often an LLM introduces hallucinations when summarizing a document. We plan to update this regularly as our model and the LLMs get updated over time. Also, feel free to check out our hallucination leaderboard on Hugging Face. The rankings in this leaderboard are computed using the HHEM-2.1 hallucination evaluation model. If you are interested in the previous leaderboard, which was based on HHEM-1.0, it is available here for more details.",
   },
+  {
+    id: 22,
+    name: "LiveBench Leaderboard",
+    link: "https://livebench.ai/#/",
+    description:
+      "A benchmark for LLMs designed to limit contamination and provide objective evaluation.",
+    description2:
+      "LiveBench is a challenging benchmark that releases new questions monthly, ensuring a contamination-free evaluation of LLMs. It features verifiable, objective ground-truth answers for accurate scoring without LLM judges. The benchmark includes diverse tasks across multiple categories and is updated regularly to maintain its relevance. For more details, visit the [LiveBench website](https://livebench.ai/#/).",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
