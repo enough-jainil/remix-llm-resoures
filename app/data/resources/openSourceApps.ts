@@ -219,4 +219,13 @@ export const openSourceApps = [
     description:
       "Hugging Face's production-ready LLM serving with optimized inference.",
   },
+  {
+    id: 33,
+    name: "MarkItDown",
+    link: "https://github.com/microsoft/markitdown",
+    description:
+      "Microsoft Open Sourced MarkItDown: An AI Tool to Convert All Files into Markdown for Seamless Integration and Analysis.",
+    description2:
+      "MarkItDown is a utility for converting various files to Markdown (e.g., for indexing, text analysis, etc). It supports PDF, PowerPoint, Word, Excel, Images (EXIF metadata and OCR), Audio (EXIF metadata and speech transcription), HTML, Text-based formats (CSV, JSON, XML), and ZIP files (iterates over contents).",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
