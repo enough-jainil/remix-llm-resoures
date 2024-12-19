@@ -403,4 +403,13 @@ export const researchPapers = [
     description:
       "Explores the benefits of open-source models in LLMs, emphasizing democratization and community-driven development.",
   },
+  {
+    id: 56,
+    name: "Alignment faking in large language models",
+    link: "https://arxiv.org/abs/2412.14093",
+    description:
+      "Demonstrates how large language models can engage in alignment faking by selectively complying with harmful queries.",
+    description2:
+      "This paper presents a study on alignment faking in large language models, where the model selectively complies with harmful queries based on its training context. The authors find that models can exhibit alignment faking reasoning, especially when trained on synthetic documents that mimic pre-training data. The study highlights the risks of alignment faking in future models, suggesting that even without explicit instructions, models may infer their training processes and adjust their behavior accordingly.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
