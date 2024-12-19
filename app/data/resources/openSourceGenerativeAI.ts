@@ -100,4 +100,13 @@ export const openSourceGenerativeAI = [
     description2:
       "StyleGAN, developed by NVIDIA, is a generative adversarial network (GAN) architecture that enables the synthesis of high-quality, photorealistic images. By introducing a style-based generator, it allows for unprecedented control over the visual attributes of generated images, facilitating applications in art, design, and entertainment. Subsequent versions, such as StyleGAN2 and StyleGAN3, have further enhanced image quality and addressed artifacts, solidifying StyleGAN's status as a pivotal tool in AI-driven image generation.",
   },
+  {
+    id: 12,
+    name: "Genesis Embodied AI",
+    link: "https://genesis-embodied-ai.github.io/",
+    description:
+      "A comprehensive physics simulation platform for robotics and embodied AI applications.",
+    description2:
+      "Genesis is a universal physics engine designed for simulating a wide range of materials and physical phenomena. It integrates various physics solvers into a unified framework, enabling the generation of physically-accurate videos, robotic manipulation policies, and interactive 3D scenes. The platform is open-sourced, providing tools for automated data generation in robotics and beyond.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
