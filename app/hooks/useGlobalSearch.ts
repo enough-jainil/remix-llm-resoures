@@ -19,7 +19,16 @@ export interface GlobalSearchResult {
 
 // Configure Fuse options for optimal fuzzy searching
 const fuseOptions = {
-  keys: ["name", "description", "description2", "link"],
+  keys: [
+    "name",
+    "description",
+    "description2",
+    "link",
+    "category",
+    "tag",
+    "tag2",
+    "tag3",
+  ],
   threshold: 0.3,
   includeScore: true,
   minMatchCharLength: 2,

@@ -10,35 +10,35 @@ export const llmCommunities = [
   },
   {
     id: 2,
-    name: "r/LocalLLaMA",
+    name: "Reddit - LocalLLaMA",
     link: "https://www.reddit.com/r/LocalLLaMA/",
     description:
       "Reddit community focused on running and fine-tuning LLaMA models locally.",
   },
   {
     id: 3,
-    name: "r/MachineLearning",
+    name: "Reddit - Machine Learning",
     link: "https://www.reddit.com/r/MachineLearning/",
     description:
       "Largest ML community on Reddit, covering latest research and developments.",
   },
   {
     id: 4,
-    name: "r/ArtificialIntelligence",
+    name: "Reddit - Artificial Intelligence",
     link: "https://www.reddit.com/r/artificial/",
     description:
       "Reddit's main community for AI discussions, news, and developments.",
   },
   {
     id: 5,
-    name: "r/ChatGPT",
+    name: "Reddit - ChatGPT",
     link: "https://www.reddit.com/r/ChatGPT/",
     description:
       "Community focused on ChatGPT, its applications, and latest updates.",
   },
   {
     id: 6,
-    name: "r/Singularity",
+    name: "Reddit - Singularity",
     link: "https://www.reddit.com/r/singularity/",
     description:
       "Discussions about technological singularity, AGI, and future of AI.",
@@ -93,7 +93,7 @@ export const llmCommunities = [
   },
   {
     id: 14,
-    name: "r/ClaudeAI",
+    name: "Reddit - Claude AI",
     link: "https://www.reddit.com/r/ClaudeAI/",
     description:
       "Community focused on discussions and developments related to Claude AI.",
