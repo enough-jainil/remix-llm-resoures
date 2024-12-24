@@ -1,198 +1,184 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const openSourceModels = [
+  // Meta Llama Models
   {
     id: 1,
-    name: "Llama-3-405B",
-    link: "https://huggingface.co/meta-llama/Llama-3-405b",
-    description:
-      "Meta's latest and largest model with 405B parameters and enhanced capabilities.",
+    name: "Llama 3.1 405B (Base)",
+    link: "https://huggingface.co/meta-llama/Llama-3-405B",
+    description: "405B parameter model for advanced AI tasks.",
+    description2:
+      "A 405-billion-parameter model, representing one of the largest open-source AI models available. It offers advanced capabilities in natural language understanding and generation, suitable for high-level research and complex AI tasks. Supports a context length of 131K tokens.",
+  },
+  {
+    id: 1.1,
+    name: "Llama 3.1 70B Instruct",
+    link: "https://huggingface.co/meta-llama/Llama-3-70B-Instruct",
+    description: "70B parameter model optimized for dialogue.",
+    description2:
+      "A 70-billion-parameter model optimized for high-quality dialogue use cases. It demonstrates strong performance compared to leading closed-source models in human evaluations. Supports a context length of 131K tokens.",
+  },
+  {
+    id: 1.2,
+    name: "Llama 3.1 8B Instruct",
+    link: "https://huggingface.co/meta-llama/Llama-3-8B-Instruct",
+    description: "8B parameter model for efficient dialogue performance.",
+    description2:
+      "An 8-billion-parameter model designed for efficient performance in dialogue and instruction-following tasks. It balances computational efficiency with robust language generation capabilities. Supports a context length of 131K tokens.",
+  },
+  {
+    id: 1.3,
+    name: "Llama 3 70B (Base)",
+    link: "https://huggingface.co/meta-llama/Llama-3-70B",
+    description: "70B parameter base model for NLP tasks.",
+    description2:
+      "A 70-billion-parameter base model offering strong performance in natural language processing tasks. It serves as a foundation for various fine-tuned versions tailored to specific applications. Supports a context length of 8K tokens.",
+  },
+  {
+    id: 1.4,
+    name: "Llama 3 8B (Base)",
+    link: "https://huggingface.co/meta-llama/Llama-3-8B",
+    description: "8B parameter base model for NLP tasks.",
+    description2:
+      "An 8-billion-parameter base model suitable for a range of natural language understanding and generation tasks. Its relatively smaller size allows for deployment in environments with limited computational resources. Supports a context length of 8K tokens.",
+  },
+  {
+    id: 1.5,
+    name: "CodeLlama 70B Instruct",
+    link: "https://huggingface.co/codellama/CodeLlama-70B",
+    description: "70B parameter model specialized for code generation.",
+    description2:
+      "A 70-billion-parameter model specialized for code generation tasks. It provides zero-shot instruction-following ability for programming, supporting a context length of 2K tokens.",
+  },
+  {
+    id: 1.6,
+    name: "CodeLlama 34B Instruct",
+    link: "https://huggingface.co/codellama/CodeLlama-34B",
+    description: "34B parameter model for code infilling.",
+    description2:
+      "A 34-billion-parameter model built upon Llama 2, excelling at code infilling and handling extensive input contexts. It supports a context length of 8K tokens.",
+  },
+  {
+    id: 1.7,
+    name: "Llama v2 13B Chat",
+    link: "https://huggingface.co/meta-llama/Llama-v2-13B-Chat",
+    description: "13B parameter model for chat completions.",
+    description2:
+      "A 13-billion-parameter model fine-tuned for chat completions, offering robust conversational AI capabilities. Supports a context length of 4K tokens.",
+  },
+  {
+    id: 1.8,
+    name: "Llama v2 70B Chat",
+    link: "https://huggingface.co/meta-llama/Llama-v2-70B-Chat",
+    description: "70B parameter flagship model for chat.",
+    description2:
+      "A flagship 70-billion-parameter model fine-tuned for chat completions, utilizing an optimized transformer architecture. Supports a context length of 4K tokens.",
   },
   {
     id: 2,
-    name: "Llama-3-70B",
-    link: "https://huggingface.co/meta-llama/Llama-3-70b",
+    name: "Qwen 2.5 32B Instruct",
+    link: "https://huggingface.co/qwen/Qwen-2.5-32B",
     description:
-      "More efficient version of Llama 3 with strong performance at 70B scale.",
-  },
-  {
-    id: 3,
-    name: "Llama-3-32B",
-    link: "https://huggingface.co/meta-llama/Llama-3-32b",
-    description:
-      "Balanced version of Llama 3 optimized for broader accessibility.",
-  },
-  {
-    id: 4,
-    name: "Qwen-2.5-72B",
-    link: "https://huggingface.co/Qwen/Qwen2-72B",
-    description:
-      "Latest version of Qwen with improved instruction following and reasoning.",
+      "Qwen 2.5 32B is a transformer-based model that excels in language understanding, multilingual capabilities, coding, mathematics, and reasoning.",
     description2:
-      "Qwen-2.5-72B is part of the Qwen 2.5 series of large language models developed by Alibaba Cloud. This model is notable for its 72 billion parameters, making it one of the larger models in the series, which includes various sizes ranging from 0.5B to 72B. Key features include pretraining on a massive dataset of up to 18 trillion tokens, enhancing its capabilities in knowledge retrieval, coding, mathematics, and instruction following compared to its predecessor, Qwen-2. The Qwen-2.5 models are open-sourced under specific licenses, allowing developers to utilize and modify them for various applications. This model excels in generating long texts and understanding complex instructions, making it suitable for a wide range of applications in natural language processing and AI-driven tasks.",
+      "It features SwiGLU activation, attention QKV bias, and group query attention. It is pretrained on extensive data with supervised finetuning and direct preference optimization.",
   },
   {
-    id: 5,
-    name: "Qwen-Coder-2.5",
-    link: "https://huggingface.co/Qwen/Qwen-2.5-CodeLLaMA",
+    id: 2.1,
+    name: "Qwen 2.5 72B Instruct",
+    link: "https://huggingface.co/qwen/Qwen-2.5-72B",
     description:
-      "Alibaba's latest code generation model based on CodeLLaMA architecture.",
+      "Qwen 2.5 72B is a transformer-based model that excels in language understanding, multilingual capabilities, coding, mathematics, and reasoning.",
     description2:
-      "Qwen-Coder-2.5 is a specialized version of the Qwen series of large language models developed by Alibaba Cloud, specifically tailored for coding tasks. It is designed to assist developers by providing advanced capabilities in code generation, completion, and repair. The Qwen-Coder-2.5 series includes multiple model sizes, ranging from 0.5 billion to 32 billion parameters, allowing developers to choose a model that best fits their computational resources and specific needs. It has demonstrated impressive performance across more than 40 programming languages, scoring 65.9 on the McEval benchmark and achieving a score of 75.2 on the MdEval code repair benchmark, ranking it among the top open-source models for coding tasks. Like other models in the Qwen series, Qwen-Coder-2.5 is open-source, enabling developers to access, modify, and integrate it into their projects freely. This model is particularly useful for tasks such as code generation, debugging, and providing coding assistance, making it a valuable tool for both novice and experienced programmers.",
+      "It features SwiGLU activation, attention QKV bias, and group query attention. It is pretrained on extensive data with supervised finetuning and direct preference optimization.",
   },
   {
-    id: 6,
-    name: "Qwen-2.5-4B",
-    link: "https://huggingface.co/Qwen/Qwen2-4B",
-    description: "Efficient version of Qwen 2.5 optimized for deployment.",
+    id: 2.2,
+    name: "Qwen 2.5 7B Instruct",
+    link: "https://huggingface.co/qwen/Qwen-2.5-7B",
+    description:
+      "Qwen 2.5 7B is a transformer-based model that excels in language understanding, multilingual capabilities, coding, mathematics, and reasoning.",
     description2:
-      "Qwen-2.5-4B is part of the Qwen 2.5 series of large language models developed by Alibaba Cloud. This model features 4 billion parameters, making it suitable for a variety of natural language processing tasks while being more lightweight compared to larger models in the series. Key features include its design for tasks such as text generation, question answering, and instruction following, optimized for performance in diverse applications, including coding and logical reasoning. Like other models in the Qwen series, Qwen-2.5-4B is open-source, enabling developers to access and modify the model for their projects, fostering innovation and collaboration in the AI community. Overall, Qwen-2.5-4B represents a balance between performance and resource efficiency, making it a valuable tool for developers looking to implement advanced AI capabilities in their applications.",
+      "It features SwiGLU activation, attention QKV bias, and group query attention. It is pretrained on extensive data with supervised finetuning and direct preference optimization.",
   },
   {
-    id: 7,
-    name: "Code Gemma-7B",
-    link: "https://huggingface.co/google/code-gemma-7b",
+    id: 2.3,
+    name: "Qwen 2.5 Coder 7B",
+    link: "https://huggingface.co/qwen/Qwen-2.5-Coder-7B",
     description:
-      "Google's code-specialized Gemma model optimized for programming tasks.",
+      "Qwen 2.5 Coder 7B is designed specifically for coding tasks, enhancing code generation and reasoning capabilities.",
     description2:
-      "CodeGemma-7B is a large language model developed by Google, specifically designed for code generation and code completion tasks. It is part of the CodeGemma family, which includes various models optimized for different coding applications. Key features include 7 billion parameters, making it a powerful tool for handling complex coding tasks while remaining relatively lightweight. This model excels in fill-in-the-middle code completion, code generation, natural language understanding, mathematical reasoning, and instruction following. CodeGemma-7B has been benchmarked across various tasks, demonstrating strong performance in code understanding and generation, with a context length of 8K tokens. It is part of an initiative to democratize AI through open-source practices, making it accessible for developers and researchers to utilize and build upon.",
+      "It provides advanced features for code completion and debugging, making it suitable for developers.",
   },
   {
-    id: 8,
-    name: "Code Gemma-2B",
-    link: "https://huggingface.co/google/code-gemma-2b",
+    id: 2.4,
+    name: "Qwen 2.5 Coder 32B",
+    link: "https://huggingface.co/qwen/Qwen-2.5-Coder-32B",
     description:
-      "Lightweight version of Code Gemma for efficient code generation.",
+      "Qwen 2.5 Coder 32B is a large language model focused on code generation and reasoning.",
     description2:
-      "CodeGemma-2B is a large language model developed by Google DeepMind, specifically designed for coding tasks. It is part of the broader Gemma family of models, which utilize advanced AI technologies similar to those found in the Gemini models. Key features include 2 billion parameters, making it a lightweight yet powerful option for various coding applications. This model has been pretrained on an extensive dataset, including 500 billion tokens of primarily English language data sourced from publicly available code repositories, open-source mathematics datasets, and synthetically generated code. CodeGemma-2B is particularly effective for tasks such as code generation, code completion, and natural language understanding related to programming. Like other models in the Gemma family, CodeGemma-2B is available as an open-source model, allowing developers to access, modify, and integrate it into their projects freely. Overall, CodeGemma-2B represents a significant advancement in AI-driven coding tools, providing robust capabilities for developers looking to enhance their coding workflows and improve productivity.",
+      "It significantly improves coding capabilities while maintaining strengths in mathematics and general competencies.",
   },
-  {
-    id: 9,
-    name: "Gemma-7B",
-    link: "https://huggingface.co/google/gemma-7b",
-    description:
-      "Google's latest open source model series with strong performance.",
-    description2:
-      "Gemma-7B is a state-of-the-art language model developed by Google DeepMind, part of the Gemma family of models. It is designed for a variety of tasks, including text generation, understanding, and code generation. Key features include 7 billion parameters, a Transformer architecture with 28 layers, and a context length of 8,000 tokens, allowing it to process substantial amounts of text effectively. Built using the same research and technology as the Gemini models, Gemma-7B achieves best-in-class performance for its size, making it particularly effective for applications requiring high-quality text generation and understanding. The Gemma models, including Gemma-7B, are available as open-source, promoting accessibility and collaboration within the AI community.",
-  },
-
-  // Late 2023 Releases
-  {
-    id: 10,
-    name: "Mixtral-8x7B",
-    link: "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1",
-    description: "Sparse mixture of experts model with 47B parameters.",
-    description2:
-      "Mixtral-8x7B is a cutting-edge language model developed by Mistral AI, characterized as a Sparse Mixture of Experts (SMoE) model. This innovative architecture allows it to efficiently handle a wide range of natural language processing tasks. Key Features include a mixture of experts approach, where each layer consists of 8 feedforward blocks (experts). For each token processed, a router network selects two experts to handle the computation, optimizing resource usage and enhancing performance. This model has demonstrated superior performance, outperforming the Llama 2 70B model on most benchmarks while achieving 6x faster inference. Released with open weights under the Apache 2.0 license, it promotes accessibility and allows developers to customize and deploy the model in various environments. The model is designed for a variety of tasks, including text generation, instruction following, and creative writing, making it versatile for both developers and researchers.",
-  },
-  {
-    id: 11,
-    name: "Mistral-7B",
-    link: "https://huggingface.co/mistralai/Mistral-7B-v0.1",
-    description: "High-performance 7B model with sliding window attention.",
-    description2:
-      "Mistral-7B is a high-performance language model designed for various natural language processing tasks. It features a sliding window attention mechanism, allowing it to efficiently process long sequences of text. This model is particularly effective for applications requiring context retention over extended inputs, making it suitable for tasks such as text generation, summarization, and dialogue systems. Mistral-7B is open-source, enabling developers to access and integrate it into their projects, fostering innovation in the AI community.",
-  },
-  {
-    id: 12,
-    name: "OpenHermes-2.5-Mistral-7B",
-    link: "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B",
-    description: "Instruction-tuned Mistral model for chat and reasoning.",
-  },
-  {
-    id: 13,
-    name: "Zephyr-7B",
-    link: "https://huggingface.co/HuggingFaceH4/zephyr-7b-beta",
-    description:
-      "Fine-tuned Mistral model with improved instruction following.",
-  },
-
-  // Mid 2023 Releases
-  {
-    id: 14,
-    name: "Llama-2-70B",
-    link: "https://huggingface.co/meta-llama/Llama-2-70b",
-    description:
-      "Meta's largest open source model with strong reasoning capabilities.",
-  },
-  {
-    id: 15,
-    name: "CodeLlama-34B",
-    link: "https://huggingface.co/codellama/CodeLlama-34b-hf",
-    description: "Specialized code generation model based on Llama 2.",
-  },
-  {
-    id: 16,
-    name: "Falcon-180B",
-    link: "https://huggingface.co/tiiuae/falcon-180B",
-    description: "TII's largest open source model with 180B parameters.",
-  },
-  {
-    id: 17,
-    name: "Yi-34B",
-    link: "https://huggingface.co/01-ai/Yi-34B",
-    description: "Large bilingual model trained on diverse datasets.",
-  },
-
-  // Early 2023 Releases
-  {
-    id: 18,
-    name: "MPT-30B",
-    link: "https://huggingface.co/mosaicml/mpt-30b",
-    description:
-      "MosaicML's efficient transformer model with strong performance.",
-  },
-  {
-    id: 19,
-    name: "SOLAR-10.7B",
-    link: "https://huggingface.co/upstage/SOLAR-10.7B-v1.0",
-    description: "Upstage's model optimized for long context understanding.",
-  },
-  {
-    id: 20,
-    name: "Vicuna-13B",
-    link: "https://huggingface.co/lmsys/vicuna-13b-v1.5",
-    description: "Fine-tuned LLaMA model with strong chat capabilities.",
-  },
-
-  // 2022 and Earlier
-  {
-    id: 21,
-    name: "BLOOM-176B",
-    link: "https://huggingface.co/bigscience/bloom",
-    description:
-      "Multilingual model supporting 46+ languages and 13 programming languages.",
-  },
-  {
-    id: 22,
-    name: "Pythia-12B",
-    link: "https://huggingface.co/EleutherAI/pythia-12b",
-    description: "EleutherAI's model trained on The Pile dataset.",
-  },
-  {
-    id: 23,
-    name: "StableLM-3B",
-    link: "https://huggingface.co/stabilityai/stablelm-3b-4e1t",
-    description: "Stability AI's efficient base model for fine-tuning.",
-  },
-  {
-    id: 24,
-    name: "LLama",
-    link: "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
-    description:
-      "LLama is a groundbreaking large language model with 65 billion parameters, designed to tackle a wide range of natural language processing tasks.",
-    description2:
-      "Trained on extensive datasets, LLama possesses a deep understanding of linguistic patterns and semantics, enabling it to generate coherent and contextually relevant text. With its vast parameter count, LLama excels in tasks such as text generation, sentiment analysis, language translation, and more. Its robust architecture and extensive pre-training make it a versatile tool for researchers, developers, and businesses seeking to leverage state-of-the-art language processing capabilities",
-  },
-
   // New DeepSeek model entry
   {
-    id: 25,
+    id: 3,
     name: "DeepSeek-V2.5",
     link: "https://www.deepseek.com/",
     description:
       "DeepSeek's flagship model, excelling in reasoning, math, and coding tasks.",
     description2:
       "DeepSeek-V2.5 is an open-source model designed for general-purpose tasks and coding, highly competitive with leading models like GPT-4 and LLaMA3. It features innovative technologies such as Multi-head Latent Attention (MLA) for improved efficiency and is available for both academic and commercial use.",
+  },
+  // Mistral AI Models
+  {
+    id: 4,
+    name: "Mistral 7B",
+    link: "https://huggingface.co/mistral/Mistral-7B",
+    description: "Mistral's first dense model with 7 billion parameters.",
+    description2:
+      "Released in September 2023, this model matches the capabilities of models up to 30B parameters, making it suitable for experimentation, customization, and quick iteration.",
+  },
+  {
+    id: 4.1,
+    name: "Mixtral 8x7B",
+    link: "https://huggingface.co/mistral/Mixtral-8x7B",
+    description:
+      "Sparse mixture-of-experts model leveraging up to 45 billion parameters.",
+    description2:
+      "Introduced in December 2023, this model uses about 12 billion during inference, enhancing throughput for various tasks.",
+  },
+  {
+    id: 4.2,
+    name: "Mixtral 8x22B",
+    link: "https://huggingface.co/mistral/Mixtral-8x22B",
+    description:
+      "Mistral's largest open-source model with up to 141 billion parameters.",
+    description2:
+      "Launched in April 2024, it employs about 39 billion during inference, offering excellent performance in code-related tasks and multilingual capabilities.",
+  },
+  {
+    id: 4.3,
+    name: "Mistral NeMo",
+    link: "https://huggingface.co/mistral/Mistral-NeMo",
+    description:
+      "Multilingual open-source model for a wide range of languages.",
+    description2:
+      "Released in July 2024, this model enhances versatility in various applications.",
+  },
+  {
+    id: 4.4,
+    name: "Codestral Mamba",
+    link: "https://huggingface.co/mistral/Codestral-Mamba",
+    description: "Model tailored for code generation tasks.",
+    description2:
+      "Introduced in July 2024, it leverages the Mamba 2 architecture to handle longer inputs efficiently.",
+  },
+  {
+    id: 4.5,
+    name: "Mathstral",
+    link: "https://huggingface.co/mistral/Mathstral",
+    description: "Model focused on mathematical reasoning and problem-solving.",
+    description2:
+      "Unveiled in July 2024, Mathstral is suitable for STEM-related applications.",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

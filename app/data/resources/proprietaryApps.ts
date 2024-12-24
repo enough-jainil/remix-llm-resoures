@@ -26,4 +26,13 @@ export const proprietaryApps = [
     description2:
       "NotebookLM has introduced a new interface that optimizes the management and generation of new content based on your sources. The interface is redesigned into three areas: the 'Sources' panel manages the core information of your project, the 'Chat' panel discusses your sources through a conversational AI interface with citations, and the 'Studio' panel allows you to create new content from your sources with a single click, such as study guides, briefing documents, and audio overviews. NotebookLM is beginning to roll out the ability to 'join' conversations in audio overviews. Users can ask questions or request explanations of concepts in different ways using voice, as if they have a personal tutor or guide who listens attentively and responds directly, drawing from the knowledge in your sources. NotebookLM Plus: This is the premium subscription version of NotebookLM, offering new features and higher usage limits for heavy users, teams, and enterprises. Subscribers will receive benefits including more than five times the number of audio overviews, notebooks, and sources per notebook; the ability to customize the style and length of notebook responses; shared team notebooks with usage analytics; and additional privacy and security protections.",
   },
+  {
+    id: 4,
+    name: "OpenRouter",
+    link: "https://openrouter.ai/",
+    description:
+      "A unified API gateway providing access to multiple AI models from different providers.",
+    description2:
+      "OpenRouter is a platform that simplifies access to various AI models through a single API endpoint. It offers integration with models from providers like Anthropic, OpenAI, Google, and Meta, allowing developers to switch between different models without changing their code. The service features transparent pricing, pay-as-you-go billing, and automatic fallback options. Key benefits include simplified API access, cost optimization through automatic model routing, and the ability to use multiple AI providers without managing separate API keys and implementations. OpenRouter supports both chat completions and text completions, making it suitable for various AI applications.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
