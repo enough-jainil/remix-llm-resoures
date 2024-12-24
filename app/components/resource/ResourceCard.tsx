@@ -1,19 +1,44 @@
 import { Link } from "@remix-run/react";
 import { Resource } from "~/types/resource";
-import { FaArrowRight, FaAngleLeft } from "react-icons/fa"; // Importing the FaArrowLeft, FaArrowRight, and FaAngleLeft icons from react-icons
+import { FaArrowRight, FaAngleLeft, FaShare } from "react-icons/fa";
+import { useState } from "react";
 
 interface ResourceCardProps {
   resource: Resource;
 }
 
 export default function ResourceCard({ resource }: ResourceCardProps) {
+  const [showShareToast, setShowShareToast] = useState(false);
+
+  const handleShare = async () => {
+    const shareUrl = window.location.href;
+    const shareTitle = `Check out ${resource.name} on AI Insights Hub`;
+    const shareText = resource.description || "";
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl,
+        });
+      } else {
+        await navigator.clipboard.writeText(shareUrl);
+        setShowShareToast(true);
+        setTimeout(() => setShowShareToast(false), 2000);
+      }
+    } catch (error) {
+      console.error("Error sharing:", error);
+    }
+  };
+
   return (
     <div className="lg:max-w-4xl sm:max-w-full mx-auto px-4 py-4 sm:py-8">
       <Link
         to="/"
         className="inline-flex items-center gap-2 text-zinc-400 hover:text-white mb-4 transition-colors"
       >
-        <FaAngleLeft className="w-5 h-5" /> {/* Using the FaAngleLeft icon */}
+        <FaAngleLeft className="w-5 h-5" />
         Back to All Resources
       </Link>
 
@@ -36,19 +61,33 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
             <p className="text-zinc-400 text-base sm:text-lg mb-4">
               {resource.description2 || resource.description}
             </p>
-            <a
-              href={resource.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
-            >
-              Visit Resource
-              <FaArrowRight className="w-5 h-5" />
-              {/* Using the FaArrowRight icon */}
-            </a>
+            <div className="flex gap-3">
+              <a
+                href={resource.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-doreturn-gold to-doreturn-grey text-white font-medium py-2 px-4 rounded-xl hover:shadow-lg transition-all duration-300"
+              >
+                Visit Resource
+                <FaArrowRight className="w-5 h-5" />
+              </a>
+              <button
+                onClick={handleShare}
+                className="inline-flex items-center gap-2 bg-zinc-800 text-white font-medium py-2 px-4 rounded-xl hover:bg-zinc-700 transition-all duration-300"
+              >
+                Share
+                <FaShare className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* {showShareToast && (
+        <div className="fixed bottom-4 right-4 bg-doreturn-gold text-black px-4 py-2 rounded-lg shadow-lg animate-fade-in">
+          URL copied to clipboard!
+        </div>
+      )} */}
     </div>
   );
 }
