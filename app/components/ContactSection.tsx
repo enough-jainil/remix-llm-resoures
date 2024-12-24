@@ -1,7 +1,7 @@
 // ContactSection component for displaying contact information and links for users to submit their open-source projects or resources.
 // It provides options to contact via GitHub, Twitter/X, or Email.
 
-import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function ContactSection() {
   return (
@@ -12,12 +12,12 @@ export default function ContactSection() {
       </h2>
       <p className="text-text-secondary text-center text-lg mb-4">
         For project submissions or issues, please create a GitHub issue or DM us
-        on Twitter/X. <br /> Join our Discord for details and feedback.
+        on Twitter/X. <br /> {/* Join our Discord for details and feedback. */}
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         {/* Discord link */}
-        <a
+        {/* <a
           href="https://discord.gg/your-discord-link"
           target="_blank"
           rel="noopener noreferrer"
@@ -27,7 +27,7 @@ export default function ContactSection() {
         >
           <FaDiscord className="w-5 h-5" />
           <span>Discord</span>
-        </a>
+        </a> */}
 
         {/* GitHub link */}
         <a
