@@ -35,14 +35,21 @@ export default function SearchBar() {
 
   // Debounced search function to limit the number of search calls
   const debouncedSearch = useCallback(
-    debounce(async (value: string) => {
-      setIsLoading(true); // Set loading state
+    debounce((value: string) => {
+      if (!value.trim()) {
+        setSuggestions([]);
+        setSearchQuery("");
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
       try {
-        const results = searchAllResources(value); // Perform search
-        setSuggestions(results); // Update suggestions
-        setSearchQuery(value.toLowerCase().trim()); // Update global search query
+        const results = searchAllResources(value);
+        setSuggestions(results);
+        setSearchQuery(value.toLowerCase().trim());
       } finally {
-        setIsLoading(false); // Reset loading state
+        setIsLoading(false);
       }
     }, 300),
     [searchAllResources, setSearchQuery]

@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { resourceBlocks } from "~/data/resources";
+import Fuse from "fuse.js";
 
 // Define the structure of a global search result, which can be either a resource or a category.
 export interface GlobalSearchResult {
@@ -16,6 +17,14 @@ export interface GlobalSearchResult {
   category?: string; // Title of the category the resource belongs to
 }
 
+// Configure Fuse options for optimal fuzzy searching
+const fuseOptions = {
+  keys: ["name", "description", "description2", "link"],
+  threshold: 0.3,
+  includeScore: true,
+  minMatchCharLength: 2,
+};
+
 // Custom hook for global search functionality
 export function useGlobalSearch() {
   // Function to search all resources based on the provided search term
@@ -24,74 +33,40 @@ export function useGlobalSearch() {
       // Return an empty array if the search term is empty or only whitespace
       if (!searchTerm.trim()) return [];
 
-      const term = searchTerm.toLowerCase(); // Normalize the search term to lowercase
-      const results: GlobalSearchResult[] = []; // Array to store search results
-      const seenNames = new Set(); // Set to track unique names to avoid duplicates
-
-      // Iterate through each resource block to search for matches
-      resourceBlocks.forEach((block) => {
-        // Search in category titles and descriptions
-        if (
-          block.title.toLowerCase().includes(term) ||
-          block.description.toLowerCase().includes(term)
-        ) {
-          const result = {
-            type: "category" as const, // Mark result as a category type
+      // Prepare data for Fuse
+      const searchData: GlobalSearchResult[] = resourceBlocks.flatMap(
+        (block) => [
+          // Add category
+          {
+            type: "category",
             name: block.title,
             description: block.description,
             category: block.tag,
-          };
-          // Add result if it hasn't been seen before
-          if (!seenNames.has(result.name)) {
-            results.push(result);
-            seenNames.add(result.name);
-          }
-        }
+          },
+          // Add resources
+          ...block.resources.map((resource) => ({
+            type: "resource",
+            name: resource.name,
+            description: resource.description,
+            description2: resource.description2,
+            link: resource.link,
+            tag: block.tag,
+            tag2: block.tag2,
+            id: resource.id,
+            favicon: resource.favicon,
+            category: block.title,
+          })),
+        ]
+      );
 
-        // Search in resources within the block
-        block.resources.forEach((resource) => {
-          // Check if the resource matches the search term in various fields
-          if (
-            resource.name.toLowerCase().includes(term) ||
-            resource.description?.toLowerCase().includes(term) ||
-            resource.description2?.toLowerCase().includes(term) || // Ensure description2 is included in the search
-            resource.link.toLowerCase().includes(term) // Added link search
-          ) {
-            const result = {
-              type: "resource" as const, // Mark result as a resource type
-              name: resource.name,
-              description: resource.description,
-              description2: resource.description2, // Added description2 to the result
-              link: resource.link,
-              tag: block.tag,
-              tag2: block.tag2,
-              id: resource.id,
-              favicon: resource.favicon,
-              category: block.title,
-            };
-            // Add result if it hasn't been seen before
-            if (!seenNames.has(result.name)) {
-              results.push(result);
-              seenNames.add(result.name);
-            }
-          }
-        });
-      });
+      // Initialize Fuse with the prepared data
+      const fuse = new Fuse(searchData, fuseOptions);
 
-      // Sort results by relevance and return the top 8
-      return results
-        .sort((a, b) => {
-          const aNameMatch = a.name.toLowerCase().indexOf(term);
-          const bNameMatch = b.name.toLowerCase().indexOf(term);
-
-          // Prioritize exact matches in name
-          if (aNameMatch === 0 && bNameMatch !== 0) return -1;
-          if (bNameMatch === 0 && aNameMatch !== 0) return 1;
-
-          // Then sort by match position
-          return aNameMatch - bNameMatch;
-        })
-        .slice(0, 8); // Limit results to the top 8 matches
+      // Perform the search and return top 8 results
+      return fuse
+        .search(searchTerm)
+        .slice(0, 8)
+        .map((result) => result.item);
     },
     [] // Dependency array for useCallback
   );
