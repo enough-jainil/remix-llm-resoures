@@ -3,37 +3,23 @@ import { useSearch } from "~/context/SearchContext";
 import { useCallback, useState, useEffect, useRef } from "react";
 import debounce from "lodash/debounce";
 import { useNavigate } from "@remix-run/react";
-import { useGlobalSearch } from "~/hooks/useGlobalSearch";
-import { Resource, ResourceBlockProps } from "~/types/resource";
+import {
+  searchAllResources,
+  type GlobalSearchResult,
+} from "~/hooks/useGlobalSearch";
 import { routes } from "~/utils/routes";
-
-// Define the structure of a global search result, extending Resource and ResourceBlockProps
-type GlobalSearchResult = Resource &
-  ResourceBlockProps & {
-    type: "resource";
-    category?: string;
-    tag?: string;
-    tag2?: string;
-    name: string;
-    link: string;
-    favicon: string;
-    description?: string;
-    description2?: string;
-  };
 
 // Main SearchBar component for searching resources
 export default function SearchBar() {
-  const { setSearchQuery } = useSearch(); // Hook to manage search query state
-  const { searchAllResources } = useGlobalSearch(); // Hook to perform global search
-  const [localValue, setLocalValue] = useState(""); // Local state for input value
-  const [suggestions, setSuggestions] = useState<GlobalSearchResult[]>([]); // State for search suggestions
-  const [showSuggestions, setShowSuggestions] = useState(false); // State to control visibility of suggestions
-  const searchRef = useRef<HTMLDivElement>(null); // Ref for the search input container
-  const navigate = useNavigate(); // Hook for navigation
-  const [isLoading, setIsLoading] = useState(false); // State to manage loading state
-  const [selectedIndex, setSelectedIndex] = useState(-1); // State to track selected suggestion index
+  const { setSearchQuery } = useSearch();
+  const [localValue, setLocalValue] = useState("");
+  const [suggestions, setSuggestions] = useState<GlobalSearchResult[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  // Debounced search function to limit the number of search calls
   const debouncedSearch = useCallback(
     debounce((value: string) => {
       if (!value.trim()) {
@@ -52,7 +38,7 @@ export default function SearchBar() {
         setIsLoading(false);
       }
     }, 300),
-    [searchAllResources, setSearchQuery]
+    [setSearchQuery]
   );
 
   // Cleanup function to cancel debounced search on unmount
@@ -134,14 +120,12 @@ export default function SearchBar() {
 
   // Handle click on a suggestion
   const handleSuggestionClick = (suggestion: GlobalSearchResult) => {
-    if (suggestion.type === "resource" && suggestion.link) {
-      const tag = suggestion.tag || "default";
-      const tag2 = suggestion.tag2;
-      navigate(routes.resourceDetail(tag, tag2, suggestion.name)); // Navigate to resource detail
+    if (suggestion.type === "resource") {
+      navigate(routes.resourceDetail(suggestion.tag || "", suggestion.tag2, suggestion.name));
+      setLocalValue(suggestion.name);
+      setSearchQuery(suggestion.name.toLowerCase());
+      setShowSuggestions(false);
     }
-    setLocalValue(suggestion.name); // Set local input value to suggestion name
-    setSearchQuery(suggestion.name.toLowerCase()); // Update global search query
-    setShowSuggestions(false); // Hide suggestions
   };
 
   return (

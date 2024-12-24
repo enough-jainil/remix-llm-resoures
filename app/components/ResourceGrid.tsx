@@ -1,4 +1,3 @@
-// Import necessary types and hooks
 import { ResourceBlockProps } from "~/types/resource";
 import { useSearch } from "~/context/SearchContext";
 import { useCategory } from "~/context/CategoryContext";
@@ -7,9 +6,8 @@ import { useState, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
 import { resourceBlocks } from "~/data/resources";
-import { FiLoader } from "react-icons/fi"; // Changed Loader2 to FiLoader
+import { FiLoader } from "react-icons/fi";
 
-// ResourceBlock component for displaying a block of resources
 const ResourceBlock = ({
   title,
   description,
@@ -17,12 +15,9 @@ const ResourceBlock = ({
   tag,
   tag2,
 }: ResourceBlockProps) => {
-  // Get the current search query from context
   const { searchQuery } = useSearch();
-  // State to manage the visibility of the "View All" modal
   const [isViewAllOpen, setIsViewAllOpen] = useState(false);
 
-  // Filter resources based on the search query
   const filteredResources = resources.filter((resource) => {
     const searchLower = searchQuery.toLowerCase();
     return (
@@ -32,12 +27,10 @@ const ResourceBlock = ({
     );
   });
 
-  // If no resources are found, display a message
   if (filteredResources.length === 0) {
     return <div>No resources found</div>;
   }
 
-  // Add tags to the filtered resources
   const resourcesWithTag = filteredResources.map((resource) => ({
     ...resource,
     tag2: tag2 || tag,
@@ -69,7 +62,7 @@ const ResourceBlock = ({
                 alt=""
                 className="w-4 h-4 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500"
                 onError={(e) => {
-                  e.currentTarget.style.display = "none"; // Hide image if it fails to load
+                  e.currentTarget.style.display = "none";
                 }}
               />
               <Link
@@ -83,7 +76,7 @@ const ResourceBlock = ({
         </ul>
         <div className="mt-auto pt-4">
           <button
-            onClick={() => setIsViewAllOpen(true)} // Open the "View All" modal
+            onClick={() => setIsViewAllOpen(true)}
             className="w-full py-2.5 px-4 bg-[#c5b358]/80 hover:bg-zinc-700/80 text-zinc-100 text-sm rounded-full transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600/50 hover:shadow-lg hover:shadow-zinc-900/20"
           >
             View All →
@@ -92,24 +85,21 @@ const ResourceBlock = ({
       </div>
 
       <ViewAll
-        isOpen={isViewAllOpen} // Pass the modal state to ViewAll component
-        onClose={() => setIsViewAllOpen(false)} // Close the modal
+        isOpen={isViewAllOpen}
+        onClose={() => setIsViewAllOpen(false)}
         title={title}
-        resources={resourcesWithTag} // Pass filtered resources with tags
+        resources={resourcesWithTag}
       />
     </>
   );
 };
 
-// ResourceGrid component for displaying a grid of resource blocks
 export default function ResourceGrid() {
-  // Get the selected category and search query from context
   const { selectedCategory } = useCategory();
   const { searchQuery } = useSearch();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time when category or search changes
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
@@ -122,16 +112,13 @@ export default function ResourceGrid() {
     return (
       <div className="min-h-[400px] flex items-center justify-center">
         <FiLoader className="w-8 h-8 animate-spin text-doreturn-gold" />
-        {/* Changed Loader2 to FiLoader */}
       </div>
     );
   }
 
-  // Function to get the display blocks based on filters
   const getDisplayBlocks = () => {
     let blocks = resourceBlocks;
 
-    // Filter by category, sub-category, and sub-sub-category
     if (selectedCategory && selectedCategory !== "all") {
       const [mainTag, subTag, subSubTag] = selectedCategory.split("-");
 
@@ -146,33 +133,32 @@ export default function ResourceGrid() {
         if (subTag) {
           return block.tag === mainTag && block.tag2 === subTag;
         }
-        return block.tag === mainTag; // Return blocks matching the main tag
+        return block.tag === mainTag;
       });
     }
 
-    // Filter by search query if present
     if (searchQuery) {
       const searchLower = searchQuery.toLowerCase();
       blocks = blocks.filter(
         (block) =>
-          block.title.toLowerCase().includes(searchLower) || // Match block title
-          block.description.toLowerCase().includes(searchLower) || // Match block description
+          block.title.toLowerCase().includes(searchLower) ||
+          block.description.toLowerCase().includes(searchLower) ||
           block.resources.some(
             (resource) =>
-              resource.name.toLowerCase().includes(searchLower) || // Match resource name
-              resource.description?.toLowerCase().includes(searchLower) // Match resource description
+              resource.name.toLowerCase().includes(searchLower) ||
+              resource.description?.toLowerCase().includes(searchLower)
           )
       );
     }
 
-    return blocks; // Return the filtered blocks
+    return blocks;
   };
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-12 max-w-7xl mx-auto px-4">
         {getDisplayBlocks().map((block, index) => (
-          <ResourceBlock key={index} {...block} /> // Render each ResourceBlock
+          <ResourceBlock key={index} {...block} />
         ))}
       </div>
     </>
