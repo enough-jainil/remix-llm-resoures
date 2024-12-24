@@ -12,16 +12,15 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
 
   const handleShare = async () => {
     const shareUrl = window.location.href;
-    const shareTitle = `Check out ${resource.name} on AI Insights Hub`;
-    const shareText = resource.description || "";
+    const shareData = {
+      title: `${resource.name} | AI Insights Hub`,
+      text: "", // Keep empty to let platforms use their default sharing format
+      url: shareUrl,
+    };
 
     try {
       if (navigator.share) {
-        await navigator.share({
-          title: shareTitle,
-          text: shareText,
-          url: shareUrl,
-        });
+        await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(shareUrl);
         setShowShareToast(true);
