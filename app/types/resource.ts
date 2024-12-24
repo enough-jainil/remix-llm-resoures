@@ -17,3 +17,17 @@ export interface ResourceBlockProps {
   tag2?: string;
   tag3?: string;
 }
+
+export interface GlobalSearchResult {
+  type: "resource" | "category";
+  name: string;
+  description?: string;
+  description2?: string;
+  link?: string;
+  tag?: string;
+  tag2?: string;
+  tag3?: string;
+  favicon?: string;
+  category?: string;
+  id?: number;
+}

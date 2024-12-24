@@ -7,6 +7,7 @@ import { Link } from "@remix-run/react";
 import { routes } from "~/utils/routes";
 import { resourceBlocks } from "~/data/resources";
 import { FiLoader } from "react-icons/fi";
+import { searchAllResources } from "~/hooks/useGlobalSearch";
 
 const ResourceBlock = ({
   title,
@@ -18,14 +19,14 @@ const ResourceBlock = ({
   const { searchQuery } = useSearch();
   const [isViewAllOpen, setIsViewAllOpen] = useState(false);
 
-  const filteredResources = resources.filter((resource) => {
-    const searchLower = searchQuery.toLowerCase();
-    return (
-      resource.name.toLowerCase().includes(searchLower) ||
-      resource.description?.toLowerCase().includes(searchLower) ||
-      title.toLowerCase().includes(searchLower)
-    );
-  });
+  const filteredResources = searchQuery
+    ? searchAllResources(searchQuery)
+        .filter(
+          (result) => result.type === "resource" && result.category === title
+        )
+        .map((result) => resources.find((r) => r.name === result.name))
+        .filter(Boolean)
+    : resources;
 
   if (filteredResources.length === 0) {
     return <div>No resources found</div>;
@@ -138,15 +139,19 @@ export default function ResourceGrid() {
     }
 
     if (searchQuery) {
-      const searchLower = searchQuery.toLowerCase();
+      const searchResults = searchAllResources(searchQuery);
+      const matchingCategories = new Set(
+        searchResults
+          .filter((result) => result.type === "category")
+          .map((result) => result.name)
+      );
+
       blocks = blocks.filter(
         (block) =>
-          block.title.toLowerCase().includes(searchLower) ||
-          block.description.toLowerCase().includes(searchLower) ||
-          block.resources.some(
-            (resource) =>
-              resource.name.toLowerCase().includes(searchLower) ||
-              resource.description?.toLowerCase().includes(searchLower)
+          matchingCategories.has(block.title) ||
+          searchResults.some(
+            (result) =>
+              result.type === "resource" && result.category === block.title
           )
       );
     }
