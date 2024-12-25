@@ -55,6 +55,18 @@ export const meta: MetaFunction = () => {
       property: "og:image:height",
       content: "630",
     },
+    {
+      name: "robots",
+      content: "index, follow",
+    },
+    {
+      name: "googlebot",
+      content: "index, follow",
+    },
+    {
+      name: "bingbot",
+      content: "index, follow",
+    },
   ];
 };
 
