@@ -129,6 +129,15 @@ export const openSourceModels = [
     description2:
       "DeepSeek-V2.5 is an open-source model designed for general-purpose tasks and coding, highly competitive with leading models like GPT-4 and LLaMA3. It features innovative technologies such as Multi-head Latent Attention (MLA) for improved efficiency and is available for both academic and commercial use.",
   },
+  {
+    id: 3.1,
+    name: "DeepSeek-V3",
+    link: "https://github.com/deepseek-ai/DeepSeek-V3",
+    description:
+      "DeepSeek-V3 is a Mixture-of-Experts (MoE) language model with 671 billion total parameters, designed for efficient inference and cost-effective training.",
+    description2:
+      "It features innovative Multi-head Latent Attention (MLA) and an auxiliary-loss-free strategy for load balancing, achieving state-of-the-art performance in various tasks. DeepSeek-V3 is pre-trained on 14.8 trillion tokens and demonstrates competitive capabilities against leading closed-source models.",
+  },
   // Mistral AI Models
   {
     id: 4,
