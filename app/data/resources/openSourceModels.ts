@@ -138,6 +138,54 @@ export const openSourceModels = [
     description2:
       "It features innovative Multi-head Latent Attention (MLA) and an auxiliary-loss-free strategy for load balancing, achieving state-of-the-art performance in various tasks. DeepSeek-V3 is pre-trained on 14.8 trillion tokens and demonstrates competitive capabilities against leading closed-source models.",
   },
+  {
+    id: 3.2,
+    name: "DeepSeek-Math-7B",
+    link: "https://www.deepseek.com/deepseek-math-7b",
+    description: "7B parameter model optimized for mathematical reasoning.",
+    description2:
+      "DeepSeek-Math-7B excels in solving complex mathematical problems and reasoning tasks.",
+  },
+  {
+    id: 3.3,
+    name: "DeepSeek-Coder-1.3",
+    link: "https://www.deepseek.com/deepseek-coder-1.3",
+    description: "33B parameter model specialized for code generation.",
+    description2:
+      "DeepSeek-Coder-1.3 is designed for efficient code generation and understanding, providing advanced capabilities for developers.",
+  },
+  {
+    id: 3.4,
+    name: "DeepSeek-VL-1.3",
+    link: "https://www.deepseek.com/deepseek-vl-1.3",
+    description: "7B parameter model for vision-language tasks.",
+    description2:
+      "DeepSeek-VL-1.3 integrates visual and language understanding for enhanced multimodal applications.",
+  },
+  {
+    id: 3.5,
+    name: "DeepSeek-MoE-16B",
+    link: "https://www.deepseek.com/deepseek-moe-16b",
+    description: "16B parameter Mixture-of-Experts model.",
+    description2:
+      "DeepSeek-MoE-16B utilizes a mixture-of-experts architecture for efficient processing and performance.",
+  },
+  {
+    id: 3.6,
+    name: "DeepSeek-v2-236B-MoE",
+    link: "https://www.deepseek.com/deepseek-v2-236b-moe",
+    description: "236B parameter Mixture-of-Experts model.",
+    description2:
+      "DeepSeek-v2-236B-MoE is designed for high-performance tasks, leveraging a large number of parameters for complex problem-solving.",
+  },
+  {
+    id: 3.7,
+    name: "DeepSeek-Coder-v2-16",
+    link: "https://www.deepseek.com/deepseek-coder-v2-16",
+    description: "16B parameter model for advanced code generation.",
+    description2:
+      "DeepSeek-Coder-v2-16 is optimized for coding tasks, providing enhanced capabilities for developers.",
+  },
   // Mistral AI Models
   {
     id: 4,
@@ -189,5 +237,84 @@ export const openSourceModels = [
     description: "Model focused on mathematical reasoning and problem-solving.",
     description2:
       "Unveiled in July 2024, Mathstral is suitable for STEM-related applications.",
+  },
+
+  {
+    id: 5,
+    name: "Nemotron 4 340B Instruct",
+    link: "https://huggingface.co/nvidia/Nemotron-4-340B-Instruct",
+    description: "340B parameter model for synthetic data generation.",
+    description2:
+      "Part of the Nemotron-4 collection, this model is designed for Synthetic Data Generation (SDG) and includes Base, Instruct, and Reward models. It offers advanced capabilities for generating synthetic datasets, making it suitable for various AI applications.",
+  },
+
+  {
+    id: 6,
+    name: "Yi-VL 34B",
+    link: "https://huggingface.co/collections/01-ai/yi-vl-663f557228538eae745769f3",
+    description: "Image-Text-to-Text model for versatile applications.",
+    description2:
+      "Updated on June 26, this model excels in generating text from images, making it suitable for a variety of AI tasks involving visual data.",
+  },
+  {
+    id: 6.1,
+    name: "Yi 1.5 34B Chat",
+    link: "https://huggingface.co/collections/01-ai/yi-15-2024-05-663f3ecab5f815a3eaca7ca8",
+    description: "Text generation model optimized for conversational AI.",
+    description2:
+      "Updated on August 27, this model is designed for engaging and coherent dialogue, making it ideal for chat applications.",
+  },
+  {
+    id: 6.2,
+    name: "Yi 34B 200K",
+    link: "https://huggingface.co/collections/01-ai/yi-2023-11-663f3f19119ff712e176720f",
+    description: "Advanced text generation model with extensive training.",
+    description2:
+      "Updated on November 11, this model offers high-quality text generation capabilities, suitable for various content creation tasks.",
+  },
+
+  // ... Google  Model...
+
+  {
+    id: 7,
+    name: "Gemma2-9",
+    link: "https://blog.google/technology/developers/google-gemma-2/",
+    description: "27B parameter model for advanced language tasks.",
+    description2:
+      "Gemma2-9 is designed for high-performance language understanding and generation, suitable for various applications.",
+  },
+  {
+    id: 7.1,
+    name: "Gemma-2",
+    link: "https://blog.google/technology/developers/gemma-open-models/",
+    description: "7B parameter model optimized for conversational AI.",
+    description2:
+      "Gemma-2 excels in dialogue generation and understanding, providing robust conversational capabilities.",
+  },
+  {
+    id: 7.2,
+    name: "RecurrentGemma-2B",
+    link: "https://github.com/google-deepmind/recurrentgemma",
+    description: "Recurrent model for enhanced context handling.",
+    description2:
+      "RecurrentGemma-2B is designed to maintain context over longer interactions, improving conversational flow.",
+  },
+  {
+    id: 7.3,
+    name: "T5",
+    link: "https://arxiv.org/abs/1910.10683",
+    description: "Text-to-Text Transfer Transformer model.",
+    description2:
+      "T5 is a versatile model that converts all NLP tasks into a text-to-text format, enabling a wide range of applications.",
+  },
+  // apple models
+  {
+    id: 8,
+    name: "OpenELM",
+    link: "https://huggingface.co/apple/OpenELM",
+    description:
+      "OpenELM is a family of efficient language models designed for enhanced accuracy and performance.",
+    description2:
+      "Utilizing a layer-wise scaling strategy, OpenELM offers pretrained models with 270M, 450M, 1.1B, and 3B parameters, trained on a diverse dataset totaling approximately 1.8 trillion tokens.",
   },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
