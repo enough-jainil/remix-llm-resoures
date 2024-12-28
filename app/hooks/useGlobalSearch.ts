@@ -1,6 +1,7 @@
 import { resourceBlocks } from "~/data/resources";
 import Fuse from "fuse.js";
 import type { GlobalSearchResult } from "~/types/resource";
+import { useMemo } from "react";
 
 // Prepare search data by flattening resource blocks into a single array
 const searchData: GlobalSearchResult[] = resourceBlocks.flatMap((block) => [
@@ -42,6 +43,16 @@ const fuse = new Fuse(searchData, {
   minMatchCharLength: 2, // Minimum length of characters to match
   useExtendedSearch: true, // Enable extended search features
 });
+
+// Memoize search results
+const useGlobalSearch = (query: string) => {
+  const memoizedResults = useMemo(() => {
+    if (!query) return [];
+    return fuse.search(query).slice(0, 10); // Limit results
+  }, [query]);
+
+  return memoizedResults;
+};
 
 // Function to search all resources based on the search term
 export const searchAllResources = (
