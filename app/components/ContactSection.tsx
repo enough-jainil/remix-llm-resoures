@@ -1,6 +1,3 @@
-// ContactSection component for displaying contact information and links for users to submit their open-source projects or resources.
-// It provides options to contact via GitHub, Twitter/X, or Email.
-
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function ContactSection() {
