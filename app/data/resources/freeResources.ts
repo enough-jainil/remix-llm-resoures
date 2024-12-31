@@ -160,83 +160,76 @@ export const freeResources = [
   },
   {
     id: 23,
-    name: "What is ChatGPT Doing",
-    link: "https://www.youtube.com/watch?v=flXrLGPY3SU",
-    description:
-      "Technical explanation of ChatGPT's inner workings and architecture.",
-  },
-  {
-    id: 24,
     name: "Cohere LLM University",
     link: "https://docs.cohere.com/docs/llmu",
     description:
       "Comprehensive course on LLMs covering theory, prompting, fine-tuning, and real-world applications by Cohere.",
   },
   {
-    id: 25,
+    id: 24,
     name: "Neural Networks by 3Blue1Brown",
     link: "https://www.3blue1brown.com/topics/neural-networks",
     description:
       "An engaging series of lessons covering the basics of neural networks and the math behind how they learn.",
   },
   {
-    id: 26,
+    id: 25,
     name: "Transformer Explainer",
     link: "https://poloclub.github.io/transformer-explainer/",
     description:
       "Interactive visualization explaining transformer architecture and attention mechanisms.",
   },
   {
-    id: 27,
+    id: 26,
     name: "CNN Explainer",
     link: "https://poloclub.github.io/cnn-explainer/",
     description:
       "Visual and interactive explanation of Convolutional Neural Networks.",
   },
   {
-    id: 28,
+    id: 27,
     name: "LLM Visualization",
     link: "https://bbycroft.net/llm",
     description:
       "Interactive visualization of how large language models work internally.",
   },
   {
-    id: 29,
+    id: 28,
     name: "Visual Analytics in Deep Learning",
     link: "https://fredhohman.com/visual-analytics-in-deep-learning/",
     description:
       "Comprehensive resource on visualizing and understanding deep learning systems.",
   },
   {
-    id: 30,
+    id: 29,
     name: "What is ChatGPT Doing?",
     link: "https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/",
     description:
       "Stephen Wolfram's detailed explanation of ChatGPT's inner workings.",
   },
   {
-    id: 31,
+    id: 30,
     name: "FT Guide to Generative AI",
     link: "https://ig.ft.com/generative-ai/",
     description:
       "Financial Times' comprehensive visual guide to generative AI technology.",
   },
   {
-    id: 32,
+    id: 31,
     name: "Knowing Machines",
     link: "https://knowingmachines.org/models-all-the-way",
     description:
       "Interactive exploration of AI models and their societal implications.",
   },
   {
-    id: 33,
+    id: 32,
     name: "Prompt Engineering Guide",
     link: "https://www.promptingguide.ai/",
     description:
       "Comprehensive resource on prompt engineering techniques for optimizing interactions with large language models.",
   },
   {
-    id: 34,
+    id: 33,
     name: "AI Timeline",
     link: "https://www.fabianmosele.com/ai-timeline",
     description:

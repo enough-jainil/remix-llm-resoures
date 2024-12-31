@@ -176,4 +176,11 @@ export const videoTutorials = [
     description:
       "Some of Anthropic's prompt engineering experts—Amanda Askell (Alignment Finetuning), Alex Albert (Developer Relations), David Hershey (Applied AI), and Zack Witten (Prompt Engineering)—reflect on how prompt engineering has evolved, practical tips, and thoughts on how prompting might change as AI capabilities grow.",
   },
+  {
+    id: 25,
+    name: "What is ChatGPT Doing",
+    link: "https://www.youtube.com/watch?v=flXrLGPY3SU",
+    description:
+      "Technical explanation of ChatGPT's inner workings and architecture.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
