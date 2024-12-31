@@ -48,28 +48,15 @@ export const loader: LoaderFunction = () => {
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
       </url>
-      <url>
-        <loc>${escapeXml(baseUrl)}/courses</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
-      <url>
-        <loc>${escapeXml(baseUrl)}/tutorials</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
       ${resourceUrls
         .map(
           (url) => `
       <url>
         <loc>${escapeXml(url.loc)}</loc>
         <lastmod>${url.lastmod}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-      </url>
-      `
+        <changefreq>${url.changefreq}</changefreq>
+        <priority>${url.priority}</priority>
+      </url>`
         )
         .join("")}
     </urlset>`;
