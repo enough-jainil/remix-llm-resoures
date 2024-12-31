@@ -1,25 +1,20 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useParams } from "@remix-run/react";
-import { resourceBlocks } from "~/data/resources";
 import ResourceCard from "~/components/resource/ResourceCard";
 import NotFound from "~/components/resource/NotFound";
+import { routeUtils } from "~/utils/routes";
 
 export const meta: MetaFunction = ({ params, location }) => {
   const { title, tag2, name } = params;
-  const decodedTitle = decodeURIComponent(title || "").toLowerCase();
-  const decodedTag2 = decodeURIComponent(tag2 || "").toLowerCase();
-  const decodedName = decodeURIComponent(name || "").toLowerCase();
-
-  const block = resourceBlocks.find((block) => {
-    const slugifiedTitle = block.title.toLowerCase().replace(/\s+/g, "-");
-    const slugifiedTag2 = (block.tag2 || block.tag)
-      .toLowerCase()
-      .replace(/\s+/g, "-");
-    return slugifiedTitle === decodedTitle && slugifiedTag2 === decodedTag2;
-  });
-
-  const resource = block?.resources.find(
-    (r) => r.name.toLowerCase().replace(/\s+/g, "-") === decodedName
+  const { decodedTitle, decodedTag2, decodedName } = routeUtils.decodePath(
+    title,
+    tag2,
+    name
+  );
+  const { resource } = routeUtils.findBlockAndResource(
+    decodedTitle,
+    decodedTag2,
+    decodedName
   );
 
   if (!resource) {
@@ -60,21 +55,15 @@ export const meta: MetaFunction = ({ params, location }) => {
 
 export default function ResourceDetail() {
   const { title, tag2, name } = useParams();
-
-  const decodedTitle = decodeURIComponent(title || "").toLowerCase();
-  const decodedTag2 = decodeURIComponent(tag2 || "").toLowerCase();
-  const decodedName = decodeURIComponent(name || "").toLowerCase();
-
-  const block = resourceBlocks.find((block) => {
-    const slugifiedTitle = block.title.toLowerCase().replace(/\s+/g, "-");
-    const slugifiedTag2 = (block.tag2 || block.tag)
-      .toLowerCase()
-      .replace(/\s+/g, "-");
-    return slugifiedTitle === decodedTitle && slugifiedTag2 === decodedTag2;
-  });
-
-  const resource = block?.resources.find(
-    (r) => r.name.toLowerCase().replace(/\s+/g, "-") === decodedName
+  const { decodedTitle, decodedTag2, decodedName } = routeUtils.decodePath(
+    title,
+    tag2,
+    name
+  );
+  const { block, resource } = routeUtils.findBlockAndResource(
+    decodedTitle,
+    decodedTag2,
+    decodedName
   );
 
   if (!resource || !block) {
