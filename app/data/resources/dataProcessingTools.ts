@@ -211,4 +211,13 @@ export const dataProcessingTools = [
     description:
       "Multilingual OCR toolkit supporting 80+ languages with document analysis features.",
   },
+  {
+    id: 31,
+    name: "crawl4ai",
+    link: "https://github.com/unclecode/crawl4ai",
+    description:
+      "A web crawler designed specifically for AI training data collection.",
+    description2:
+      "crawl4ai is an open-source tool that helps collect and process web data for AI training purposes. It provides features for targeted crawling, content extraction, and data cleaning, making it useful for building custom datasets for machine learning models.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
