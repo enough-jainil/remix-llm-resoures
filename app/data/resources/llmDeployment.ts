@@ -143,4 +143,21 @@ export const llmDeployment = [
     link: "https://azure.microsoft.com/en-us/services/machine-learning/",
     description: "Microsoft's cloud service for MLOps and model deployment.",
   },
+  {
+    id: 22,
+    name: "Qwen2.5-1M Inference Framework",
+    link: "https://qwenlm.github.io/blog/qwen2.5-1m/",
+    description:
+      "Optimized vLLM-based serving for million-token contexts with sparse attention",
+    description2:
+      "Open-source inference framework achieving 3-7x speedup for 1M-token inputs through sparse attention integration and memory optimizations. Supports both 7B and 14B Qwen2.5 models.",
+  },
+  {
+    id: 23,
+    name: "Qwen2.5-Max API",
+    link: "https://qwenlm.github.io/blog/qwen2.5-max/",
+    description: "Alibaba Cloud API endpoint for Qwen2.5-Max MoE model",
+    description2:
+      "Enterprise-ready API access to Qwen2.5-Max through Alibaba Cloud, featuring advanced rate limiting, monitoring, and scalability options for production deployments.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

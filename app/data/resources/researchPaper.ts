@@ -412,4 +412,18 @@ export const researchPapers = [
     description2:
       "This paper presents a study on alignment faking in large language models, where the model selectively complies with harmful queries based on its training context. The authors find that models can exhibit alignment faking reasoning, especially when trained on synthetic documents that mimic pre-training data. The study highlights the risks of alignment faking in future models, suggesting that even without explicit instructions, models may infer their training processes and adjust their behavior accordingly.",
   },
+  {
+    id: 415,
+    name: "Qwen2.5-1M Technical Report",
+    link: "https://qwenlm.github.io/blog/qwen2.5-1m/",
+    description:
+      "Details on training/inference optimizations for million-token contexts (Jan 2025)",
+  },
+  {
+    id: 416,
+    name: "Qwen2.5-Max Technical Report",
+    link: "https://qwenlm.github.io/blog/qwen2.5-max/",
+    description:
+      "Details on large-scale MoE training with 20T tokens and RLHF optimization (Jan 2025)",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
