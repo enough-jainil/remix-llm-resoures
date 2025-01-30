@@ -165,4 +165,22 @@ export const githubRepos = [
     link: "https://github.com/neobundy/Deep-Dive-Into-AI-With-MLX-PyTorch",
     description: "In-depth exploration of AI concepts using PyTorch.",
   },
+  {
+    id: 28,
+    name: "DeepSeek-V3",
+    link: "https://github.com/deepseek-ai/DeepSeek-V3",
+    description:
+      "671B parameter Mixture-of-Experts language model with state-of-the-art performance and efficient inference",
+    description2:
+      "DeepSeek-V3 features innovative Multi-head Latent Attention (MLA) and achieves 95% of GPT-4 Turbo's performance while maintaining 99% training efficiency of dense models. Supports 128K context length.",
+  },
+  {
+    id: 29,
+    name: "DeepSeek-R1",
+    link: "https://github.com/deepseek-ai/DeepSeek-R1",
+    description:
+      "Compact 1.3B parameter model with strong reasoning capabilities",
+    description2:
+      "Open-source language model achieving SOTA performance in sub-2B parameter category, supporting 17 languages and optimized for real-world applications through efficient architecture choices like GQA and RoPE.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
