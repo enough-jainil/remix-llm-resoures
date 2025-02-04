@@ -25,6 +25,7 @@ import { qwenModels } from "./resources/llm-models/open-source/qwenModels";
 import { nvidiaModels } from "./resources/llm-models/open-source/nvidiaModels";
 import { oneaiModels } from "./resources/llm-models/open-source/01-aiModels";
 import { mistralModels } from "./resources/llm-models/open-source/mistralModels";
+import { microsoftModels } from "./resources/llm-models/open-source/microsoftModels";
 import { openSourceVideoGeneration } from "./resources/openSourceVideoGeneration";
 export const resourceBlocks = [
   {
@@ -153,6 +154,13 @@ export const resourceBlocks = [
     tag2: "01.AI Models",
     description: "Open source models from 01.AI",
     resources: oneaiModels,
+  },
+  {
+    title: "Microsoft Models",
+    tag: "LLM Models Open Source",
+    tag2: "Microsoft Models",
+    description: "Open source models from Microsoft",
+    resources: microsoftModels,
   },
   {
     title: "OpenAI Models",
