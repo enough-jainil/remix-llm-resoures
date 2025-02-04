@@ -9,15 +9,21 @@ import { datasets } from "./resources/Datasets";
 import { llmLeaderboards } from "./resources/llmLeaderboards";
 import { llmCommunities } from "./resources/llmCommunities";
 import { llmDeployment } from "./resources/llmDeployment";
-import { openSourceModels } from "./resources/openSourceModels";
-import { proprietaryModels } from "./resources/proprietaryModels";
 import { proprietaryApps } from "./resources/proprietaryApps";
 import { openSourceGenerativeAI } from "./resources/openSourceGenerativeAI";
 import { proprietaryGenerativeAI } from "./resources/proprietaryGenerativeAI";
-import { openSourceVideoGeneration } from "./resources/openSourceVideoGeneration";
 import { proprietaryVideoGeneration } from "./resources/proprietaryVideoGeneration";
-// Import other resource blocks as needed
-
+import { openaiModels } from "./resources/llm-models/proprietary/openaiModels";
+import { googleModels } from "./resources/llm-models/proprietary/googleModels";
+import { mistralModels } from "./resources/llm-models/proprietary/mistralModels";
+import { anthropicModels } from "./resources/llm-models/proprietary/anthropicModels";
+import { xaiModels } from "./resources/llm-models/proprietary/xaiModels";
+import { metaModels } from "./resources/llm-models/open-source/metaModels";
+import { deepseekModels } from "./resources/llm-models/open-source/deepseekModels";
+import { qwenModels } from "./resources/llm-models/open-source/qwenModels";
+import { nvidiaModels } from "./resources/llm-models/open-source/nvidiaModels";
+import { oneaiModels } from "./resources/llm-models/open-source/01-aiModels";
+import { openSourceVideoGeneration } from "./resources/openSourceVideoGeneration";
 export const resourceBlocks = [
   {
     title: "Free Resources",
@@ -98,19 +104,88 @@ export const resourceBlocks = [
     resources: llmDeployment,
   },
   {
-    title: "Open Source Models",
-    tag: "LLM Models",
-    tag2: "Open Source Models",
-    description:
-      "Collection of open source large language models available for research and deployment",
-    resources: openSourceModels,
+    title: "Meta Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "Open source models from Meta (Facebook AI Research)",
+    resources: metaModels,
   },
   {
-    title: "Proprietary Models",
-    tag: "LLM Models",
-    tag2: "Proprietary Models",
-    description: "Popular LLM applications and models",
-    resources: proprietaryModels,
+    title: "Mistral Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "High-performance open-weight models from Mistral AI",
+    resources: mistralModels,
+  },
+  {
+    title: "DeepSeek Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "Open source models from DeepSeek AI",
+    resources: deepseekModels,
+  },
+  {
+    title: "Qwen Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "Open source models from Alibaba's Qwen team",
+    resources: qwenModels,
+  },
+  {
+    title: "NVIDIA Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "Open source models from NVIDIA",
+    resources: nvidiaModels,
+  },
+  {
+    title: "Google Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "Open source models from Google Research",
+    resources: googleModels,
+  },
+  {
+    title: "01.AI Models",
+    tag: "LLM Models Open Source",
+    tag2: "Open Source",
+    description: "Open source models from 01.AI",
+    resources: oneaiModels,
+  },
+  {
+    title: "OpenAI Models",
+    tag: "LLM Models Proprietary",
+    tag2: "OpenAI Models",
+    description: "Collection of OpenAI's proprietary language models",
+    resources: openaiModels,
+  },
+  {
+    title: "Google Models",
+    tag: "LLM Models Proprietary",
+    tag2: "Google Models",
+    description: "Google's Gemini family of AI models",
+    resources: googleModels,
+  },
+  {
+    title: "Mistral Models",
+    tag: "LLM Models Proprietary",
+    tag2: "Mistral Models",
+    description: "Open-weight models from Mistral AI",
+    resources: mistralModels,
+  },
+  {
+    title: "Anthropic Models",
+    tag: "LLM Models Proprietary",
+    tag2: "Anthropic Models",
+    description: "Claude model family from Anthropic",
+    resources: anthropicModels,
+  },
+  {
+    title: "xAI Models",
+    tag: "LLM Models Proprietary",
+    tag2: "xAI Models",
+    description: "Grok models from Elon Musk's xAI",
+    resources: xaiModels,
   },
   {
     title: "Open Source Generative AI",

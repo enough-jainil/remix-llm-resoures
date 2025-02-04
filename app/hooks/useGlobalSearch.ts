@@ -11,7 +11,7 @@ const searchData: GlobalSearchResult[] = resourceBlocks.flatMap((block) => [
     description: block.description,
     category: block.tag,
   },
-  ...block.resources.map((resource) => ({
+  ...(block.resources ?? []).map((resource) => ({
     type: "resource",
     name: resource.name,
     description: resource.description,
