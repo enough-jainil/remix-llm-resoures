@@ -13,16 +13,18 @@ import { proprietaryApps } from "./resources/proprietaryApps";
 import { openSourceGenerativeAI } from "./resources/openSourceGenerativeAI";
 import { proprietaryGenerativeAI } from "./resources/proprietaryGenerativeAI";
 import { proprietaryVideoGeneration } from "./resources/proprietaryVideoGeneration";
-import { openaiModels } from "./resources/llm-models/proprietary/openaiProprietaryModels";
-import { googleModels } from "./resources/llm-models/proprietary/googleProprietaryModels";
-import { mistralModels } from "./resources/llm-models/proprietary/mistralProprietaryModels";
-import { anthropicModels } from "./resources/llm-models/proprietary/anthropicProprietaryModels";
-import { xaiModels } from "./resources/llm-models/proprietary/xaiProprietaryModels";
+import { openaiProprietaryModels } from "./resources/llm-models/proprietary/openaiProprietaryModels";
+import { googleProprietaryModels } from "./resources/llm-models/proprietary/googleProprietaryModels";
+import { mistralProprietaryModels } from "./resources/llm-models/proprietary/mistralProprietaryModels";
+import { anthropicProprietaryModels } from "./resources/llm-models/proprietary/anthropicProprietaryModels";
+import { xaiProprietaryModels } from "./resources/llm-models/proprietary/xaiProprietaryModels";
 import { metaModels } from "./resources/llm-models/open-source/metaModels";
 import { deepseekModels } from "./resources/llm-models/open-source/deepseekModels";
+import { googleModels } from "./resources/llm-models/open-source/googleModels";
 import { qwenModels } from "./resources/llm-models/open-source/qwenModels";
 import { nvidiaModels } from "./resources/llm-models/open-source/nvidiaModels";
 import { oneaiModels } from "./resources/llm-models/open-source/01-aiModels";
+import { mistralModels } from "./resources/llm-models/proprietary/mistralProprietaryModels";
 import { openSourceVideoGeneration } from "./resources/openSourceVideoGeneration";
 export const resourceBlocks = [
   {
@@ -157,35 +159,35 @@ export const resourceBlocks = [
     tag: "LLM Models Proprietary",
     tag2: "OpenAI Models",
     description: "Collection of OpenAI's proprietary language models",
-    resources: openaiModels,
+    resources: openaiProprietaryModels,
   },
   {
     title: "Google Models",
     tag: "LLM Models Proprietary",
     tag2: "Google Models",
     description: "Google's Gemini family of AI models",
-    resources: googleModels,
+    resources: googleProprietaryModels,
   },
   {
     title: "Mistral Models",
     tag: "LLM Models Proprietary",
     tag2: "Mistral Models",
     description: "Open-weight models from Mistral AI",
-    resources: mistralModels,
+    resources: mistralProprietaryModels,
   },
   {
     title: "Anthropic Models",
     tag: "LLM Models Proprietary",
     tag2: "Anthropic Models",
     description: "Claude model family from Anthropic",
-    resources: anthropicModels,
+    resources: anthropicProprietaryModels,
   },
   {
     title: "xAI Models",
     tag: "LLM Models Proprietary",
     tag2: "xAI Models",
     description: "Grok models from Elon Musk's xAI",
-    resources: xaiModels,
+    resources: xaiProprietaryModels,
   },
   {
     title: "Open Source Generative AI",
