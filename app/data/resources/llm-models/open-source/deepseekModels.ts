@@ -76,4 +76,30 @@ export const deepseekModels = [
     description2:
       "DeepSeek-Coder-v2-16 is optimized for coding tasks, providing enhanced capabilities for developers.",
   },
+  {
+    id: 10,
+    name: "Janus-Pro-7B",
+    link: "https://huggingface.co/deepseek-ai/Janus-Pro-7B",
+    description:
+      "7B parameter model for unified multimodal understanding and generation.",
+    description2:
+      "Janus-Pro-7B is an advanced model that enhances multimodal understanding and visual generation capabilities, achieving significant advancements in text-to-image instruction-following.",
+  },
+  {
+    id: 11,
+    name: "JanusFlow-1.3B",
+    link: "https://huggingface.co/deepseek-ai/JanusFlow-1.3B",
+    description:
+      "1.3B parameter model integrating autoregressive language models with rectified flow.",
+    description2:
+      "JanusFlow-1.3B harmonizes autoregression and rectified flow for improved multimodal understanding and generation, outperforming existing unified approaches.",
+  },
+  {
+    id: 12,
+    name: "Janus-1.3B",
+    link: "https://huggingface.co/deepseek-ai/Janus-1.3B",
+    description: "1.3B parameter model for multimodal tasks.",
+    description2:
+      "Janus-1.3B decouples visual encoding for unified multimodal understanding and generation, providing flexibility and high performance across various tasks.",
+  },
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));
