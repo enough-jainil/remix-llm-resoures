@@ -1,11 +1,8 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
-export const openSourceModels = [
-  // Meta Llama Models
-
-  // New DeepSeek model entry
+export const deepseekModels = [
   {
-    id: 3,
+    id: 1,
     name: "DeepSeek-V2.5",
     link: "https://www.deepseek.com/",
     description:
@@ -14,7 +11,7 @@ export const openSourceModels = [
       "DeepSeek-V2.5 is an open-source model designed for general-purpose tasks and coding, highly competitive with leading models like GPT-4 and LLaMA3. It features innovative technologies such as Multi-head Latent Attention (MLA) for improved efficiency and is available for both academic and commercial use.",
   },
   {
-    id: 3.1,
+    id: 2,
     name: "DeepSeek-V3",
     link: "https://github.com/deepseek-ai/DeepSeek-V3",
     description:
@@ -23,7 +20,7 @@ export const openSourceModels = [
       "It features innovative Multi-head Latent Attention (MLA) and an auxiliary-loss-free strategy for load balancing, achieving state-of-the-art performance in various tasks. DeepSeek-V3 is pre-trained on 14.8 trillion tokens and demonstrates competitive capabilities against leading closed-source models.",
   },
   {
-    id: 3.2,
+    id: 3,
     name: "DeepSeek-R1",
     link: "https://github.com/deepseek-ai/DeepSeek-R1",
     description:
@@ -32,7 +29,7 @@ export const openSourceModels = [
       "DeepSeek-R1 achieves state-of-the-art performance among models under 2B parameters, featuring enhanced reasoning capabilities and support for 17 languages. Utilizes innovative training techniques including Grouped Query Attention and Rotary Positional Embeddings for efficient inference.",
   },
   {
-    id: 3.3,
+    id: 4,
     name: "DeepSeek-Math-7B",
     link: "https://www.deepseek.com/deepseek-math-7b",
     description: "7B parameter model optimized for mathematical reasoning.",
@@ -40,7 +37,7 @@ export const openSourceModels = [
       "DeepSeek-Math-7B excels in solving complex mathematical problems and reasoning tasks.",
   },
   {
-    id: 3.4,
+    id: 5,
     name: "DeepSeek-Coder-1.3",
     link: "https://www.deepseek.com/deepseek-coder-1.3",
     description: "33B parameter model specialized for code generation.",
@@ -48,7 +45,7 @@ export const openSourceModels = [
       "DeepSeek-Coder-1.3 is designed for efficient code generation and understanding, providing advanced capabilities for developers.",
   },
   {
-    id: 3.5,
+    id: 6,
     name: "DeepSeek-VL-1.3",
     link: "https://www.deepseek.com/deepseek-vl-1.3",
     description: "7B parameter model for vision-language tasks.",
@@ -56,7 +53,7 @@ export const openSourceModels = [
       "DeepSeek-VL-1.3 integrates visual and language understanding for enhanced multimodal applications.",
   },
   {
-    id: 3.6,
+    id: 7,
     name: "DeepSeek-MoE-16B",
     link: "https://www.deepseek.com/deepseek-moe-16b",
     description: "16B parameter Mixture-of-Experts model.",
@@ -64,7 +61,7 @@ export const openSourceModels = [
       "DeepSeek-MoE-16B utilizes a mixture-of-experts architecture for efficient processing and performance.",
   },
   {
-    id: 3.7,
+    id: 8,
     name: "DeepSeek-v2-236B-MoE",
     link: "https://www.deepseek.com/deepseek-v2-236b-moe",
     description: "236B parameter Mixture-of-Experts model.",
@@ -72,16 +69,11 @@ export const openSourceModels = [
       "DeepSeek-v2-236B-MoE is designed for high-performance tasks, leveraging a large number of parameters for complex problem-solving.",
   },
   {
-    id: 3.8,
+    id: 9,
     name: "DeepSeek-Coder-v2-16",
     link: "https://www.deepseek.com/deepseek-coder-v2-16",
     description: "16B parameter model for advanced code generation.",
     description2:
       "DeepSeek-Coder-v2-16 is optimized for coding tasks, providing enhanced capabilities for developers.",
   },
-  // Mistral AI Models
-
-  // ... Google  Model...
-
-  // apple models
 ].map((resource) => ({ ...resource, favicon: getFaviconUrl(resource.link) }));

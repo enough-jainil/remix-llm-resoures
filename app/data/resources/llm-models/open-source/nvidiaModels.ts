@@ -2,7 +2,7 @@ import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const nvidiaModels = [
   {
-    id: 5,
+    id: 1,
     name: "Nemotron 4 340B Instruct",
     link: "https://huggingface.co/nvidia/Nemotron-4-340B-Instruct",
     description: "340B parameter model for synthetic data generation.",

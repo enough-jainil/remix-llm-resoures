@@ -2,7 +2,7 @@ import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const googleModels = [
   {
-    id: 7,
+    id: 1,
     name: "Gemma2-9",
     link: "https://blog.google/technology/developers/google-gemma-2/",
     description: "27B parameter model for advanced language tasks.",
@@ -10,7 +10,7 @@ export const googleModels = [
       "Gemma2-9 is designed for high-performance language understanding and generation, suitable for various applications.",
   },
   {
-    id: 7.1,
+    id: 2,
     name: "Gemma-2",
     link: "https://blog.google/technology/developers/gemma-open-models/",
     description: "7B parameter model optimized for conversational AI.",
@@ -18,7 +18,7 @@ export const googleModels = [
       "Gemma-2 excels in dialogue generation and understanding, providing robust conversational capabilities.",
   },
   {
-    id: 7.2,
+    id: 3,
     name: "RecurrentGemma-2B",
     link: "https://github.com/google-deepmind/recurrentgemma",
     description: "Recurrent model for enhanced context handling.",
@@ -26,7 +26,7 @@ export const googleModels = [
       "RecurrentGemma-2B is designed to maintain context over longer interactions, improving conversational flow.",
   },
   {
-    id: 7.3,
+    id: 4,
     name: "T5",
     link: "https://arxiv.org/abs/1910.10683",
     description: "Text-to-Text Transfer Transformer model.",

@@ -2,7 +2,7 @@ import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const mistralModels = [
   {
-    id: 4,
+    id: 1,
     name: "Mistral 7B",
     link: "https://huggingface.co/mistral/Mistral-7B",
     description: "Mistral's first dense model with 7 billion parameters.",
@@ -10,7 +10,7 @@ export const mistralModels = [
       "Released in September 2023, this model matches the capabilities of models up to 30B parameters, making it suitable for experimentation, customization, and quick iteration.",
   },
   {
-    id: 4.1,
+    id: 2,
     name: "Mixtral 8x7B",
     link: "https://huggingface.co/mistral/Mixtral-8x7B",
     description:
@@ -19,7 +19,7 @@ export const mistralModels = [
       "Introduced in December 2023, this model uses about 12 billion during inference, enhancing throughput for various tasks.",
   },
   {
-    id: 4.2,
+    id: 3,
     name: "Mixtral 8x22B",
     link: "https://huggingface.co/mistral/Mixtral-8x22B",
     description:
@@ -28,7 +28,7 @@ export const mistralModels = [
       "Launched in April 2024, it employs about 39 billion during inference, offering excellent performance in code-related tasks and multilingual capabilities.",
   },
   {
-    id: 4.3,
+    id: 4,
     name: "Mistral NeMo",
     link: "https://huggingface.co/mistral/Mistral-NeMo",
     description:
@@ -37,7 +37,7 @@ export const mistralModels = [
       "Released in July 2024, this model enhances versatility in various applications.",
   },
   {
-    id: 4.4,
+    id: 5,
     name: "Codestral Mamba",
     link: "https://huggingface.co/mistral/Codestral-Mamba",
     description: "Model tailored for code generation tasks.",
@@ -45,7 +45,7 @@ export const mistralModels = [
       "Introduced in July 2024, it leverages the Mamba 2 architecture to handle longer inputs efficiently.",
   },
   {
-    id: 4.5,
+    id: 6,
     name: "Mathstral",
     link: "https://huggingface.co/mistral/Mathstral",
     description: "Model focused on mathematical reasoning and problem-solving.",

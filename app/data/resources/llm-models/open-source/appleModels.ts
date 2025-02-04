@@ -2,7 +2,7 @@ import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
 export const nvidiaModels = [
   {
-    id: 8,
+    id: 1,
     name: "OpenELM",
     link: "https://huggingface.co/apple/OpenELM",
     description:

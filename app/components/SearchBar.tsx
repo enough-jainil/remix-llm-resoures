@@ -121,11 +121,19 @@ export default function SearchBar() {
   // Handle click on a suggestion
   const handleSuggestionClick = (suggestion: GlobalSearchResult) => {
     if (suggestion.type === "resource") {
-      navigate(routes.resourceDetail(suggestion.tag || "", suggestion.tag2, suggestion.name));
-      setLocalValue(suggestion.name);
+      navigate(
+        routes.resourceDetail(
+          suggestion.tag || "",
+          suggestion.tag2,
+          suggestion.name
+        )
+      );
+    } else if (suggestion.type === "category") {
+      // Handle category click by setting the search query to filter by category
       setSearchQuery(suggestion.name.toLowerCase());
-      setShowSuggestions(false);
+      setLocalValue(suggestion.name);
     }
+    setShowSuggestions(false);
   };
 
   return (
