@@ -24,7 +24,7 @@ import { googleModels } from "./resources/llm-models/open-source/googleModels";
 import { qwenModels } from "./resources/llm-models/open-source/qwenModels";
 import { nvidiaModels } from "./resources/llm-models/open-source/nvidiaModels";
 import { oneaiModels } from "./resources/llm-models/open-source/01-aiModels";
-import { mistralModels } from "./resources/llm-models/proprietary/mistralProprietaryModels";
+import { mistralModels } from "./resources/llm-models/open-source/mistralModels";
 import { openSourceVideoGeneration } from "./resources/openSourceVideoGeneration";
 export const resourceBlocks = [
   {
