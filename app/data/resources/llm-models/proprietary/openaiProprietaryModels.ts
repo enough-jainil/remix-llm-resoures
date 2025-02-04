@@ -1,6 +1,6 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
-export const openaiModels = [
+export const openaiProprietaryModels = [
   {
     id: 1, // Unique identifier for the model
     name: "ChatGPT", // Name of the model

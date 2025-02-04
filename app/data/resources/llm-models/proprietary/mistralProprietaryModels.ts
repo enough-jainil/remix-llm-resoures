@@ -1,6 +1,6 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
-export const mistralModels = [
+export const mistralProprietaryModels = [
   {
     id: 1,
     name: "Mistral Large 2411",

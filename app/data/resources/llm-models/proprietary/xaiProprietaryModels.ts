@@ -1,6 +1,6 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
-export const xaiModels = [
+export const xaiProprietaryModels = [
   {
     id: 1,
     name: "Grok",

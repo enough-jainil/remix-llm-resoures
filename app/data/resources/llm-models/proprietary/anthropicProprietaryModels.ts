@@ -1,6 +1,6 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
-export const anthropicModels = [
+export const anthropicProprietaryModels = [
   {
     id: 1,
     name: "Claude",

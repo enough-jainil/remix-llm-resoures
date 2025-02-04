@@ -1,6 +1,6 @@
 import { getFaviconUrl } from "~/utils/getFaviconUrl";
 
-export const googleModels = [
+export const googleProprietaryModels = [
   {
     id: 1,
     name: "Gemini",
